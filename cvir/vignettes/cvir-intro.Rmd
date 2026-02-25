@@ -1,0 +1,87 @@
+---
+title: "Introduction to cvir"
+author: "Manus AI"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to cvir}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+The `cvir` package provides tools for calculating Content Validity Index (CVI) metrics and visualizing expert ratings using `ggplot2`.
+
+## Installation
+
+YouYou can install the development version of `cvir` from GitHub with:
+
+```r
+# install.packages("devtools")
+devtools::install_github("mscazmy/cvir")
+```
+
+## Example Usage
+
+Let's create some sample data to demonstrate the package's functionality. We'll simulate ratings from 5 experts on 10 items, using a 4-point Likert scale (1 = not relevant, 2 = somewhat relevant, 3 = relevant, 4 = highly relevant).
+
+```{r setup}
+library(cvir)
+library(ggplot2)
+
+# Simulate data
+set.seed(123)
+ratings_data <- matrix(sample(1:4, 50, replace = TRUE, prob = c(0.1, 0.1, 0.4, 0.4)),
+                       nrow = 10, ncol = 5,
+                       dimnames = list(paste0("Item_", 1:10), paste0("Expert_", 1:5)))
+
+# Convert to data frame for easier handling if needed, though matrix is fine for core functions
+ratings_df <- as.data.frame(ratings_data)
+print(ratings_df)
+```
+
+### Calculating CVI Metrics
+
+We can calculate Item-level CVI (I-CVI), Scale-level CVI (S-CVI/Ave, S-CVI/UA), and Modified Kappa using the provided functions.
+
+```{r calculations}
+icvi_scores <- calc_icvi(ratings_df)
+print(icvi_scores)
+
+scvi_ave_score <- calc_scvi_ave(ratings_df)
+print(scvi_ave_score)
+
+scvi_ua_score <- calc_scvi_ua(ratings_df)
+print(scvi_ua_score)
+
+kappa_scores <- calc_kappa(ratings_df)
+print(kappa_scores)
+
+# Or get a summary
+cvi_results <- cvi_summary(ratings_df)
+print(cvi_results)
+```
+
+### Visualizing CVI Scores
+
+The package also includes `ggplot2` based functions for visualizing the results.
+
+```{r plots, fig.width=7, fig.height=5}
+plot_icvi(ratings_df)
+```
+
+### Visualizing Expert Ratings
+
+To see the individual expert ratings for each item, a heatmap can be generated.
+
+```{r heatmap, fig.width=7, fig.height=7}
+plot_ratings(ratings_df)
+```
