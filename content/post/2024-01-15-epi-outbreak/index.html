@@ -1,0 +1,436 @@
+---
+title: Predicting Infectious Disease Outbreak Severity
+authors: 
+  - Your Name
+date: '2024-01-15'
+slug: epi-outbreak
+categories:
+  - project
+tags:
+  - data viz
+  - machine learning
+  - R
+  - epidemiology
+  - public health
+description: 'Data exploration and machine learning in RMarkdown for predicting infectious disease outbreak severity from epidemiological surveillance data.'
+image: ''
+imageAlt: ''
+imageCredit: ''
+imageCreditLink: ''
+type: ''
+disqus: 'true'
+aliases:
+    - /projects/2024/01/15/epi-outbreak/
+---
+
+
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data-exploration">Data Exploration</a></li>
+<li><a href="#feature-engineering">Feature Engineering</a></li>
+<li><a href="#cleaning-data">Cleaning Data</a></li>
+<li><a href="#clustering-data">Clustering data</a></li>
+<li><a href="#predicting-outbreak-severity">Predicting Outbreak Severity</a></li>
+</ul>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Early detection and classification of infectious disease outbreaks is one of the most consequential challenges in public health. Syndromic surveillance systems collect weekly data on case counts, fatality rates, vaccination coverage, and environmental conditions — yet translating this information into actionable severity classifications remains difficult.</p>
+<p>In this project, I apply supervised machine learning to a multi-district epidemiological surveillance dataset to predict outbreak severity level: <strong>Mild</strong>, <strong>Moderate</strong>, or <strong>Severe</strong>. I'll walk through data exploration, feature engineering, unsupervised clustering, and supervised model comparison. Let's get started!</p>
+<div id="loading-necessary-packages" class="section level3">
+<h3>Loading Necessary Packages</h3>
+<pre class="r"><code># For data manipulation and tidying
+library(dplyr)
+
+# For data visualizations
+library(ggplot2)
+library(fpc)
+
+# For modeling and predictions
+library(caret)
+library(glmnet)
+library(ranger)
+library(e1071)
+library(clValid)</code></pre>
+</div>
+<div id="importing-data" class="section level3">
+<h3>Importing Data</h3>
+<p>The surveillance dataset was compiled from district health office records and linked to environmental covariates. Before binding the training and test sets into a single file, I added a column called "Dataset" and labelled rows accordingly.</p>
+<pre class="r"><code>train &lt;- read.csv(file = &quot;train.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
+train$Dataset &lt;- &quot;train&quot;
+
+test &lt;- read.csv(file = &quot;test.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
+test$Dataset &lt;- &quot;test&quot;
+
+full &lt;- bind_rows(train, test)</code></pre>
+<p>Ok, time to take a look at the data.</p>
+<pre class="r"><code>str(full)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    900 obs. of  8 variables:
+##  $ id             : int  0 1 2 4 5 7 8 11 12 19 ...
+##  $ incidence_rate : num  0.312 0.581 0.423 0.748 0.539 ...
+##  $ case_fatality  : num  0.041 0.128 0.073 0.209 0.315 ...
+##  $ vaccination_cov: num  0.821 0.634 0.710 0.392 0.488 ...
+##  $ pop_density    : num  0.448 0.523 0.791 0.612 0.384 ...
+##  $ sanitation_idx : num  0.774 0.612 0.558 0.341 0.289 ...
+##  $ region         : chr  &quot;north&quot; &quot;coastal&quot; &quot;south&quot; &quot;west&quot; ...
+##  $ severity       : chr  &quot;Mild&quot; &quot;Moderate&quot; &quot;Mild&quot; &quot;Severe&quot; ...
+##  $ Dataset        : chr  &quot;train&quot; &quot;train&quot; &quot;train&quot; &quot;train&quot; ...</code></pre>
+<pre class="r"><code>summary(full)</code></pre>
+<pre><code>##        id         incidence_rate   case_fatality    vaccination_cov 
+##  Min.   :  0.0   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:224.8   1st Qu.:0.2841   1st Qu.:0.0821   1st Qu.:0.3512  
+##  Median :449.5   Median :0.4103   Median :0.1460   Median :0.5218  
+##  Mean   :449.5   Mean   :0.4287   Mean   :0.1583   Mean   :0.5134  
+##  3rd Qu.:674.2   3rd Qu.:0.5744   3rd Qu.:0.2241   3rd Qu.:0.6721  
+##  Max.   :899.0   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+##   pop_density    sanitation_idx      region            severity        
+##  Min.   :0.0000   Min.   :0.0000   Length:900         Length:900        
+##  1st Qu.:0.3304   1st Qu.:0.3108   Class :character   Class :character  
+##  Median :0.4891   Median :0.4977   Mode  :character   Mode  :character  
+##  Mean   :0.4922   Mean   :0.4868                                        
+##  3rd Qu.:0.6488   3rd Qu.:0.6633                                        
+##  Max.   :1.0000   Max.   :1.0000                                        
+##    Dataset         
+##  Length:900        
+##  Class :character  
+##  Mode  :character</code></pre>
+<p>Great! So here's what we know so far:</p>
+<p>We have 8 variables currently:</p>
+<ul>
+<li><strong>ID</strong> : Appears to be the identification number of the district in question</li>
+<li><strong>Incidence Rate</strong> : Weekly case count per 100,000 population, normalized to 0 – 1</li>
+<li><strong>Case Fatality</strong> : Proportion of confirmed cases resulting in death</li>
+<li><strong>Vaccination Coverage</strong> : Proportion of target population fully vaccinated</li>
+<li><strong>Pop Density</strong> : Population density normalized from 0 – 1</li>
+<li><strong>Sanitation Index</strong> : District-level sanitation access index, normalized from 0 – 1</li>
+<li><strong>Region</strong> : Geographic region of the district (north, south, east, west, central, coastal)</li>
+<li><strong>Severity</strong> : Outbreak severity classification (i.e. Mild, Moderate or Severe)</li>
+<li><strong>Dataset</strong> : The column I added when importing data indicating whether the observation was part of the original training or test set</li>
+</ul>
+<p>It seems like a few of these variables would serve better as factors, rather than character strings, so I'll take care of that.</p>
+<pre class="r"><code>factor_variables &lt;- c(&quot;id&quot;, &quot;region&quot;, &quot;severity&quot;, &quot;Dataset&quot;)
+full[factor_variables] &lt;- lapply(full[factor_variables], function(x) as.factor(x))</code></pre>
+</div>
+</div>
+<div id="data-exploration" class="section level2">
+<h2>Data Exploration</h2>
+<p>Let's take a look at what we've got here so far. What's the distribution of each variable across each severity level?</p>
+<p>Let's first temporarily remove the "test" rows.</p>
+<pre class="r"><code>train_2 &lt;- full[full$Dataset == &quot;train&quot;, ]</code></pre>
+<div id="distribution-of-continuous-variables-by-severity-level" class="section level3">
+<h3>Distribution of Continuous Variables by Severity Level</h3>
+<div id="incidence-rate" class="section level4">
+<h4>Incidence Rate</h4>
+<div class="float">
+<img src="unnamed-chunk-6-1.png" alt="Box and whisker plot showing that Severe districts have a much higher incidence rate than Moderate and Mild districts, with clear upward separation." />
+<div class="figcaption">Box and whisker plot showing that Severe districts have a much higher incidence rate than Moderate and Mild districts, with clear upward separation.</div>
+</div>
+</div>
+<div id="case-fatality-rate" class="section level4">
+<h4>Case Fatality Rate</h4>
+<div class="float">
+<img src="unnamed-chunk-7-1.png" alt="Box and whisker plot showing that Severe districts have substantially higher case fatality rates than Moderate and Mild, with all three groups showing distinct medians." />
+<div class="figcaption">Box and whisker plot showing that Severe districts have substantially higher case fatality rates than Moderate and Mild, with all three groups showing distinct medians.</div>
+</div>
+</div>
+<div id="vaccination-coverage" class="section level4">
+<h4>Vaccination Coverage</h4>
+<div class="float">
+<img src="unnamed-chunk-8-1.png" alt="Box and whisker plot showing that Mild districts have clearly higher vaccination coverage than Moderate and Severe districts, with Severe being lowest." />
+<div class="figcaption">Box and whisker plot showing that Mild districts have clearly higher vaccination coverage than Moderate and Severe districts, with Severe being lowest.</div>
+</div>
+</div>
+<div id="sanitation-index" class="section level4">
+<h4>Sanitation Index</h4>
+<div class="float">
+<img src="unnamed-chunk-9-1.png" alt="Box and whisker plot showing that Mild districts have higher sanitation index scores than both Moderate and Severe districts, though Moderate and Severe overlap considerably." />
+<div class="figcaption">Box and whisker plot showing that Mild districts have higher sanitation index scores than both Moderate and Severe districts, though Moderate and Severe overlap considerably.</div>
+</div>
+</div>
+</div>
+<div id="distribution-of-region-by-severity-level" class="section level3">
+<h3>Distribution of Region by Severity Level</h3>
+<div id="mild" class="section level4">
+<h4>Mild</h4>
+<div class="float">
+<img src="unnamed-chunk-10-1.png" alt="Bar graph showing that Mild outbreaks are most common in the north and coastal regions, followed by east and south." />
+<div class="figcaption">Bar graph showing that Mild outbreaks are most common in the north and coastal regions, followed by east and south.</div>
+</div>
+</div>
+<div id="moderate" class="section level4">
+<h4>Moderate</h4>
+<div class="float">
+<img src="unnamed-chunk-11-1.png" alt="Bar graph showing that Moderate outbreaks are distributed fairly evenly across all regions with slight elevation in west and central." />
+<div class="figcaption">Bar graph showing that Moderate outbreaks are distributed fairly evenly across all regions with slight elevation in west and central.</div>
+</div>
+</div>
+<div id="severe" class="section level4">
+<h4>Severe</h4>
+<div class="float">
+<img src="unnamed-chunk-12-1.png" alt="Bar graph showing that Severe outbreaks appear across all regions with no single region strongly dominant." />
+<div class="figcaption">Bar graph showing that Severe outbreaks appear across all regions with no single region strongly dominant.</div>
+</div>
+</div>
+</div>
+<div id="distinguishing-features" class="section level3">
+<h3>Distinguishing Features?</h3>
+<p>Incidence rate and vaccination coverage appear to be the strongest individual separators of severity class. Mild districts cluster clearly from Severe districts on both axes. However, Moderate sits uncomfortably in the middle across most variables, which will likely challenge our classifiers. Region doesn't appear to offer clean separation — there are Severe outbreaks in every region — suggesting that geography alone is not a reliable predictor.</p>
+</div>
+</div>
+<div id="feature-engineering" class="section level2">
+<h2>Feature Engineering</h2>
+<p>Let me check whether any pairwise interactions among variables help reveal structure that individual variables miss.</p>
+<pre class="r"><code>pairs(full[, 2:6], col = full$severity, labels = c(&quot;Incidence&quot;, 
+    &quot;CFR&quot;, &quot;Vax Cov&quot;, &quot;Pop Density&quot;, &quot;Sanitation&quot;))</code></pre>
+<div class="float">
+<img src="unnamed-chunk-13-1.png" alt="Matrix of overlapping dots showing modest separation between Mild, Moderate, and Severe across incidence rate, case fatality, vaccination coverage, population density, and sanitation index." />
+<div class="figcaption">Matrix of overlapping dots showing modest separation between Mild, Moderate, and Severe across incidence rate, case fatality, vaccination coverage, population density, and sanitation index.</div>
+</div>
+<p>Some separation is emerging, especially between Mild and Severe, but Moderate remains difficult. The incidence rate and vaccination coverage combination looks the most promising. Let's engineer an interaction term for these two: a district with high incidence <em>and</em> low vaccination coverage faces compounding risk.</p>
+<pre class="r"><code>full &lt;- full %&gt;% mutate(vax_incidence = (1 - vaccination_cov) * incidence_rate)</code></pre>
+<div class="float">
+<img src="unnamed-chunk-15-1.png" alt="Box and whisker plot showing that the vax_incidence interaction term provides cleaner separation of Severe from Mild and Moderate severity districts." />
+<div class="figcaption">Box and whisker plot showing that the vax_incidence interaction term provides cleaner separation of Severe from Mild and Moderate severity districts.</div>
+</div>
+<p>That clearly improved separation for Severe districts. Let's try a few more epidemiologically motivated interactions.</p>
+<pre class="r"><code>full &lt;- full %&gt;% mutate(
+    density_sanit  = pop_density * (1 - sanitation_idx),
+    cfr_density    = case_fatality * pop_density,
+    vax_sanit      = vaccination_cov * sanitation_idx,
+    incidence_cfr  = incidence_rate * case_fatality,
+    density_vax    = pop_density * (1 - vaccination_cov)
+)</code></pre>
+<p>Time to check for ways to tidy up.</p>
+</div>
+<div id="cleaning-data" class="section level2">
+<h2>Cleaning Data</h2>
+<p>Let's take another look at the summary statistics for this dataset.</p>
+<pre class="r"><code>summary(full)</code></pre>
+<pre><code>##        id       incidence_rate   case_fatality    vaccination_cov 
+##  0      :  1   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+##  1      :  1   1st Qu.:0.2841   1st Qu.:0.0821   1st Qu.:0.3512  
+##  2      :  1   Median :0.4103   Median :0.1460   Median :0.5218  
+##  3      :  1   Mean   :0.4287   Mean   :0.1583   Mean   :0.5134  
+##  4      :  1   3rd Qu.:0.5744   3rd Qu.:0.2241   3rd Qu.:0.6721  
+##  5      :  1   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+##  (Other):894                                                     
+##   pop_density    sanitation_idx       region       severity   Dataset     
+##  Min.   :0.0000   Min.   :0.0000   north  :162   Mild  :118   test :529   
+##  1st Qu.:0.3304   1st Qu.:0.3108   south  :148   Mod.  :131   train:371   
+##  Median :0.4891   Median :0.4977   east   :155   Severe:122               
+##  Mean   :0.4922   Mean   :0.4868   west   :141   NA&#39;s  :529               
+##  3rd Qu.:0.6488   3rd Qu.:0.6633   central:149                            
+##  Max.   :1.0000   Max.   :1.0000   coastal:145                            
+##   vax_incidence    density_sanit      cfr_density       vax_sanit     
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   
+##  1st Qu.:0.0912   1st Qu.:0.1148   1st Qu.:0.0341   1st Qu.:0.1512   
+##  Median :0.1893   Median :0.2214   Median :0.0712   Median :0.2548   
+##  Mean   :0.2104   Mean   :0.2331   Mean   :0.0801   Mean   :0.2617   
+##  3rd Qu.:0.3188   3rd Qu.:0.3412   3rd Qu.:0.1181   3rd Qu.:0.3741   
+##  Max.   :0.8821   Max.   :0.7993   Max.   :0.6614   Max.   :0.8012   
+##  incidence_cfr     density_vax    
+##  Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:0.0244   1st Qu.:0.1241  
+##  Median :0.0598   Median :0.2318  
+##  Mean   :0.0712   Mean   :0.2401  
+##  3rd Qu.:0.1081   3rd Qu.:0.3408  
+##  Max.   :0.6234   Max.   :0.7211</code></pre>
+<p>The only column that has any missing values is <code>severity</code> which is to be expected since that's what we need to be predicting. Everything else seems to look good so far. Let's try to model these as is.</p>
+</div>
+<div id="clustering-data" class="section level2">
+<h2>Clustering data</h2>
+<p>While clustering is generally used for unsupervised machine learning, I want to take a peek at the clusters that could be formed using the data at hand. The potential issue with trying to cluster this data is that we are working with two types of data: continuous and categorical. They break down like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Continuous Variables</th>
+<th>Categorical Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>incidence_rate</td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td>case_fatality</td>
+<td>region</td>
+</tr>
+<tr class="odd">
+<td>vaccination_cov</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pop_density</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>sanitation_idx</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Because of our moderate sample size, it's not a good idea to count out the categorical variables completely, but we'll try clustering without them first to see how well the approach works.</p>
+<div id="cluster-without-categorical-variables" class="section level3">
+<h3>Cluster Without Categorical Variables</h3>
+<p>I'll first try to cluster using the <code>kmeans</code> function.</p>
+<pre class="r"><code># Set the seed
+set.seed(100)
+
+# Extract severity labels and remove column from dataset
+severity_labels &lt;- full$severity
+full2 &lt;- full
+full2$severity &lt;- NULL
+
+# Remove categorical variables (id, region, and Dataset) from dataset
+full2$id     &lt;- NULL
+full2$region &lt;- NULL
+full2$Dataset &lt;- NULL
+
+# Perform k-means clustering with 3 clusters, repeat 30 times
+outbreak_km_1 &lt;- kmeans(full2, 3, nstart = 30)</code></pre>
+<p>Ok, so now we have clusters, time to see how well they did. Let's look at them graphically first. This was created using the <code>plotcluster()</code> function from the <code>fpc</code> package.</p>
+<div class="float">
+<img src="unnamed-chunk-19-1.png" alt="Overlapping groups of red number 2s, green 3s, and black 1s showing poor cluster separation for outbreak severity levels" />
+<div class="figcaption">Overlapping groups of red number 2s, green 3s, and black 1s showing poor cluster separation for outbreak severity levels</div>
+</div>
+<p>Hmm, those clusters don't look very discrete. Let's look at <a href="https://en.wikipedia.org/wiki/Dunn_index">Dunn's Index</a> mathematically to see if we're missing something visually. This calculation comes from the <code>dunn</code> function in the <code>clValid</code> package.</p>
+<pre class="r"><code>dunn_okm_1 &lt;- dunn(clusters = outbreak_km_1$cluster, Data = full2)
+
+# Print results
+dunn_okm_1</code></pre>
+<pre><code>## [1] 0.05312847</code></pre>
+<p>As Dunn's Index represents a ratio of the smallest distance between clusters to the largest distance between two points in the same cluster (or, the smallest inter-cluster distance to the largest intra-cluster distance), such a low number indicates that our current clusters are not condensed, separate entities. This is not terribly surprising given the considerable overlap between Moderate and Severe districts across most variables.</p>
+<p>Let's see how well this clustering method correctly separated the labelled severity levels.</p>
+<pre class="r"><code>table(outbreak_km_1$cluster, severity_labels)</code></pre>
+<pre><code>##    severity_labels
+##     Mild Moderate Severe
+##   1   12       41     79
+##   2    8       84     18
+##   3   98        6     25</code></pre>
+<p>It looks like currently, Mild outbreaks were clustered reasonably well, but Moderate and Severe districts are split between clusters 1 and 2. This is consistent with what we saw in exploratory analysis — Moderate cases occupy overlapping epidemiological space. Ok, I'm convinced. On to supervised modeling!</p>
+</div>
+<div id="modeling-for-outbreak-severity" class="section level3">
+<h3>Modeling for Outbreak Severity</h3>
+<p>Clustering was not particularly helpful in discerning severity levels, so perhaps creating models will work better.</p>
+<p>First things first, I need to split out the test and training data back into separate datasets.</p>
+<pre class="r"><code>train_complete &lt;- full[full$Dataset == &quot;train&quot;, ]
+test_complete  &lt;- full[full$Dataset == &quot;test&quot;, ]</code></pre>
+<p>Because I plan on using the <code>caret</code> package for all of my modeling, I'm going to generate a standard <code>trainControl</code> so that those tuning parameters remain consistent throughout the various models.</p>
+</div>
+<div id="creating-traincontrol" class="section level3">
+<h3>Creating trainControl</h3>
+<p>I will create a system that will perform 20 repeats of a 10-Fold cross-validation of the data.</p>
+<pre class="r"><code>myControl &lt;- trainControl(method = &quot;cv&quot;, number = 10, repeats = 20, 
+    verboseIter = TRUE)</code></pre>
+</div>
+<div id="random-forest-modeling" class="section level3">
+<h3>Random Forest Modeling</h3>
+<p>Let's start with a random forest model, generated using the <code>ranger</code> and <code>caret</code> packages. I'm going to include all of the original variables, including any interactions here.</p>
+<pre class="r"><code>set.seed(10)
+
+rf_model &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + region + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, tuneLength = 3, data = train_complete, 
+    method = &quot;ranger&quot;, trControl = myControl, importance = &quot;impurity&quot;)</code></pre>
+<p>Let's look at the levels of importance of each factor in this model.</p>
+<div class="float">
+<img src="unnamed-chunk-25-1.png" alt="Bar graph showing that vax_incidence, incidence_rate, and incidence_cfr are the most influential predictors in the random forest model, with region ranking near the bottom." />
+<div class="figcaption">Bar graph showing that vax_incidence, incidence_rate, and incidence_cfr are the most influential predictors in the random forest model, with region ranking near the bottom.</div>
+</div>
+<p>Our <code>vax_incidence</code> interaction term seems to be the most important to this model and our other interactions rank pretty highly. I suppose we can hold on to them for now. Region, on the other hand, hardly plays into this. Let's try removing it from a second random forest model.</p>
+<pre class="r"><code>set.seed(10)
+
+rf_model_2 &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, tuneLength = 3, data = train_complete, 
+    method = &quot;ranger&quot;, trControl = myControl, importance = &quot;impurity&quot;)</code></pre>
+</div>
+<div id="glmnet-modeling" class="section level3">
+<h3>GLMnet Modeling</h3>
+<p>I'm going to follow the random forest model up with a glmnet model, also from the <code>caret</code> package.</p>
+<pre class="r"><code>set.seed(10)
+
+glm_model &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + region + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, method = &quot;glmnet&quot;, 
+    tuneGrid = expand.grid(alpha = 0:1, 
+    lambda = seq(1e-04, 1, length = 20)), data = train_complete, 
+    trControl = myControl)</code></pre>
+<p>Once again, we'll try without "region".</p>
+<pre class="r"><code>set.seed(10)
+
+glm_model_2 &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, method = &quot;glmnet&quot;, 
+    tuneGrid = expand.grid(alpha = 0:1, 
+    lambda = seq(1e-04, 1, length = 20)), data = train_complete, 
+    trControl = myControl)</code></pre>
+</div>
+<div id="comparing-model-fit" class="section level3">
+<h3>Comparing model fit</h3>
+<p>Now that we have two random forest models and two glmnet models, it's time to compare their fit.</p>
+<pre class="r"><code># Create a list of models
+models &lt;- list(rf = rf_model, rf2 = rf_model_2, glmnet = glm_model, 
+    glmnet2 = glm_model_2)
+
+# Resample the models
+resampled &lt;- resamples(models)
+
+# Generate a summary
+summary(resampled)</code></pre>
+<pre><code>## 
+## Call:
+## summary.resamples(object = resampled)
+## 
+## Models: rf, rf2, glmnet, glmnet2 
+## Number of resamples: 10 
+## 
+## Accuracy 
+##           Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## rf      0.6412  0.6921 0.7188 0.7211  0.7534 0.7801    0
+## rf2     0.6588  0.6944 0.7112 0.7228  0.7489 0.7863    0
+## glmnet  0.6734  0.7198 0.7289 0.7401  0.7588 0.8521    0
+## glmnet2 0.6734  0.7021 0.7512 0.7513  0.7791 0.8521    0
+## 
+## Kappa 
+##           Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## rf      0.4618  0.5381 0.5772 0.5816  0.6301 0.6701    0
+## rf2     0.4882  0.5412 0.5668 0.5842  0.6223 0.6794    0
+## glmnet  0.5101  0.5797 0.5934 0.6102  0.6382 0.7782    0
+## glmnet2 0.5098  0.5531 0.6268 0.6270  0.6687 0.7782    0</code></pre>
+<pre class="r"><code># Plot the differences between model fits
+dotplot(resampled, metric = &quot;Accuracy&quot;)</code></pre>
+<div class="float">
+<img src="unnamed-chunk-29-1.png" alt="Dot plot showing that the second GLMnet model (without region) has the highest median accuracy and tightest confidence interval." />
+<div class="figcaption">Dot plot showing that the second GLMnet model (without region) has the highest median accuracy and tightest confidence interval.</div>
+</div>
+</div>
+</div>
+<div id="predicting-outbreak-severity" class="section level2">
+<h2>Predicting Outbreak Severity</h2>
+<p>Although I generated four models above, the second glmnet model (all interactions but without region) provided the highest accuracy, so I'll use that model to predict severity in the test set.</p>
+<pre class="r"><code># Reorder the data by district ID number
+test_complete &lt;- test_complete %&gt;% arrange(id)
+
+# Make predicted severity values
+my_prediction &lt;- predict(glm_model_2, test_complete)</code></pre>
+<div id="preparing-the-prediction-for-submission" class="section level3">
+<h3>Preparing the Prediction for Submission</h3>
+<pre class="r"><code># Create a data frame with two columns: ID and predicted severity
+my_solution_epi_01 &lt;- data.frame(id = test_complete$id, Severity = my_prediction)
+
+# Write the solution to a csv file
+write.csv(my_solution_epi_01, file = &quot;my_solution_epi_01.csv&quot;, 
+    row.names = FALSE)</code></pre>
+</div>
+<div id="final-notes" class="section level3">
+<h3>Final Notes</h3>
+<p>The GLMnet model without region achieved a cross-validated accuracy of <strong>75.13%</strong>. The engineered <code>vax_incidence</code> interaction term — unvaccinated fraction × current incidence rate — was the single strongest predictor, reinforcing the epidemiological principle that outbreak severity is driven not by any one factor in isolation, but by the compounding interaction of disease pressure and population vulnerability.</p>
+<p><em>I'd love to hear any feedback you may have on this analysis. Thanks in advance!</em></p>
+</div>
+</div>
