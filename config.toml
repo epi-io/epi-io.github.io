@@ -2,7 +2,7 @@ baseURL = "https://mscazmy.github.io/"
 languageCode = "en-us"
 title = "Ahmed Azeez"
 theme = "data-science"
-disqusShortname = "amberthomas"
+# disqusShortname = "amberthomas"
 enableEmoji = true
 # allow search engines to search/crawl everything
 enableRobotsTXT = true
@@ -40,10 +40,10 @@ preserveTaxonomyNames = true
 
 
 [params.social]
-  email = "mailto:AmberThomasMSc@gmail.com"
-  twitter = "https://twitter.com/ProQuesAsker"
-  github = "https://www.github.com/ProQuestionAsker"
-  linkedin = "https://www.linkedin.com/in/amberrthomas/"
+  email = "mailto:ahmed.azeez1987@gmail.com"
+  twitter = ""
+  github = "https://github.com/mscazmy"
+  linkedin = "https://www.linkedin.com/in/ahmed-a-hasan"
   stackoverflow = ""
   facebook = ""
   instagram = ""
