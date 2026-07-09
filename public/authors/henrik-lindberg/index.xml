@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/authors/henrik-lindberg/</link>
+    <description>Recent content on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/authors/henrik-lindberg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Table for One</title>
+      <link>https://mscazmy.github.io/2017/07/27/eating-alone/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/07/27/eating-alone/</guid>
+      <description>The Premise Americans are beginning to spend more of their mealtimes solo. What does that look like for the US as a community of people? We explore the data surrounding the dining habits and companions of Americans.&#xA;My Contributions Story Design Front-End Development (HTML, CSS, and D3) Collaborators The data collection, analysis, graphic wireframes, and story-writing for this project came from Henrik Lindberg.&#xA;Screenshots Figure 1: The first graphic in this story is driven by the reader’s scrolling.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/authors/ilia-blinderman/</link>
+    <description>Recent content on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/authors/ilia-blinderman/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Tale of Two Cities</title>
+      <link>https://mscazmy.github.io/2018/03/21/neighborhoods/</link>
+      <pubDate>Wed, 21 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/03/21/neighborhoods/</guid>
+      <description>The Premise When you love the city where you live, you often have personal connections and memories tied to the different corners of the city’s limits. In this story, we wanted to combine our personal experiences in Seattle and New York City’s neighborhoods, with data about the businesses that operate in those neighborhoods. Do we have different perceptions of areas with an overabundance of massage parlors than we do to an area with a ton of doctors?</description>
+    </item>
+  </channel>
+</rss>

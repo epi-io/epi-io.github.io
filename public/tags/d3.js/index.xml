@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>D3.js on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/d3.js/</link>
+    <description>Recent content in D3.js on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/d3.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Rigid is the US Middle Class, Really?</title>
+      <link>https://mscazmy.github.io/2020/08/20/middle-class/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/08/20/middle-class/</guid>
+      <description>The Premise If you were to ask random Americans what income class they fall into, there’s a good chance they’ll say “middle class”, regardless of how much money they make. It stands to reason, then, that a change in their family’s situation, like a lost job or a new higher-paying one, is unlikely to change their perceptions on their social class. This is particularly true because, for many people, the “middle class” is just as much about your education, job, resources, and aspirations as it is about your paycheck.</description>
+    </item>
+    <item>
+      <title>You Know Karen</title>
+      <link>https://mscazmy.github.io/2020/06/20/karen/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/06/20/karen/</guid>
+      <description>The Premise “Karen” is having a moment — and that’s not a good thing. You’ve seen her at Red Lobster, stuck in traffic with Kidz Bop, racial profiling a Filipino man chalking “Black Lives Matter” outside his home and Black women at their apartment complex pool, and with her dog off leash endangering a Black man’s life in Central Park.&#xA;But how did the name Karen become cultural flashpoint “Karen” — an entitled middle-aged White woman who needs to speak to the manager?</description>
+    </item>
+    <item>
+      <title>The Infinite Monkey Theorem Experiment</title>
+      <link>https://mscazmy.github.io/2020/04/13/monkey/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/04/13/monkey/</guid>
+      <description>The Premise Probability can be a hard concept to understand, especially when discussing the probability of highly unlikely events. The original “infinite monkey theorem” posits that given an infinite amount of time, a monkey with a typewriter could eventually type out Shakespeare by randomly mashing keys. We wanted to create a visual explainer of this concept using a slightly different medium, keyboards aimed at playing well-known melodies. And using computers instead of monkeys.</description>
+    </item>
+    <item>
+      <title>Where Will You Need Your Umbrella?</title>
+      <link>https://mscazmy.github.io/2020/02/02/rain/</link>
+      <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/02/02/rain/</guid>
+      <description>The Premise I moved to Seattle from Orlando, FL in 2016. Since then, the most common question I’m asked is how I deal with all the rain. This question has always perplexed me because it was much more common for me to get caught in thunderous down pours in Orlando than it ever has been in Seattle. I decided to depict this difference in precipitation levels and the ways that we talk about precipitation using data visualization and data from the Global Historical Climatology Network.</description>
+    </item>
+    <item>
+      <title>Where Do Adoptable Dogs in Your State Come From?</title>
+      <link>https://mscazmy.github.io/2019/10/01/shelters/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/10/01/shelters/</guid>
+      <description>The Premise As a dog-lover living in Seattle, I have become familiar with how difficult it can be to adopt a dog in the city. Dogs are so popular that shelters and rescues in Seattle often import adoptable dogs from other states and sometimes other countries. After realizing that this information wasn’t commonly known or understood, I decided to find a way to quantify how many dogs are moved before adoption and where they were moved to and from.</description>
+    </item>
+    <item>
+      <title>Hipster Summer Reading List</title>
+      <link>https://mscazmy.github.io/2019/06/24/libraries/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/06/24/libraries/</guid>
+      <description>The Premise It’s officially summer and you’re looking for your next read. But you don’t want to read what everyone else is reading. No, you want something more obscure. You’ll take the books that no one is reading. Better yet, how about the books no one has touched in years?&#xA;We (programmatically) sifted through over 100 million checkout records from the Seattle Public Library to find fiction books that haven’t been checked out in over a decade*.</description>
+    </item>
+    <item>
+      <title>Sing My Name</title>
+      <link>https://mscazmy.github.io/2019/05/23/names-lyrics/</link>
+      <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/05/23/names-lyrics/</guid>
+      <description>The Premise While watching the film Baby Driver, I became curious about a conversation between two of the characters. They had been talking about names, and more specifically which names are used in song lyrics. This project is my wandering through data trying to answer that question.&#xA;My Contributions Data cleaning &amp;amp; analysis Story writing Front-end development (HTML, CSS, and D3) Collaborators This story was primarily a solo project, but I am appreciative of Colin Morris’ help in attaining many of the song lyrics used in my analysis.</description>
+    </item>
+    <item>
+      <title>Colorism in High Fashion</title>
+      <link>https://mscazmy.github.io/2019/04/24/vogue/</link>
+      <pubDate>Wed, 24 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/04/24/vogue/</guid>
+      <description>The Premise Vogue magazine has been a bastion of fashion for over a century. Over time, they have increased the diversity of the people gracing the cover by including people of different races and ethnicities. But, are they actually representing people of different shades similarly?&#xA;My Contributions Story Editing Front-end development (HTML, CSS, and D3) Collaborators This story was brought to us by freelancer Malaika Handa. She collected and analyzed all the data and wrote the article.</description>
+    </item>
+    <item>
+      <title>How many High School Stars Make it in the NBA?</title>
+      <link>https://mscazmy.github.io/2019/03/04/hs_hype/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/03/04/hs_hype/</guid>
+      <description>The Premise In the US, the 100 best high school basketball players are ranked, with the thought that those ranked higher, will have a more successful basketball career. But how often is this true?&#xA;My Contributions Data cleaning &amp;amp; analysis Some story writing Front-end development (HTML, CSS, and D3) Collaborators This story took place when The Pudding was experimenting with pairing up someone who knows a lot about a topic (Russell Goldenberg) with someone who knows nothing about that topic (me).</description>
+    </item>
+    <item>
+      <title>The Sexualized Messages Dress Codes are Sending to Students</title>
+      <link>https://mscazmy.github.io/2019/02/07/dress_codes/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/02/07/dress_codes/</guid>
+      <description>The Premise If you aren’t currently in high school, it’s probably been a while since you’ve read a student handbook. The dress code section, present in about 55% of US public high schools, contains a set of hotly debated policies. They are most commonly accused of being racist, sexist, reinforcing gender stereotypes, and promoting sexualization. This is the first piece in a forthcoming series where we examine how public high schools police bodies differently and attempt to add data to each of these conversations.</description>
+    </item>
+    <item>
+      <title>Internet Boy Band Database</title>
+      <link>https://mscazmy.github.io/2018/11/27/boybands/</link>
+      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/11/27/boybands/</guid>
+      <description>The Premise Seriously, this was just a “we want to experiment with making in-browser animations and make something fun on the internet” kinda thing&#xA;My Contributions Managing dozens of data collection volunteers Data Cleaning Some Front End Programming (HTML, CSS, JS) Some Story Design Collaborators This story was suggested by Russell Goldenberg who wanted to see the physical characteristics of boybands switch while they continued dancing (that is, switch from the members of a single band to the members of another).</description>
+    </item>
+    <item>
+      <title>Women’s Pockets are Inferior</title>
+      <link>https://mscazmy.github.io/2018/08/15/pockets/</link>
+      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/08/15/pockets/</guid>
+      <description>The Premise Once on a company retreat, my team was walking down the streets of NYC. Some of our coworkers (those that wore men’s jeans) were able to leave their bulky bags at our previous location as we walked to dinner. Jan and I, however, each had bags in tow simply to hold our necessities: our phones and wallets. We were complaining about how non-functional the pockets in women’s jeans were (assuming that the pants had pockets at all) and decided that this could make for an interesting data story.</description>
+    </item>
+    <item>
+      <title>Let’s Talk About Birth Control</title>
+      <link>https://mscazmy.github.io/2018/07/17/birthcontrol/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/07/17/birthcontrol/</guid>
+      <description>The Premise Hundreds of thousands of people throughout the US are contraceptive users, but generally, the topic is kept “hush-hush”. We talk about it with friends and peers, but the more information we have, the more informed decisions we can make for ourselves. I analyzed data from the CDC’s National Survey on Family Growth to learn more about contraceptive use in the US.&#xA;My Contributions Data acquisition and analysis Article Design Front End Programming (HTML, CSS, JS) Story Writing Collaborators Rachel Jones of the Guttmacher Institute provided a lot of helpful feedback on both the analysis and the story.</description>
+    </item>
+    <item>
+      <title>Making Data Viz Without SVG Using D3 &amp; Flexbox</title>
+      <link>https://mscazmy.github.io/2018/07/06/flexbox/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/07/06/flexbox/</guid>
+      <description>This post is available in its entirety on The Pudding. Click here to check it out!&#xA;Sneak Peek A few months ago, my co-worker Matt and I were collaborating on a project. I had been building a stacked bar chart in D3.js, and was seriously struggling to get the bars to stack on top of each other nicely and to animate from the bottom of the graphic instead of the top.</description>
+    </item>
+    <item>
+      <title>The Diversity of Makeup Shades</title>
+      <link>https://mscazmy.github.io/2018/06/14/shades/</link>
+      <pubDate>Thu, 14 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/06/14/shades/</guid>
+      <description>The Premise When FentyBeauty launched last year with a ground-breaking 40 shades of foundation, it became a champion of inclusivity in the makeup world. Beauty brand Make Up For Ever challenged the newcomer, stating that they have had 40 shades for years. But are all 40 shades equally diverse? We used the hexadecimal color values that represent each foundation shade for Fenty and several other US-based and global brands to find the spread of lightness values as proxy for diversity.</description>
+    </item>
+    <item>
+      <title>Baking the Most Average Chocolate Chip Cookie</title>
+      <link>https://mscazmy.github.io/2018/05/10/cookies/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/05/10/cookies/</guid>
+      <description>The Premise Since the invention of the chocolate chip cookie, the original recipe has been altered and amended in attempts to make the recipe more gooey, chocolatey, and generally tastier than its predecessors. Is there a way to leverage computers and hundreds of existing cookie recipes to generate the most average recipe? Perhaps, like averaging human faces, the average cookie recipe could be the most delicious of them all. We used three different algorithms to test this idea and baked the results.</description>
+    </item>
+    <item>
+      <title>A Tale of Two Cities</title>
+      <link>https://mscazmy.github.io/2018/03/21/neighborhoods/</link>
+      <pubDate>Wed, 21 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/03/21/neighborhoods/</guid>
+      <description>The Premise When you love the city where you live, you often have personal connections and memories tied to the different corners of the city’s limits. In this story, we wanted to combine our personal experiences in Seattle and New York City’s neighborhoods, with data about the businesses that operate in those neighborhoods. Do we have different perceptions of areas with an overabundance of massage parlors than we do to an area with a ton of doctors?</description>
+    </item>
+    <item>
+      <title>Greetings from Mars</title>
+      <link>https://mscazmy.github.io/2018/02/01/mars/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/02/01/mars/</guid>
+      <description>The Premise I discovered that the Curiosity Rover transmitted weather data (amongst other types of data) back to Earth nearly every day. I decided that in order to have the reader understand what weather conditions are like on Mars, the data needed to be made personal. With Curiosity as my inspiration, I wrote the story from the rover’s perspective in the form of digital “postcards”. After all, the “human tradition” with postcards is to write home while on a long journey and report back on how the “weather is beautiful” and that you wished they were there.</description>
+    </item>
+    <item>
+      <title>10 Things Everyone Hates About You</title>
+      <link>https://mscazmy.github.io/2017/12/04/hater/</link>
+      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/12/04/hater/</guid>
+      <description>The Premise Using data from the new-age dating app, Hater, we can learn about the types of things that people in the US love, hate, and can never agree on.&#xA;My Contributions Data Analysis Story Writing Some front-end work (primarily the swarm chart) Static chart design Social image creation Collaborators This project was done in collaboration with Russell Goldenberg at The Pudding. Russell took the design-lead for this piece, and also was responsible for the front-end development of the small multiple graphics and the maps.</description>
+    </item>
+    <item>
+      <title>How Far is Too Far? </title>
+      <link>https://mscazmy.github.io/2017/09/08/clinics/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/09/08/clinics/</guid>
+      <description>The Premise For some people in the US, round-trip travel time to the nearest abortion-providing clinic can be about nine hours. We set out to quantify access to abortion clinics by measuring what really affects people: how long it takes to drive there.&#xA;My Contributions Data Collection Some Data Analysis Some Graphical Mockups Animation Story Writing Collaborators This project was done in collaboration with many of the fine folks at The Pudding.</description>
+    </item>
+    <item>
+      <title>She Giggles, He Gallops</title>
+      <link>https://mscazmy.github.io/2017/08/22/screendirection/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/08/22/screendirection/</guid>
+      <description>The Premise There have been several projects conducted that show a disparity in film dialogue between male and female characters. But, talking isn’t the only thing important to a movie. The way characters are instructed to act plays a role as well. In this project, we investigate over 2,000 film scripts to find what verbs are more likely to follow the pronouns “he” and “she”.&#xA;My Contributions Some front-end development (HTML, CSS, and D3) Collaborators The data collection, analysis, graphic wireframes, and story-writing for this project came from Julia Silge.</description>
+    </item>
+    <item>
+      <title>Table for One</title>
+      <link>https://mscazmy.github.io/2017/07/27/eating-alone/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/07/27/eating-alone/</guid>
+      <description>The Premise Americans are beginning to spend more of their mealtimes solo. What does that look like for the US as a community of people? We explore the data surrounding the dining habits and companions of Americans.&#xA;My Contributions Story Design Front-End Development (HTML, CSS, and D3) Collaborators The data collection, analysis, graphic wireframes, and story-writing for this project came from Henrik Lindberg.&#xA;Screenshots Figure 1: The first graphic in this story is driven by the reader’s scrolling.</description>
+    </item>
+    <item>
+      <title>Free Willy and Flipper by the Numbers</title>
+      <link>https://mscazmy.github.io/2017/07/06/cetaceans/</link>
+      <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/07/06/cetaceans/</guid>
+      <description>The Premise Around the world, people seem to have mixed feelings about whales and dolphins that live in aquariums. While it may be easy (and for some people even preferable) to say that the solution is to release all of the animals back to the ocean, their past makes it more difficult. In this story, we explore the data of where captive whales and dolphins in the US came from, their survival rate, and the projected timing of extinction for these animals in a captive setting.</description>
+    </item>
+    <item>
+      <title>The Timing of Baby Making</title>
+      <link>https://mscazmy.github.io/2017/05/24/baby/</link>
+      <pubDate>Wed, 24 May 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/05/24/baby/</guid>
+      <description>The Premise Every time there is some sort of large scale storm (e.g., blizzard or hurricane) or big sports win, I seem to hear everyone chatting about how there will be a baby boom in that area 9 months later. Driven by the curiosity to see if there was any data to back up these claims, I decided to investigate a little further. This project tells the story of my findings while allowing readers to play with the interactive graphic to answer their own questions.</description>
+    </item>
+    <item>
+      <title>Nesting and Accessing Data in D3v4</title>
+      <link>https://mscazmy.github.io/2017/05/02/nesting/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/05/02/nesting/</guid>
+      <description>Introduction Before Nesting Nest Level 1 Rollup Level 1 Sorting Keys Nest Level 2 Styling Nested Elements Creating Dropdown Menus from 1st Level Nests Rollup Level 2 Creating Dropdown Menus from 2nd Level Nests Introduction While learning how to make interactive data visualizations using d3.js, I ran into an issue with something new to me: nests. The general idea is that data sometimes needs to be grouped based on certain variables and the groups need to be analyzed or graphed separately.</description>
+    </item>
+    <item>
+      <title>Gender Parity and Dialogue in 2016’s Highest Grossing Films</title>
+      <link>https://mscazmy.github.io/2017/01/07/genderfilm/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/01/07/genderfilm/</guid>
+      <description>Introduction Analysis Visualizing the Data In R In Illustrator Adding Interactivity with d3.js Color Considerations Key Takeaways&#xA;Future Work Introduction Unlike most of my personal projects, this one didn’t start with a dataset. It started with going to see the newest movie from the Star Wars universe: Rogue One.&#xA;While I’m not a die-hard member of the Star Wars fandom, I did grow up watching the films (my father IS a devoted member of the fandom) and truly enjoying the stories.</description>
+    </item>
+  </channel>
+</rss>

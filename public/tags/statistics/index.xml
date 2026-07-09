@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/statistics/</link>
+    <description>Recent content in Statistics on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Statistical Diagnostic Tests Every Researcher Should Know</title>
+      <link>https://mscazmy.github.io/2025/05/16/diagnostic-tests/</link>
+      <pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2025/05/16/diagnostic-tests/</guid>
+      <description>Before you run a single regression or ANOVA, there is a step that separates rigorous analysis from shaky conclusions: diagnostic testing. Think of it as a pre-flight checklist for your data. Skip it, and you risk landing in entirely the wrong place.&#xA;Why Diagnostics Matter Most statistical methods rest on assumptions — about how data are distributed, how variables relate to one another, and how errors behave. When those assumptions break down silently, the model keeps running and happily produces numbers that mean very little.</description>
+    </item>
+  </channel>
+</rss>

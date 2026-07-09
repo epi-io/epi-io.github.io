@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flexbox on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/flexbox/</link>
+    <description>Recent content in Flexbox on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/flexbox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Making Data Viz Without SVG Using D3 &amp; Flexbox</title>
+      <link>https://mscazmy.github.io/2018/07/06/flexbox/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/07/06/flexbox/</guid>
+      <description>This post is available in its entirety on The Pudding. Click here to check it out!&#xA;Sneak Peek A few months ago, my co-worker Matt and I were collaborating on a project. I had been building a stacked bar chart in D3.js, and was seriously struggling to get the bars to stack on top of each other nicely and to animate from the bottom of the graphic instead of the top.</description>
+    </item>
+  </channel>
+</rss>

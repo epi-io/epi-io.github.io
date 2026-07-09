@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Post on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/categories/post/</link>
+    <description>Recent content in Post on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/categories/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R0 vs. Rt: Disease Potential vs. Disease Reality</title>
+      <link>https://mscazmy.github.io/2026/07/07/r0-vs-rt/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2026/07/07/r0-vs-rt/</guid>
+      <description>In epidemiology, R0 and Rt are often used interchangeably — but they capture different moments in an outbreak. Understanding the distinction is critical for tracking outbreaks and guiding public health action.&#xA;R0 (Basic Reproduction Number): The Potential R0 is the average number of secondary infections one infected person would cause in a fully susceptible population, with no immunity and no interventions in place. It&#39;s a theoretical baseline — a measure of a pathogen&#39;s inherent transmissibility under ideal conditions for spread.</description>
+    </item>
+    <item>
+      <title>Statistical Diagnostic Tests Every Researcher Should Know</title>
+      <link>https://mscazmy.github.io/2025/05/16/diagnostic-tests/</link>
+      <pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2025/05/16/diagnostic-tests/</guid>
+      <description>Before you run a single regression or ANOVA, there is a step that separates rigorous analysis from shaky conclusions: diagnostic testing. Think of it as a pre-flight checklist for your data. Skip it, and you risk landing in entirely the wrong place.&#xA;Why Diagnostics Matter Most statistical methods rest on assumptions — about how data are distributed, how variables relate to one another, and how errors behave. When those assumptions break down silently, the model keeps running and happily produces numbers that mean very little.</description>
+    </item>
+    <item>
+      <title>Public Health Ethics: Types, Principles and Advantages</title>
+      <link>https://mscazmy.github.io/2024/02/10/public-health-ethics/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2024/02/10/public-health-ethics/</guid>
+      <description>What is Ethics? What is Public Health Ethics? Principles of Ethical Practice in Public Health Types of Ethics for a Public Health Professional Steps in a Process of Ethical Decision Making Importance of Ethics for Public Health Professionals References and For More Information What is Ethics? Ethics are the set of rules that govern our expectations of our own and others&#39; behavior. The term &#39;ethics&#39; is derived from the Greek word ethos that can mean custom, tradition, personality or disposition.</description>
+    </item>
+    <item>
+      <title>Continue, Pivot, or Put It Down</title>
+      <link>https://mscazmy.github.io/2020/08/20/process/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/08/20/process/</guid>
+      <description>The Premise I had been proposing that our team create a “failure blog” for quite a while. The general idea was to share with the world that, although we create complex and polished stories for the internet, we routinely cull ideas or drastically change them before they make it to the public eye. I wanted to help normalize that it’s ok if your original idea for a data or research project doesn’t work out.</description>
+    </item>
+    <item>
+      <title>Dear Career Switchers: You are not a Failure</title>
+      <link>https://mscazmy.github.io/2019/06/02/failure/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/06/02/failure/</guid>
+      <description>Me and Failure Go Wayyy Back For as long as I can remember, I’ve had a hard time with failure. My intense aversion to it was immortalized on my bedroom wall for most of my childhood in the form of an imperfect piece of artwork. I had been coloring in a ballerina Barbie from some coloring book or another when my hand slipped, a single crayon line extending outside the boundaries of Barbie’s body and into the clean expanse of the rest of the page.</description>
+    </item>
+    <item>
+      <title>Making Data Viz Without SVG Using D3 &amp; Flexbox</title>
+      <link>https://mscazmy.github.io/2018/07/06/flexbox/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/07/06/flexbox/</guid>
+      <description>This post is available in its entirety on The Pudding. Click here to check it out!&#xA;Sneak Peek A few months ago, my co-worker Matt and I were collaborating on a project. I had been building a stacked bar chart in D3.js, and was seriously struggling to get the bars to stack on top of each other nicely and to animate from the bottom of the graphic instead of the top.</description>
+    </item>
+    <item>
+      <title>Making Multi-Argument Functions &amp; Data Frames Purrr</title>
+      <link>https://mscazmy.github.io/2018/03/26/purrr/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/03/26/purrr/</guid>
+      <description>Why purrr? Ah, the purrr package for R. Months after it had been released, I was still simply amused by all of the cat-related puns that this new package invoked, but I had no idea what it did. What did it mean to make your functions “purr”?&#xA;I started seeing post after post about why Hadley Wickham’s newest R package was a game-changer. But it was actually this Stack Overflow response that finally convinced me.</description>
+    </item>
+    <item>
+      <title>Adding Syntax Highlighting to Blogdown Posts</title>
+      <link>https://mscazmy.github.io/2017/11/15/syntaxhighlighting/</link>
+      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/11/15/syntaxhighlighting/</guid>
+      <description>The Backstory I’ve been playing with Yihui Xie’s blogdown package for almost a year now, and I’m constantly amazed by all of the things that it can do. Maybe I’ll get around to turning this post into a series, with each addition explaining one more cool thing that you can now add to your blog posts from R. But, for now, there’s just one I’d like to touch on: syntax highlighting.</description>
+    </item>
+    <item>
+      <title>Nesting and Accessing Data in D3v4</title>
+      <link>https://mscazmy.github.io/2017/05/02/nesting/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/05/02/nesting/</guid>
+      <description>Introduction Before Nesting Nest Level 1 Rollup Level 1 Sorting Keys Nest Level 2 Styling Nested Elements Creating Dropdown Menus from 1st Level Nests Rollup Level 2 Creating Dropdown Menus from 2nd Level Nests Introduction While learning how to make interactive data visualizations using d3.js, I ran into an issue with something new to me: nests. The general idea is that data sometimes needs to be grouped based on certain variables and the groups need to be analyzed or graphed separately.</description>
+    </item>
+    <item>
+      <title>Making a Website Using Blogdown, Hugo, and GitHub Pages.</title>
+      <link>https://mscazmy.github.io/2016/12/19/website/</link>
+      <pubDate>Mon, 19 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/19/website/</guid>
+      <description>Since the writing of this post, simpler methods of setting up sites have been documented. Check out the blogdown book and keep your eyes peeled for an updated post.&#xA;Introduction Blogdown Hugo GitHub Building the Page Installing Necessary Packages and Software Setting Up GitHub RStudio and Blogdown Initializing GitHub pages to work with Hugo and Blogdown Adding Content Site Configuration Adding a Page Page Templates and Fixing Blank Pages Adding a Blog Post or Portfolio Piece Adding images Troubleshooting Page is Blank Images Aren’t Showing Up Page Has No Formatting My Post Won’t Show Up Introduction As I transitioned into the data science world, I kept hearing one piece of advice over and over: build a portfolio.</description>
+    </item>
+    <item>
+      <title>Online Data Science Classes</title>
+      <link>https://mscazmy.github.io/2016/12/17/dscourses/</link>
+      <pubDate>Sat, 17 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/17/dscourses/</guid>
+      <description>Introduction Prerequisites Courses I’ve Taken Getting Started in Data Science Getting Started in R R Studio Courses Machine Learning Courses SQL Databases Other Courses Wrap-Up :warning:IMPORTANT UPDATE:warning: April 14, 2019&#xA;In my original version of this post, I highly recommended several DataCamp courses. I am now rescinding my recommendation of this platform. It has come to my attention that they have very poorly handled an issue of sexual assault by one of their executives.</description>
+    </item>
+  </channel>
+</rss>

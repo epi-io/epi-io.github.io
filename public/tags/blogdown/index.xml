@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogdown on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/blogdown/</link>
+    <description>Recent content in Blogdown on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adding Syntax Highlighting to Blogdown Posts</title>
+      <link>https://mscazmy.github.io/2017/11/15/syntaxhighlighting/</link>
+      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/11/15/syntaxhighlighting/</guid>
+      <description>The Backstory I’ve been playing with Yihui Xie’s blogdown package for almost a year now, and I’m constantly amazed by all of the things that it can do. Maybe I’ll get around to turning this post into a series, with each addition explaining one more cool thing that you can now add to your blog posts from R. But, for now, there’s just one I’d like to touch on: syntax highlighting.</description>
+    </item>
+    <item>
+      <title>Making a Website Using Blogdown, Hugo, and GitHub Pages.</title>
+      <link>https://mscazmy.github.io/2016/12/19/website/</link>
+      <pubDate>Mon, 19 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/19/website/</guid>
+      <description>Since the writing of this post, simpler methods of setting up sites have been documented. Check out the blogdown book and keep your eyes peeled for an updated post.&#xA;Introduction Blogdown Hugo GitHub Building the Page Installing Necessary Packages and Software Setting Up GitHub RStudio and Blogdown Initializing GitHub pages to work with Hugo and Blogdown Adding Content Site Configuration Adding a Page Page Templates and Fixing Blank Pages Adding a Blog Post or Portfolio Piece Adding images Troubleshooting Page is Blank Images Aren’t Showing Up Page Has No Formatting My Post Won’t Show Up Introduction As I transitioned into the data science world, I kept hearing one piece of advice over and over: build a portfolio.</description>
+    </item>
+  </channel>
+</rss>

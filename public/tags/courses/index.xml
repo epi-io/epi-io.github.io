@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Courses on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/courses/</link>
+    <description>Recent content in Courses on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Dec 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/courses/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Online Data Science Classes</title>
+      <link>https://mscazmy.github.io/2016/12/17/dscourses/</link>
+      <pubDate>Sat, 17 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/17/dscourses/</guid>
+      <description>Introduction Prerequisites Courses I’ve Taken Getting Started in Data Science Getting Started in R R Studio Courses Machine Learning Courses SQL Databases Other Courses Wrap-Up :warning:IMPORTANT UPDATE:warning: April 14, 2019&#xA;In my original version of this post, I highly recommended several DataCamp courses. I am now rescinding my recommendation of this platform. It has come to my attention that they have very poorly handled an issue of sexual assault by one of their executives.</description>
+    </item>
+  </channel>
+</rss>

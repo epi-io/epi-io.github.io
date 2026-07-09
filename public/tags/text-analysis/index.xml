@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Text Analysis on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/text-analysis/</link>
+    <description>Recent content in Text Analysis on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/text-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Sexualized Messages Dress Codes are Sending to Students</title>
+      <link>https://mscazmy.github.io/2019/02/07/dress_codes/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/02/07/dress_codes/</guid>
+      <description>The Premise If you aren’t currently in high school, it’s probably been a while since you’ve read a student handbook. The dress code section, present in about 55% of US public high schools, contains a set of hotly debated policies. They are most commonly accused of being racist, sexist, reinforcing gender stereotypes, and promoting sexualization. This is the first piece in a forthcoming series where we examine how public high schools police bodies differently and attempt to add data to each of these conversations.</description>
+    </item>
+    <item>
+      <title>Baking the Most Average Chocolate Chip Cookie</title>
+      <link>https://mscazmy.github.io/2018/05/10/cookies/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/05/10/cookies/</guid>
+      <description>The Premise Since the invention of the chocolate chip cookie, the original recipe has been altered and amended in attempts to make the recipe more gooey, chocolatey, and generally tastier than its predecessors. Is there a way to leverage computers and hundreds of existing cookie recipes to generate the most average recipe? Perhaps, like averaging human faces, the average cookie recipe could be the most delicious of them all. We used three different algorithms to test this idea and baked the results.</description>
+    </item>
+    <item>
+      <title>Gender Parity and Dialogue in 2016’s Highest Grossing Films</title>
+      <link>https://mscazmy.github.io/2017/01/07/genderfilm/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/01/07/genderfilm/</guid>
+      <description>Introduction Analysis Visualizing the Data In R In Illustrator Adding Interactivity with d3.js Color Considerations Key Takeaways&#xA;Future Work Introduction Unlike most of my personal projects, this one didn’t start with a dataset. It started with going to see the newest movie from the Star Wars universe: Rogue One.&#xA;While I’m not a die-hard member of the Star Wars fandom, I did grow up watching the films (my father IS a devoted member of the fandom) and truly enjoying the stories.</description>
+    </item>
+  </channel>
+</rss>

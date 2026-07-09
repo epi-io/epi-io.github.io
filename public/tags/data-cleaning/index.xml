@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Cleaning on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/data-cleaning/</link>
+    <description>Recent content in Data Cleaning on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/data-cleaning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dog Ownership in Seattle</title>
+      <link>https://mscazmy.github.io/2016/11/16/dogseattle/</link>
+      <pubDate>Wed, 16 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/11/16/dogseattle/</guid>
+      <description>Introduction Cleaning Data Data Visualizations Conclusions Introduction This report investigates licensed dog ownership in Seattle, WA (USA).&#xA;I’m curious about a few things here:&#xA;People estimate that there are 160,000 dogs in Seattle. Where are they?&#xA;Seattle is a relatively densely-populated area. Are small, apartment-friendly dogs preferred?&#xA;Using this information, what recommendations could be made to aspiring dog sitters and walkers in Seattle?&#xA;I will annotate each step of data analysis as I go.</description>
+    </item>
+  </channel>
+</rss>

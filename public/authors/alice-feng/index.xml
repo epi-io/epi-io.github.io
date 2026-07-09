@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/authors/alice-feng/</link>
+    <description>Recent content on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/authors/alice-feng/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Rigid is the US Middle Class, Really?</title>
+      <link>https://mscazmy.github.io/2020/08/20/middle-class/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/08/20/middle-class/</guid>
+      <description>The Premise If you were to ask random Americans what income class they fall into, there’s a good chance they’ll say “middle class”, regardless of how much money they make. It stands to reason, then, that a change in their family’s situation, like a lost job or a new higher-paying one, is unlikely to change their perceptions on their social class. This is particularly true because, for many people, the “middle class” is just as much about your education, job, resources, and aspirations as it is about your paycheck.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://mscazmy.github.io/2025/05/16/diagnostic-tests/thumbnail.png" /><meta name="twitter:title" content="Statistical Diagnostic Tests Every Researcher Should Know"/>
+<meta name="twitter:description" content="A practical guide to the diagnostic tests that validate your data before any statistical analysis begins."/>
+
+  <meta property="og:title" content="Statistical Diagnostic Tests Every Researcher Should Know" />
+<meta property="og:description" content="A practical guide to the diagnostic tests that validate your data before any statistical analysis begins." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mscazmy.github.io/2025/05/16/diagnostic-tests/" /><meta property="og:image" content="https://mscazmy.github.io/2025/05/16/diagnostic-tests/thumbnail.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-05-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-05-16T00:00:00+00:00" />
+
+
+  
+  <title>Statistical Diagnostic Tests Every Researcher Should Know | Ahmed Azeez</title>
+  
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/variables.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Merriweather:300,700|Noto+Sans:400,700" rel="stylesheet">
+
+ 
+
+  
+    
+    
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="/css/custom-light-syntax.css" id="syntaxLight">
+      <link rel="stylesheet alternate" type="text/css" href="/css/custom-dark-syntax.css" id="syntaxDark">
+    
+
+  
+
+</head>
+
+
+<main>
+
+  
+  <div class='post-background'>
+    <div class='post-gradient'></div>
+
+    
+<nav class="nav__simple">
+  <div class="nav__content">
+    <div class="goHome">
+      <a href="/" aria-label="Go back to all posts"><span class="inline-svg inline-svg-arrow-left" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+
+</span>
+ <span class='scroll-text'>Back to All</span></a>
+    </div>
+
+    <p class="nav__title">Ahmed Azeez </p>
+
+    <div class='toggle-container'>
+      <button class="theme-toggle">
+        <span class="scroll-text theme-text">Enable Dark Mode</span>
+        <div class="single-toggle">
+          <span class="inline-svg inline-svg-moon" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"/></svg> -->
+
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path fill="currentColor" d='M33.3 33.2c-5.1 5.1-13.3 5.1-18.4 0s-5.1-13.3 0-18.4c1.3-1.3 3-2.4 4.9-3 .6-.2 1.3-.1 1.7.4.4.4.6 1.1.4 1.7-1.3 3.6-.4 7.5 2.3 10.2s6.6 3.5 10.2 2.3c.6-.2 1.2-.1 1.7.4.4.4.6 1.1.4 1.7-.8 1.8-1.9 3.4-3.2 4.7zm-16.1-2.3c4.1 4.1 11 3.7 14.6-.8-3.7.2-7.3-1.1-9.9-3.8-2.7-2.7-4-6.3-3.8-9.9-4.4 3.3-5.1 10.1-.9 14.5z' fill='#FFF'/></svg>
+
+</span>
+
+          <span class="inline-svg inline-svg-sun" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"/></svg> -->
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path fill="currentColor" d='M24 15.2c-4.9 0-8.9 4-8.9 8.9s4 8.9 8.9 8.9 8.9-4 8.9-8.9-4-8.9-8.9-8.9zm0 14.1c-2.9 0-5.2-2.3-5.2-5.2 0-2.9 2.3-5.2 5.2-5.2s5.2 2.3 5.2 5.2c0 2.9-2.3 5.2-5.2 5.2zM24 13.5c1 0 1.8-.8 1.8-1.8V7.9c0-1-.8-1.8-1.8-1.8s-1.8.8-1.8 1.8v3.7c0 1.1.8 1.9 1.8 1.9zM24 34.7c-1 0-1.8.8-1.8 1.8v3.7c0 1 .8 1.8 1.8 1.8s1.8-.8 1.8-1.8v-3.7c0-1-.8-1.8-1.8-1.8zM34.4 16.4l2.6-2.7c.7-.7.7-1.9 0-2.6-.7-.7-1.9-.7-2.6 0l-2.6 2.6c-.7.7-.7 1.9 0 2.6.7.8 1.8.8 2.6.1zM13.6 31.8L11 34.5c-.7.7-.7 1.9 0 2.6s1.9.7 2.6 0l2.6-2.6c.7-.7.7-1.9 0-2.6-.7-.8-1.8-.8-2.6-.1zM13.4 24.1c0-1-.8-1.8-1.8-1.8H7.8c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8h3.7c1.1 0 1.9-.8 1.9-1.8zM40.2 22.3h-3.7c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8h3.7c1 0 1.8-.8 1.8-1.8s-.8-1.8-1.8-1.8zM13.6 16.4c.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6l-2.6-2.7c-.7-.7-1.8-.7-2.6 0-.7.8-.7 1.9 0 2.6l2.6 2.7zM34.4 31.8c-.7-.7-1.9-.7-2.6 0-.7.7-.7 1.9 0 2.6l2.6 2.6c.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6l-2.6-2.6z' fill='#FFF'/></svg>
+
+</span>
+
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>
+
+    
+
+
+    <div class='container-toTop'>
+      <div class='toTop-spacing'>
+        <div class='toTop-hidden'></div>
+        <a href="#" class="toTop is-hidden" aria-label="Scroll to top">
+          <span class="inline-svg inline-svg-chevron-up" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/></svg>
+
+</span>
+
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="article">
+
+    <section class="post__info">
+      
+        <p class='item__meta-category single'>post</p>
+      
+
+      <h1 class="post__title">Statistical Diagnostic Tests Every Researcher Should Know</h1>
+
+      
+
+      
+      <div class='post__tags'>
+        <p class='post__tags-meta'>Tags:</p>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by statistics'>statistics</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by research methods'>research methods</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by diagnostics'>diagnostics</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by epidemiology'>epidemiology</button>
+        
+      </div>
+      
+
+      
+      <div class="post__date">
+        <p>May 16 2025 • 5 min read</p>
+      </div>
+      
+
+      
+      <div class='post__authors'>
+          
+          <a href="" ref="author">
+          
+            <div class='post__author'>
+              <img src="/images/logo.jpg" alt="" class='post__author-img'>
+              <div class='post__author-social'>
+                  <span class='post__author-name'>Ahmed Azeez</span>
+                
+                  <span class='post__author-website'>Website</span>
+                
+              </div>
+            </div>
+            </a>
+          
+        
+      </div>
+      
+
+      
+        <img class="post__image" src="diagnostic-tests.png" alt="Infographic summarising essential statistical diagnostic tests for ensuring research validity" class="img-responsive">
+        
+          <p class="post__image-credit">Image by <a href="">Manus AI</a>
+            
+          </p>
+        
+      
+
+
+    </section>
+
+    <section class="post__content">
+      
+<p>Before you run a single regression or ANOVA, there is a step that separates rigorous analysis from shaky conclusions: <strong>diagnostic testing</strong>. Think of it as a pre-flight checklist for your data. Skip it, and you risk landing in entirely the wrong place.</p>
+
+<p><img src="diagnostic-tests.png" alt="Infographic summarising essential statistical diagnostic tests" /></p>
+
+<hr />
+
+<div id="why-diagnostics-matter" class="section level2">
+<h2>Why Diagnostics Matter</h2>
+<p>Most statistical methods rest on assumptions — about how data are distributed, how variables relate to one another, and how errors behave. When those assumptions break down silently, the model keeps running and happily produces numbers that mean very little.</p>
+<p>Good diagnostic practice helps you:</p>
+<ul>
+<li>Catch data quality problems before they compound</li>
+<li>Spot assumption violations early, while they are still fixable</li>
+<li>Produce estimates you can actually defend</li>
+<li>Make findings others can trust and build on</li>
+</ul>
+<p>Skipping this step does not make the problems disappear. It just makes them invisible until a reviewer — or a replication attempt — finds them for you.</p>
+</div>
+
+<hr />
+
+<div id="normality-test" class="section level2">
+<h2>1. Normality Test</h2>
+<p>Many parametric methods (regression, ANOVA, t-tests) assume that either the outcome variable or the model residuals follow a roughly normal distribution. A normality test tells you whether that assumption is plausible given your sample.</p>
+<p><strong>Common approaches:</strong></p>
+<ul>
+<li><strong>Shapiro-Wilk Test</strong> — well-suited for smaller samples (n &lt; 50), widely recommended in applied research</li>
+<li><strong>Kolmogorov-Smirnov Test</strong> — more appropriate for larger datasets</li>
+</ul>
+<p>A significant result (p &lt; 0.05) suggests the data depart meaningfully from normality, which may push you toward non-parametric alternatives or data transformation.</p>
+</div>
+
+<hr />
+
+<div id="multicollinearity-test" class="section level2">
+<h2>2. Multicollinearity Test</h2>
+<p>When two or more independent variables move together too closely, regression coefficients become unstable and difficult to interpret. Multicollinearity does not bias your predictions, but it does make it nearly impossible to isolate the effect of any single predictor.</p>
+<p><strong>Common indicators:</strong></p>
+<ul>
+<li><strong>Variance Inflation Factor (VIF)</strong> — values above 5 or 10 are common thresholds for concern</li>
+<li><strong>Tolerance</strong> (the inverse of VIF) — low tolerance signals high collinearity</li>
+</ul>
+<p>Detecting this early lets you consider dropping redundant predictors, combining them, or applying regularisation methods such as ridge regression.</p>
+</div>
+
+<hr />
+
+<div id="heteroscedasticity-test" class="section level2">
+<h2>3. Heteroscedasticity Test</h2>
+<p>Ordinary least squares regression assumes that the spread of residuals stays roughly constant across all fitted values. When error variance fans out (or collapses) as predictions change, the standard errors are unreliable, and so are your significance tests.</p>
+<p><strong>Common tests:</strong></p>
+<ul>
+<li><strong>Breusch-Pagan Test</strong> — tests whether residual variance is related to predictor values</li>
+<li><strong>White Test</strong> — a more general version that also captures non-linear forms of heteroscedasticity</li>
+</ul>
+<p>Remedies include weighted least squares, robust standard errors, or transforming the outcome variable.</p>
+</div>
+
+<hr />
+
+<div id="autocorrelation-test" class="section level2">
+<h2>4. Autocorrelation Test</h2>
+<p>In time-series data or repeated-measures designs, residuals from one observation often predict residuals from the next. This violates the independence assumption and inflates the apparent precision of your model.</p>
+<p><strong>Common test:</strong></p>
+<ul>
+<li><strong>Durbin-Watson Test</strong> — produces a statistic between 0 and 4; values close to 2 suggest no autocorrelation, values below 1 or above 3 signal a problem</li>
+</ul>
+<p>If autocorrelation is detected, time-series models (ARIMA, GLS) or adding lagged variables are typical next steps.</p>
+</div>
+
+<hr />
+
+<div id="linearity-test" class="section level2">
+<h2>5. Linearity Test</h2>
+<p>Linear regression assumes the relationship between each predictor and the outcome is — as the name suggests — linear. A curved relationship that gets forced into a straight line produces biased coefficients across the whole range of the predictor.</p>
+<p><strong>Common approaches:</strong></p>
+<ul>
+<li><strong>Scatterplots</strong> of each predictor against the outcome, inspected visually</li>
+<li><strong>Residual vs. fitted plots</strong> — random scatter around zero is the target pattern</li>
+<li><strong>Component-plus-residual (partial residual) plots</strong> — useful for pinpointing which variable has a non-linear relationship</li>
+</ul>
+<p>Polynomial terms or non-linear transformations can often fix the issue once it is identified.</p>
+</div>
+
+<hr />
+
+<div id="reliability-test" class="section level2">
+<h2>6. Reliability Test</h2>
+<p>When data come from questionnaires or rating scales, you need to know whether respondents interpret the items consistently — and whether the instrument would produce similar scores under similar conditions.</p>
+<p><strong>Common indicator:</strong></p>
+<ul>
+<li><strong>Cronbach's Alpha</strong> — values above 0.70 are generally considered acceptable for research instruments, above 0.80 preferred for clinical or high-stakes applications</li>
+</ul>
+<p>Low alpha can mean items are measuring different constructs, are poorly worded, or need to be revised or removed.
+</div>
+
+<hr />
+
+<div id="validity-test" class="section level2">
+<h2>7. Validity Test</h2>
+<p>Reliability tells you an instrument is consistent; validity tells you it is measuring the <em>right</em> thing. A highly reliable bathroom scale placed on an uneven floor gives consistent readings that are consistently wrong.</p>
+<p><strong>Key types:</strong></p>
+<ul>
+<li><strong>Content validity</strong> — do the items adequately cover the domain of interest? Usually assessed by expert review</li>
+<li><strong>Construct validity</strong> — does the instrument correlate with theoretically related measures and diverge from unrelated ones?</li>
+<li><strong>Criterion validity</strong> — does the instrument predict or concur with an established gold standard?</li>
+</ul>
+</div>
+
+<hr />
+
+<div id="outlier-detection" class="section level2">
+<h2>8. Outlier Detection</h2>
+<p>Extreme observations can have an outsized effect on regression coefficients, means, and standard deviations. Identifying them does not automatically mean deleting them — sometimes outliers are the most interesting data points — but you should know they are there and understand their influence.</p>
+<p><strong>Common methods:</strong></p>
+<ul>
+<li><strong>Boxplots</strong> — a quick visual screen for univariate outliers</li>
+<li><strong>Z-scores</strong> — observations beyond ±3 standard deviations are flagged in many disciplines</li>
+<li><strong>Mahalanobis Distance</strong> — detects multivariate outliers by measuring how far a case sits from the centroid of all predictors simultaneously</li>
+</ul>
+</div>
+
+<hr />
+
+<div id="quick-reference" class="section level2">
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Diagnostic Goal</th>
+<th>Common Test or Indicator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normality</td>
+<td>Shapiro-Wilk, Kolmogorov-Smirnov</td>
+</tr>
+<tr>
+<td>Multicollinearity</td>
+<td>Variance Inflation Factor (VIF)</td>
+</tr>
+<tr>
+<td>Heteroscedasticity</td>
+<td>Breusch-Pagan, White Test</td>
+</tr>
+<tr>
+<td>Autocorrelation</td>
+<td>Durbin-Watson</td>
+</tr>
+<tr>
+<td>Linearity</td>
+<td>Residual plots, scatterplots</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>Cronbach's Alpha</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>Content, construct, criterion review</td>
+</tr>
+<tr>
+<td>Outliers</td>
+<td>Boxplots, Z-scores, Mahalanobis Distance</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr />
+
+<div id="the-takeaway" class="section level2">
+<h2>The Takeaway</h2>
+<p>Statistical analysis is only as trustworthy as the assumptions it rests on. Running diagnostics is not an extra burden — it is the work that makes everything downstream credible. The tests above take a fraction of the time that went into collecting your data, and they are the difference between findings you can defend and findings that collapse under scrutiny.</p>
+<p><em>Questions or comments on any of these tests? Drop them below.</em></p>
+</div>
+
+    </section>
+
+    
+    <div class='disqus'>
+      <button class='disqus-show'><span class="show-message">Show Comments</span> <span class="inline-svg inline-svg-bubbles" >
+<!-- Generated by IcoMoon.io -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 36 32">
+<title>bubbles3</title>
+<path fill="currentColor" d="M34 28.161c0 1.422 0.813 2.653 2 3.256v0.498c-0.332 0.045-0.671 0.070-1.016 0.070-2.125 0-4.042-0.892-5.398-2.321-0.819 0.218-1.688 0.336-2.587 0.336-4.971 0-9-3.582-9-8s4.029-8 9-8c4.971 0 9 3.582 9 8 0 1.73-0.618 3.331-1.667 4.64-0.213 0.463-0.333 0.979-0.333 1.522zM7.209 6.912c-2.069 1.681-3.209 3.843-3.209 6.088 0 1.259 0.35 2.481 1.039 3.63 0.711 1.185 1.781 2.268 3.093 3.133 0.949 0.625 1.587 1.623 1.755 2.747 0.056 0.375 0.091 0.753 0.105 1.129 0.233-0.194 0.461-0.401 0.684-0.624 0.755-0.755 1.774-1.172 2.828-1.172 0.168 0 0.336 0.011 0.505 0.032 0.655 0.083 1.323 0.125 1.987 0.126v4c-0.848-0-1.68-0.054-2.492-0.158-3.437 3.437-7.539 4.053-11.505 4.144v-0.841c2.142-1.049 4-2.961 4-5.145 0-0.305-0.024-0.604-0.068-0.897-3.619-2.383-5.932-6.024-5.932-10.103 0-7.18 7.163-13 16-13 8.702 0 15.781 5.644 15.995 12.672-1.284-0.572-2.683-0.919-4.133-1.018-0.36-1.752-1.419-3.401-3.070-4.742-1.104-0.897-2.404-1.606-3.863-2.108-1.553-0.534-3.211-0.804-4.928-0.804s-3.375 0.271-4.928 0.804c-1.46 0.502-2.76 1.211-3.863 2.108z"></path>
+</svg>
+
+</span>
+</button>
+      <div class='disqus-comments' hidden>
+        
+      </div>
+    </div>
+    
+  </article>
+
+</main>
+<footer class='footer__single'>
+  
+  <div class='footer__content'>
+    <div class="footer-buttons">
+      
+  
+
+  
+    <a href="mailto:ahmed.azeez1987@gmail.com" class="social-button email" aria-label="Find me on email">
+      <span class="inline-svg inline-svg-email" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 0H48C21.49 0 0 21.49 0 48V336C0 362.51 21.49 384 48 384H464C490.51 384 512 362.51 512 336V48C512 21.49 490.51 0 464 0ZM464 48V88.805C441.578 107.064 405.832 135.456 329.413 195.295C312.572 208.542 279.212 240.367 256 239.996C232.792 240.371 199.421 208.537 182.587 195.295C106.18 135.465 70.425 107.067 48 88.805V48H464Z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+    <a href="https://github.com/mscazmy" class="social-button github" aria-label="Find me on github">
+      <span class="inline-svg inline-svg-github" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+
+  
+    <a href="https://www.linkedin.com/in/ahmed-a-hasan" class="social-button linkedin" aria-label="Find me on linkedin">
+      <span class="inline-svg inline-svg-linkedin" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.1 512"><path fill="currentColor" d="M100.3 448H7.4V148.9h92.9V448zM53.8 108.1C24.1 108.1 0 83.5 0 53.8S24.1 0 53.8 0s53.8 24.1 53.8 53.8-24.1 54.3-53.8 54.3zM448 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448h-.1z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+    </div>
+  </div>
+
+  <div class='footer-more'>
+    <a href="/about">About</a><a href='/contact'>Contact</a>
+  </div>
+
+  <div class='credits'>
+    <div class='credits-people'>
+      <p>Code by <a href='http://amber.rbind.io'>Amber Thomas</a></a></p>
+    </div>
+    <div class='credits-location'>
+      <p>Modified by <a href='ahmed.azeez1987@gmail.com'>Ahmed Azeez</a></a></p>
+    </div>
+
+
+  </div>
+
+
+
+
+  
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+  
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+  <script src="https://mscazmy.github.io/js/theme.js"></script>
+
+</footer>

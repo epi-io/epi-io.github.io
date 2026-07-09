@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Predicting Infectious Disease Outbreak Severity</title>
+      <link>https://mscazmy.github.io/2024/01/15/epi-outbreak/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2024/01/15/epi-outbreak/</guid>
+      <description>Introduction Data Exploration Feature Engineering Cleaning Data Clustering data Predicting Outbreak Severity Introduction Early detection and classification of infectious disease outbreaks is one of the most consequential challenges in public health. Syndromic surveillance systems collect weekly data on case counts, fatality rates, vaccination coverage, and environmental conditions — yet translating this information into actionable severity classifications remains difficult.&#xA;In this project, I apply supervised machine learning to a multi-district epidemiological surveillance dataset to predict outbreak severity level: Mild, Moderate, or Severe.</description>
+    </item>
+    <item>
+      <title>Mapping Student Course Activity</title>
+      <link>https://mscazmy.github.io/2016/12/27/fcccourses/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/27/fcccourses/</guid>
+      <description>Introduction Data Exploration Feature Engineering Data Visualizations Conclusions My Suggestions: Introduction Free Code Camp (FCC) is an online, self-paced, collection of massive open online courses (MOOCs) aimed at teaching users to code. Campers can log onto the service, complete coding challenges and projects, and earn certificates commemorating their completion. The topics covered include HTML5, CSS3, JavaScript, Databases, Git &amp;amp; Github, Node.js, React.js, and D3.js.&#xA;In December of 2015, FCC released lots of data regarding the progress and solutions of their users throughout the courses.</description>
+    </item>
+    <item>
+      <title>Ghosts, Goblins, and Ghouls</title>
+      <link>https://mscazmy.github.io/2016/11/09/ghosts/</link>
+      <pubDate>Wed, 09 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/11/09/ghosts/</guid>
+      <description>Introduction Data Exploration Feature Engineering Cleaning Data Clustering data Predicting Creature Identity Introduction This is my second-ever Kaggle competition (looking for the first?) I’ll do my best to walk through my thought-process here and welcome any comments on my work. Let’s get started!&#xA;Loading Necessary Packages # For data manipulation and tidying library(dplyr) # For data visualizations library(ggplot2) library(fpc) # For modeling and predictions library(caret) library(glmnet) library(ranger) library(e1071) library(clValid) Importing Data The data were downloaded directly from the Kaggle Website.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/r/</link>
+    <description>Recent content in R on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Making Multi-Argument Functions &amp; Data Frames Purrr</title>
+      <link>https://mscazmy.github.io/2018/03/26/purrr/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/03/26/purrr/</guid>
+      <description>Why purrr? Ah, the purrr package for R. Months after it had been released, I was still simply amused by all of the cat-related puns that this new package invoked, but I had no idea what it did. What did it mean to make your functions “purr”?&#xA;I started seeing post after post about why Hadley Wickham’s newest R package was a game-changer. But it was actually this Stack Overflow response that finally convinced me.</description>
+    </item>
+    <item>
+      <title>Adding Syntax Highlighting to Blogdown Posts</title>
+      <link>https://mscazmy.github.io/2017/11/15/syntaxhighlighting/</link>
+      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/11/15/syntaxhighlighting/</guid>
+      <description>The Backstory I’ve been playing with Yihui Xie’s blogdown package for almost a year now, and I’m constantly amazed by all of the things that it can do. Maybe I’ll get around to turning this post into a series, with each addition explaining one more cool thing that you can now add to your blog posts from R. But, for now, there’s just one I’d like to touch on: syntax highlighting.</description>
+    </item>
+    <item>
+      <title>Gender Parity and Dialogue in 2016’s Highest Grossing Films</title>
+      <link>https://mscazmy.github.io/2017/01/07/genderfilm/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/01/07/genderfilm/</guid>
+      <description>Introduction Analysis Visualizing the Data In R In Illustrator Adding Interactivity with d3.js Color Considerations Key Takeaways&#xA;Future Work Introduction Unlike most of my personal projects, this one didn’t start with a dataset. It started with going to see the newest movie from the Star Wars universe: Rogue One.&#xA;While I’m not a die-hard member of the Star Wars fandom, I did grow up watching the films (my father IS a devoted member of the fandom) and truly enjoying the stories.</description>
+    </item>
+    <item>
+      <title>Mapping Student Course Activity</title>
+      <link>https://mscazmy.github.io/2016/12/27/fcccourses/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/27/fcccourses/</guid>
+      <description>Introduction Data Exploration Feature Engineering Data Visualizations Conclusions My Suggestions: Introduction Free Code Camp (FCC) is an online, self-paced, collection of massive open online courses (MOOCs) aimed at teaching users to code. Campers can log onto the service, complete coding challenges and projects, and earn certificates commemorating their completion. The topics covered include HTML5, CSS3, JavaScript, Databases, Git &amp;amp; Github, Node.js, React.js, and D3.js.&#xA;In December of 2015, FCC released lots of data regarding the progress and solutions of their users throughout the courses.</description>
+    </item>
+    <item>
+      <title>Online Data Science Classes</title>
+      <link>https://mscazmy.github.io/2016/12/17/dscourses/</link>
+      <pubDate>Sat, 17 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/12/17/dscourses/</guid>
+      <description>Introduction Prerequisites Courses I’ve Taken Getting Started in Data Science Getting Started in R R Studio Courses Machine Learning Courses SQL Databases Other Courses Wrap-Up :warning:IMPORTANT UPDATE:warning: April 14, 2019&#xA;In my original version of this post, I highly recommended several DataCamp courses. I am now rescinding my recommendation of this platform. It has come to my attention that they have very poorly handled an issue of sexual assault by one of their executives.</description>
+    </item>
+    <item>
+      <title>Dog Ownership in Seattle</title>
+      <link>https://mscazmy.github.io/2016/11/16/dogseattle/</link>
+      <pubDate>Wed, 16 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/11/16/dogseattle/</guid>
+      <description>Introduction Cleaning Data Data Visualizations Conclusions Introduction This report investigates licensed dog ownership in Seattle, WA (USA).&#xA;I’m curious about a few things here:&#xA;People estimate that there are 160,000 dogs in Seattle. Where are they?&#xA;Seattle is a relatively densely-populated area. Are small, apartment-friendly dogs preferred?&#xA;Using this information, what recommendations could be made to aspiring dog sitters and walkers in Seattle?&#xA;I will annotate each step of data analysis as I go.</description>
+    </item>
+    <item>
+      <title>Bicycle Sharing in Seattle</title>
+      <link>https://mscazmy.github.io/2016/11/10/bicyclesseattle/</link>
+      <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/11/10/bicyclesseattle/</guid>
+      <description>Introduction Data Visualizations Conclusions Introduction This is an exploration of bicycle-sharing data in the city of Seattle, WA (USA) from October 2014 - August 2016. I hope to eventually combine this data with other forms of ride-sharing and transportation in the city, but this will be the first step.&#xA;Time to get started!&#xA;Loading Necessary Packages # For data manipulation and tidying library(dplyr) library(lubridate) library(tidyr) # For mapping library(ggmap) library(mapproj) # For data visualizations library(ggplot2) # For modeling and machine learning library(caret) Importing Data All of the data can be downloaded from the bicycle-sharing service “Pronto!</description>
+    </item>
+    <item>
+      <title>Ghosts, Goblins, and Ghouls</title>
+      <link>https://mscazmy.github.io/2016/11/09/ghosts/</link>
+      <pubDate>Wed, 09 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2016/11/09/ghosts/</guid>
+      <description>Introduction Data Exploration Feature Engineering Cleaning Data Clustering data Predicting Creature Identity Introduction This is my second-ever Kaggle competition (looking for the first?) I’ll do my best to walk through my thought-process here and welcome any comments on my work. Let’s get started!&#xA;Loading Necessary Packages # For data manipulation and tidying library(dplyr) # For data visualizations library(ggplot2) library(fpc) # For modeling and predictions library(caret) library(glmnet) library(ranger) library(e1071) library(clValid) Importing Data The data were downloaded directly from the Kaggle Website.</description>
+    </item>
+  </channel>
+</rss>

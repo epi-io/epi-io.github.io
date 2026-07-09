@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/authors/sacha-maxim/</link>
+    <description>Recent content on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/authors/sacha-maxim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Where Do Adoptable Dogs in Your State Come From?</title>
+      <link>https://mscazmy.github.io/2019/10/01/shelters/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/10/01/shelters/</guid>
+      <description>The Premise As a dog-lover living in Seattle, I have become familiar with how difficult it can be to adopt a dog in the city. Dogs are so popular that shelters and rescues in Seattle often import adoptable dogs from other states and sometimes other countries. After realizing that this information wasn’t commonly known or understood, I decided to find a way to quantify how many dogs are moved before adoption and where they were moved to and from.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://mscazmy.github.io/logo.jpg" /><meta name="twitter:title" content="Predicting Infectious Disease Outbreak Severity"/>
+<meta name="twitter:description" content="Data exploration and machine learning in RMarkdown for predicting infectious disease outbreak severity from epidemiological surveillance data."/>
+
+  <meta property="og:title" content="Predicting Infectious Disease Outbreak Severity" />
+<meta property="og:description" content="Data exploration and machine learning in RMarkdown for predicting infectious disease outbreak severity from epidemiological surveillance data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mscazmy.github.io/2024/01/15/epi-outbreak/" /><meta property="og:image" content="https://mscazmy.github.io/logo.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-01-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-15T00:00:00+00:00" />
+
+
+  
+  <title>Predicting Infectious Disease Outbreak Severity | Ahmed Azeez</title>
+  
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/variables.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Merriweather:300,700|Noto+Sans:400,700" rel="stylesheet">
+
+ 
+
+  
+    
+    
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="/css/custom-light-syntax.css" id="syntaxLight">
+      <link rel="stylesheet alternate" type="text/css" href="/css/custom-dark-syntax.css" id="syntaxDark">
+    
+
+  
+
+</head>
+
+
+<main>
+
+  
+  <div class='post-background'>
+    <div class='post-gradient'></div>
+
+    
+<nav class="nav__simple">
+  <div class="nav__content">
+    <div class="goHome">
+      <a href="/" aria-label="Go back to all posts"><span class="inline-svg inline-svg-arrow-left" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+
+</span>
+ <span class='scroll-text'>Back to All</span></a>
+    </div>
+
+    <p class="nav__title">Ahmed Azeez </p>
+
+    <div class='toggle-container'>
+      <button class="theme-toggle">
+        <span class="scroll-text theme-text">Enable Dark Mode</span>
+        <div class="single-toggle">
+          <span class="inline-svg inline-svg-moon" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"/></svg> -->
+
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path fill="currentColor" d='M33.3 33.2c-5.1 5.1-13.3 5.1-18.4 0s-5.1-13.3 0-18.4c1.3-1.3 3-2.4 4.9-3 .6-.2 1.3-.1 1.7.4.4.4.6 1.1.4 1.7-1.3 3.6-.4 7.5 2.3 10.2s6.6 3.5 10.2 2.3c.6-.2 1.2-.1 1.7.4.4.4.6 1.1.4 1.7-.8 1.8-1.9 3.4-3.2 4.7zm-16.1-2.3c4.1 4.1 11 3.7 14.6-.8-3.7.2-7.3-1.1-9.9-3.8-2.7-2.7-4-6.3-3.8-9.9-4.4 3.3-5.1 10.1-.9 14.5z' fill='#FFF'/></svg>
+
+</span>
+
+          <span class="inline-svg inline-svg-sun" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"/></svg> -->
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path fill="currentColor" d='M24 15.2c-4.9 0-8.9 4-8.9 8.9s4 8.9 8.9 8.9 8.9-4 8.9-8.9-4-8.9-8.9-8.9zm0 14.1c-2.9 0-5.2-2.3-5.2-5.2 0-2.9 2.3-5.2 5.2-5.2s5.2 2.3 5.2 5.2c0 2.9-2.3 5.2-5.2 5.2zM24 13.5c1 0 1.8-.8 1.8-1.8V7.9c0-1-.8-1.8-1.8-1.8s-1.8.8-1.8 1.8v3.7c0 1.1.8 1.9 1.8 1.9zM24 34.7c-1 0-1.8.8-1.8 1.8v3.7c0 1 .8 1.8 1.8 1.8s1.8-.8 1.8-1.8v-3.7c0-1-.8-1.8-1.8-1.8zM34.4 16.4l2.6-2.7c.7-.7.7-1.9 0-2.6-.7-.7-1.9-.7-2.6 0l-2.6 2.6c-.7.7-.7 1.9 0 2.6.7.8 1.8.8 2.6.1zM13.6 31.8L11 34.5c-.7.7-.7 1.9 0 2.6s1.9.7 2.6 0l2.6-2.6c.7-.7.7-1.9 0-2.6-.7-.8-1.8-.8-2.6-.1zM13.4 24.1c0-1-.8-1.8-1.8-1.8H7.8c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8h3.7c1.1 0 1.9-.8 1.9-1.8zM40.2 22.3h-3.7c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8h3.7c1 0 1.8-.8 1.8-1.8s-.8-1.8-1.8-1.8zM13.6 16.4c.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6l-2.6-2.7c-.7-.7-1.8-.7-2.6 0-.7.8-.7 1.9 0 2.6l2.6 2.7zM34.4 31.8c-.7-.7-1.9-.7-2.6 0-.7.7-.7 1.9 0 2.6l2.6 2.6c.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6l-2.6-2.6z' fill='#FFF'/></svg>
+
+</span>
+
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>
+
+    
+
+
+    <div class='container-toTop'>
+      <div class='toTop-spacing'>
+        <div class='toTop-hidden'></div>
+        <a href="#" class="toTop is-hidden" aria-label="Scroll to top">
+          <span class="inline-svg inline-svg-chevron-up" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/></svg>
+
+</span>
+
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="article">
+
+    <section class="post__info">
+      
+        <p class='item__meta-category single'>project</p>
+      
+
+      <h1 class="post__title">Predicting Infectious Disease Outbreak Severity</h1>
+
+      
+
+      
+      <div class='post__tags'>
+        <p class='post__tags-meta'>Tags:</p>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by data viz'>data viz</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by machine learning'>machine learning</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by epidemiology'>epidemiology</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by public health'>public health</button>
+        
+      </div>
+      
+
+      
+      <div class="post__date">
+        <p>January 15 2024 • 12 min read</p>
+      </div>
+      
+
+      
+      <div class='post__authors'>
+          
+          <a href="" ref="author">
+          
+            <div class='post__author'>
+              <img src="/images/logo.jpg" alt="" class='post__author-img'>
+              <div class='post__author-social'>
+                  <span class='post__author-name'>Ahmed Azeez</span>
+                
+                  <span class='post__author-website'>Website</span>
+                
+              </div>
+            </div>
+            </a>
+          
+        
+      </div>
+      
+
+      
+
+
+    </section>
+
+    <section class="post__content">
+      
+
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data-exploration">Data Exploration</a></li>
+<li><a href="#feature-engineering">Feature Engineering</a></li>
+<li><a href="#cleaning-data">Cleaning Data</a></li>
+<li><a href="#clustering-data">Clustering data</a></li>
+<li><a href="#predicting-outbreak-severity">Predicting Outbreak Severity</a></li>
+</ul>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Early detection and classification of infectious disease outbreaks is one of the most consequential challenges in public health. Syndromic surveillance systems collect weekly data on case counts, fatality rates, vaccination coverage, and environmental conditions — yet translating this information into actionable severity classifications remains difficult.</p>
+<p>In this project, I apply supervised machine learning to a multi-district epidemiological surveillance dataset to predict outbreak severity level: <strong>Mild</strong>, <strong>Moderate</strong>, or <strong>Severe</strong>. I'll walk through data exploration, feature engineering, unsupervised clustering, and supervised model comparison. Let's get started!</p>
+<div id="loading-necessary-packages" class="section level3">
+<h3>Loading Necessary Packages</h3>
+<pre class="r"><code># For data manipulation and tidying
+library(dplyr)
+
+# For data visualizations
+library(ggplot2)
+library(fpc)
+
+# For modeling and predictions
+library(caret)
+library(glmnet)
+library(ranger)
+library(e1071)
+library(clValid)</code></pre>
+</div>
+<div id="importing-data" class="section level3">
+<h3>Importing Data</h3>
+<p>The surveillance dataset was compiled from district health office records and linked to environmental covariates. Before binding the training and test sets into a single file, I added a column called "Dataset" and labelled rows accordingly.</p>
+<pre class="r"><code>train &lt;- read.csv(file = &quot;train.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
+train$Dataset &lt;- &quot;train&quot;
+
+test &lt;- read.csv(file = &quot;test.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
+test$Dataset &lt;- &quot;test&quot;
+
+full &lt;- bind_rows(train, test)</code></pre>
+<p>Ok, time to take a look at the data.</p>
+<pre class="r"><code>str(full)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    900 obs. of  8 variables:
+##  $ id             : int  0 1 2 4 5 7 8 11 12 19 ...
+##  $ incidence_rate : num  0.312 0.581 0.423 0.748 0.539 ...
+##  $ case_fatality  : num  0.041 0.128 0.073 0.209 0.315 ...
+##  $ vaccination_cov: num  0.821 0.634 0.710 0.392 0.488 ...
+##  $ pop_density    : num  0.448 0.523 0.791 0.612 0.384 ...
+##  $ sanitation_idx : num  0.774 0.612 0.558 0.341 0.289 ...
+##  $ region         : chr  &quot;north&quot; &quot;coastal&quot; &quot;south&quot; &quot;west&quot; ...
+##  $ severity       : chr  &quot;Mild&quot; &quot;Moderate&quot; &quot;Mild&quot; &quot;Severe&quot; ...
+##  $ Dataset        : chr  &quot;train&quot; &quot;train&quot; &quot;train&quot; &quot;train&quot; ...</code></pre>
+<pre class="r"><code>summary(full)</code></pre>
+<pre><code>##        id         incidence_rate   case_fatality    vaccination_cov 
+##  Min.   :  0.0   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:224.8   1st Qu.:0.2841   1st Qu.:0.0821   1st Qu.:0.3512  
+##  Median :449.5   Median :0.4103   Median :0.1460   Median :0.5218  
+##  Mean   :449.5   Mean   :0.4287   Mean   :0.1583   Mean   :0.5134  
+##  3rd Qu.:674.2   3rd Qu.:0.5744   3rd Qu.:0.2241   3rd Qu.:0.6721  
+##  Max.   :899.0   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+##   pop_density    sanitation_idx      region            severity        
+##  Min.   :0.0000   Min.   :0.0000   Length:900         Length:900        
+##  1st Qu.:0.3304   1st Qu.:0.3108   Class :character   Class :character  
+##  Median :0.4891   Median :0.4977   Mode  :character   Mode  :character  
+##  Mean   :0.4922   Mean   :0.4868                                        
+##  3rd Qu.:0.6488   3rd Qu.:0.6633                                        
+##  Max.   :1.0000   Max.   :1.0000                                        
+##    Dataset         
+##  Length:900        
+##  Class :character  
+##  Mode  :character</code></pre>
+<p>Great! So here's what we know so far:</p>
+<p>We have 8 variables currently:</p>
+<ul>
+<li><strong>ID</strong> : Appears to be the identification number of the district in question</li>
+<li><strong>Incidence Rate</strong> : Weekly case count per 100,000 population, normalized to 0 – 1</li>
+<li><strong>Case Fatality</strong> : Proportion of confirmed cases resulting in death</li>
+<li><strong>Vaccination Coverage</strong> : Proportion of target population fully vaccinated</li>
+<li><strong>Pop Density</strong> : Population density normalized from 0 – 1</li>
+<li><strong>Sanitation Index</strong> : District-level sanitation access index, normalized from 0 – 1</li>
+<li><strong>Region</strong> : Geographic region of the district (north, south, east, west, central, coastal)</li>
+<li><strong>Severity</strong> : Outbreak severity classification (i.e. Mild, Moderate or Severe)</li>
+<li><strong>Dataset</strong> : The column I added when importing data indicating whether the observation was part of the original training or test set</li>
+</ul>
+<p>It seems like a few of these variables would serve better as factors, rather than character strings, so I'll take care of that.</p>
+<pre class="r"><code>factor_variables &lt;- c(&quot;id&quot;, &quot;region&quot;, &quot;severity&quot;, &quot;Dataset&quot;)
+full[factor_variables] &lt;- lapply(full[factor_variables], function(x) as.factor(x))</code></pre>
+</div>
+</div>
+<div id="data-exploration" class="section level2">
+<h2>Data Exploration</h2>
+<p>Let's take a look at what we've got here so far. What's the distribution of each variable across each severity level?</p>
+<p>Let's first temporarily remove the "test" rows.</p>
+<pre class="r"><code>train_2 &lt;- full[full$Dataset == &quot;train&quot;, ]</code></pre>
+<div id="distribution-of-continuous-variables-by-severity-level" class="section level3">
+<h3>Distribution of Continuous Variables by Severity Level</h3>
+<div id="incidence-rate" class="section level4">
+<h4>Incidence Rate</h4>
+<div class="float">
+<img src="unnamed-chunk-6-1.png" alt="Box and whisker plot showing that Severe districts have a much higher incidence rate than Moderate and Mild districts, with clear upward separation." />
+<div class="figcaption">Box and whisker plot showing that Severe districts have a much higher incidence rate than Moderate and Mild districts, with clear upward separation.</div>
+</div>
+</div>
+<div id="case-fatality-rate" class="section level4">
+<h4>Case Fatality Rate</h4>
+<div class="float">
+<img src="unnamed-chunk-7-1.png" alt="Box and whisker plot showing that Severe districts have substantially higher case fatality rates than Moderate and Mild, with all three groups showing distinct medians." />
+<div class="figcaption">Box and whisker plot showing that Severe districts have substantially higher case fatality rates than Moderate and Mild, with all three groups showing distinct medians.</div>
+</div>
+</div>
+<div id="vaccination-coverage" class="section level4">
+<h4>Vaccination Coverage</h4>
+<div class="float">
+<img src="unnamed-chunk-8-1.png" alt="Box and whisker plot showing that Mild districts have clearly higher vaccination coverage than Moderate and Severe districts, with Severe being lowest." />
+<div class="figcaption">Box and whisker plot showing that Mild districts have clearly higher vaccination coverage than Moderate and Severe districts, with Severe being lowest.</div>
+</div>
+</div>
+<div id="sanitation-index" class="section level4">
+<h4>Sanitation Index</h4>
+<div class="float">
+<img src="unnamed-chunk-9-1.png" alt="Box and whisker plot showing that Mild districts have higher sanitation index scores than both Moderate and Severe districts, though Moderate and Severe overlap considerably." />
+<div class="figcaption">Box and whisker plot showing that Mild districts have higher sanitation index scores than both Moderate and Severe districts, though Moderate and Severe overlap considerably.</div>
+</div>
+</div>
+</div>
+<div id="distribution-of-region-by-severity-level" class="section level3">
+<h3>Distribution of Region by Severity Level</h3>
+<div id="mild" class="section level4">
+<h4>Mild</h4>
+<div class="float">
+<img src="unnamed-chunk-10-1.png" alt="Bar graph showing that Mild outbreaks are most common in the north and coastal regions, followed by east and south." />
+<div class="figcaption">Bar graph showing that Mild outbreaks are most common in the north and coastal regions, followed by east and south.</div>
+</div>
+</div>
+<div id="moderate" class="section level4">
+<h4>Moderate</h4>
+<div class="float">
+<img src="unnamed-chunk-11-1.png" alt="Bar graph showing that Moderate outbreaks are distributed fairly evenly across all regions with slight elevation in west and central." />
+<div class="figcaption">Bar graph showing that Moderate outbreaks are distributed fairly evenly across all regions with slight elevation in west and central.</div>
+</div>
+</div>
+<div id="severe" class="section level4">
+<h4>Severe</h4>
+<div class="float">
+<img src="unnamed-chunk-12-1.png" alt="Bar graph showing that Severe outbreaks appear across all regions with no single region strongly dominant." />
+<div class="figcaption">Bar graph showing that Severe outbreaks appear across all regions with no single region strongly dominant.</div>
+</div>
+</div>
+</div>
+<div id="distinguishing-features" class="section level3">
+<h3>Distinguishing Features?</h3>
+<p>Incidence rate and vaccination coverage appear to be the strongest individual separators of severity class. Mild districts cluster clearly from Severe districts on both axes. However, Moderate sits uncomfortably in the middle across most variables, which will likely challenge our classifiers. Region doesn't appear to offer clean separation — there are Severe outbreaks in every region — suggesting that geography alone is not a reliable predictor.</p>
+</div>
+</div>
+<div id="feature-engineering" class="section level2">
+<h2>Feature Engineering</h2>
+<p>Let me check whether any pairwise interactions among variables help reveal structure that individual variables miss.</p>
+<pre class="r"><code>pairs(full[, 2:6], col = full$severity, labels = c(&quot;Incidence&quot;, 
+    &quot;CFR&quot;, &quot;Vax Cov&quot;, &quot;Pop Density&quot;, &quot;Sanitation&quot;))</code></pre>
+<div class="float">
+<img src="unnamed-chunk-13-1.png" alt="Matrix of overlapping dots showing modest separation between Mild, Moderate, and Severe across incidence rate, case fatality, vaccination coverage, population density, and sanitation index." />
+<div class="figcaption">Matrix of overlapping dots showing modest separation between Mild, Moderate, and Severe across incidence rate, case fatality, vaccination coverage, population density, and sanitation index.</div>
+</div>
+<p>Some separation is emerging, especially between Mild and Severe, but Moderate remains difficult. The incidence rate and vaccination coverage combination looks the most promising. Let's engineer an interaction term for these two: a district with high incidence <em>and</em> low vaccination coverage faces compounding risk.</p>
+<pre class="r"><code>full &lt;- full %&gt;% mutate(vax_incidence = (1 - vaccination_cov) * incidence_rate)</code></pre>
+<div class="float">
+<img src="unnamed-chunk-15-1.png" alt="Box and whisker plot showing that the vax_incidence interaction term provides cleaner separation of Severe from Mild and Moderate severity districts." />
+<div class="figcaption">Box and whisker plot showing that the vax_incidence interaction term provides cleaner separation of Severe from Mild and Moderate severity districts.</div>
+</div>
+<p>That clearly improved separation for Severe districts. Let's try a few more epidemiologically motivated interactions.</p>
+<pre class="r"><code>full &lt;- full %&gt;% mutate(
+    density_sanit  = pop_density * (1 - sanitation_idx),
+    cfr_density    = case_fatality * pop_density,
+    vax_sanit      = vaccination_cov * sanitation_idx,
+    incidence_cfr  = incidence_rate * case_fatality,
+    density_vax    = pop_density * (1 - vaccination_cov)
+)</code></pre>
+<p>Time to check for ways to tidy up.</p>
+</div>
+<div id="cleaning-data" class="section level2">
+<h2>Cleaning Data</h2>
+<p>Let's take another look at the summary statistics for this dataset.</p>
+<pre class="r"><code>summary(full)</code></pre>
+<pre><code>##        id       incidence_rate   case_fatality    vaccination_cov 
+##  0      :  1   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+##  1      :  1   1st Qu.:0.2841   1st Qu.:0.0821   1st Qu.:0.3512  
+##  2      :  1   Median :0.4103   Median :0.1460   Median :0.5218  
+##  3      :  1   Mean   :0.4287   Mean   :0.1583   Mean   :0.5134  
+##  4      :  1   3rd Qu.:0.5744   3rd Qu.:0.2241   3rd Qu.:0.6721  
+##  5      :  1   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+##  (Other):894                                                     
+##   pop_density    sanitation_idx       region       severity   Dataset     
+##  Min.   :0.0000   Min.   :0.0000   north  :162   Mild  :118   test :529   
+##  1st Qu.:0.3304   1st Qu.:0.3108   south  :148   Mod.  :131   train:371   
+##  Median :0.4891   Median :0.4977   east   :155   Severe:122               
+##  Mean   :0.4922   Mean   :0.4868   west   :141   NA&#39;s  :529               
+##  3rd Qu.:0.6488   3rd Qu.:0.6633   central:149                            
+##  Max.   :1.0000   Max.   :1.0000   coastal:145                            
+##   vax_incidence    density_sanit      cfr_density       vax_sanit     
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   
+##  1st Qu.:0.0912   1st Qu.:0.1148   1st Qu.:0.0341   1st Qu.:0.1512   
+##  Median :0.1893   Median :0.2214   Median :0.0712   Median :0.2548   
+##  Mean   :0.2104   Mean   :0.2331   Mean   :0.0801   Mean   :0.2617   
+##  3rd Qu.:0.3188   3rd Qu.:0.3412   3rd Qu.:0.1181   3rd Qu.:0.3741   
+##  Max.   :0.8821   Max.   :0.7993   Max.   :0.6614   Max.   :0.8012   
+##  incidence_cfr     density_vax    
+##  Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:0.0244   1st Qu.:0.1241  
+##  Median :0.0598   Median :0.2318  
+##  Mean   :0.0712   Mean   :0.2401  
+##  3rd Qu.:0.1081   3rd Qu.:0.3408  
+##  Max.   :0.6234   Max.   :0.7211</code></pre>
+<p>The only column that has any missing values is <code>severity</code> which is to be expected since that's what we need to be predicting. Everything else seems to look good so far. Let's try to model these as is.</p>
+</div>
+<div id="clustering-data" class="section level2">
+<h2>Clustering data</h2>
+<p>While clustering is generally used for unsupervised machine learning, I want to take a peek at the clusters that could be formed using the data at hand. The potential issue with trying to cluster this data is that we are working with two types of data: continuous and categorical. They break down like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Continuous Variables</th>
+<th>Categorical Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>incidence_rate</td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td>case_fatality</td>
+<td>region</td>
+</tr>
+<tr class="odd">
+<td>vaccination_cov</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pop_density</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>sanitation_idx</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Because of our moderate sample size, it's not a good idea to count out the categorical variables completely, but we'll try clustering without them first to see how well the approach works.</p>
+<div id="cluster-without-categorical-variables" class="section level3">
+<h3>Cluster Without Categorical Variables</h3>
+<p>I'll first try to cluster using the <code>kmeans</code> function.</p>
+<pre class="r"><code># Set the seed
+set.seed(100)
+
+# Extract severity labels and remove column from dataset
+severity_labels &lt;- full$severity
+full2 &lt;- full
+full2$severity &lt;- NULL
+
+# Remove categorical variables (id, region, and Dataset) from dataset
+full2$id     &lt;- NULL
+full2$region &lt;- NULL
+full2$Dataset &lt;- NULL
+
+# Perform k-means clustering with 3 clusters, repeat 30 times
+outbreak_km_1 &lt;- kmeans(full2, 3, nstart = 30)</code></pre>
+<p>Ok, so now we have clusters, time to see how well they did. Let's look at them graphically first. This was created using the <code>plotcluster()</code> function from the <code>fpc</code> package.</p>
+<div class="float">
+<img src="unnamed-chunk-19-1.png" alt="Overlapping groups of red number 2s, green 3s, and black 1s showing poor cluster separation for outbreak severity levels" />
+<div class="figcaption">Overlapping groups of red number 2s, green 3s, and black 1s showing poor cluster separation for outbreak severity levels</div>
+</div>
+<p>Hmm, those clusters don't look very discrete. Let's look at <a href="https://en.wikipedia.org/wiki/Dunn_index">Dunn's Index</a> mathematically to see if we're missing something visually. This calculation comes from the <code>dunn</code> function in the <code>clValid</code> package.</p>
+<pre class="r"><code>dunn_okm_1 &lt;- dunn(clusters = outbreak_km_1$cluster, Data = full2)
+
+# Print results
+dunn_okm_1</code></pre>
+<pre><code>## [1] 0.05312847</code></pre>
+<p>As Dunn's Index represents a ratio of the smallest distance between clusters to the largest distance between two points in the same cluster (or, the smallest inter-cluster distance to the largest intra-cluster distance), such a low number indicates that our current clusters are not condensed, separate entities. This is not terribly surprising given the considerable overlap between Moderate and Severe districts across most variables.</p>
+<p>Let's see how well this clustering method correctly separated the labelled severity levels.</p>
+<pre class="r"><code>table(outbreak_km_1$cluster, severity_labels)</code></pre>
+<pre><code>##    severity_labels
+##     Mild Moderate Severe
+##   1   12       41     79
+##   2    8       84     18
+##   3   98        6     25</code></pre>
+<p>It looks like currently, Mild outbreaks were clustered reasonably well, but Moderate and Severe districts are split between clusters 1 and 2. This is consistent with what we saw in exploratory analysis — Moderate cases occupy overlapping epidemiological space. Ok, I'm convinced. On to supervised modeling!</p>
+</div>
+<div id="modeling-for-outbreak-severity" class="section level3">
+<h3>Modeling for Outbreak Severity</h3>
+<p>Clustering was not particularly helpful in discerning severity levels, so perhaps creating models will work better.</p>
+<p>First things first, I need to split out the test and training data back into separate datasets.</p>
+<pre class="r"><code>train_complete &lt;- full[full$Dataset == &quot;train&quot;, ]
+test_complete  &lt;- full[full$Dataset == &quot;test&quot;, ]</code></pre>
+<p>Because I plan on using the <code>caret</code> package for all of my modeling, I'm going to generate a standard <code>trainControl</code> so that those tuning parameters remain consistent throughout the various models.</p>
+</div>
+<div id="creating-traincontrol" class="section level3">
+<h3>Creating trainControl</h3>
+<p>I will create a system that will perform 20 repeats of a 10-Fold cross-validation of the data.</p>
+<pre class="r"><code>myControl &lt;- trainControl(method = &quot;cv&quot;, number = 10, repeats = 20, 
+    verboseIter = TRUE)</code></pre>
+</div>
+<div id="random-forest-modeling" class="section level3">
+<h3>Random Forest Modeling</h3>
+<p>Let's start with a random forest model, generated using the <code>ranger</code> and <code>caret</code> packages. I'm going to include all of the original variables, including any interactions here.</p>
+<pre class="r"><code>set.seed(10)
+
+rf_model &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + region + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, tuneLength = 3, data = train_complete, 
+    method = &quot;ranger&quot;, trControl = myControl, importance = &quot;impurity&quot;)</code></pre>
+<p>Let's look at the levels of importance of each factor in this model.</p>
+<div class="float">
+<img src="unnamed-chunk-25-1.png" alt="Bar graph showing that vax_incidence, incidence_rate, and incidence_cfr are the most influential predictors in the random forest model, with region ranking near the bottom." />
+<div class="figcaption">Bar graph showing that vax_incidence, incidence_rate, and incidence_cfr are the most influential predictors in the random forest model, with region ranking near the bottom.</div>
+</div>
+<p>Our <code>vax_incidence</code> interaction term seems to be the most important to this model and our other interactions rank pretty highly. I suppose we can hold on to them for now. Region, on the other hand, hardly plays into this. Let's try removing it from a second random forest model.</p>
+<pre class="r"><code>set.seed(10)
+
+rf_model_2 &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, tuneLength = 3, data = train_complete, 
+    method = &quot;ranger&quot;, trControl = myControl, importance = &quot;impurity&quot;)</code></pre>
+</div>
+<div id="glmnet-modeling" class="section level3">
+<h3>GLMnet Modeling</h3>
+<p>I'm going to follow the random forest model up with a glmnet model, also from the <code>caret</code> package.</p>
+<pre class="r"><code>set.seed(10)
+
+glm_model &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + region + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, method = &quot;glmnet&quot;, 
+    tuneGrid = expand.grid(alpha = 0:1, 
+    lambda = seq(1e-04, 1, length = 20)), data = train_complete, 
+    trControl = myControl)</code></pre>
+<p>Once again, we'll try without "region".</p>
+<pre class="r"><code>set.seed(10)
+
+glm_model_2 &lt;- train(severity ~ incidence_rate + case_fatality + 
+    vaccination_cov + pop_density + sanitation_idx + 
+    vax_incidence + density_sanit + cfr_density + vax_sanit + 
+    incidence_cfr + density_vax, method = &quot;glmnet&quot;, 
+    tuneGrid = expand.grid(alpha = 0:1, 
+    lambda = seq(1e-04, 1, length = 20)), data = train_complete, 
+    trControl = myControl)</code></pre>
+</div>
+<div id="comparing-model-fit" class="section level3">
+<h3>Comparing model fit</h3>
+<p>Now that we have two random forest models and two glmnet models, it's time to compare their fit.</p>
+<pre class="r"><code># Create a list of models
+models &lt;- list(rf = rf_model, rf2 = rf_model_2, glmnet = glm_model, 
+    glmnet2 = glm_model_2)
+
+# Resample the models
+resampled &lt;- resamples(models)
+
+# Generate a summary
+summary(resampled)</code></pre>
+<pre><code>## 
+## Call:
+## summary.resamples(object = resampled)
+## 
+## Models: rf, rf2, glmnet, glmnet2 
+## Number of resamples: 10 
+## 
+## Accuracy 
+##           Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## rf      0.6412  0.6921 0.7188 0.7211  0.7534 0.7801    0
+## rf2     0.6588  0.6944 0.7112 0.7228  0.7489 0.7863    0
+## glmnet  0.6734  0.7198 0.7289 0.7401  0.7588 0.8521    0
+## glmnet2 0.6734  0.7021 0.7512 0.7513  0.7791 0.8521    0
+## 
+## Kappa 
+##           Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## rf      0.4618  0.5381 0.5772 0.5816  0.6301 0.6701    0
+## rf2     0.4882  0.5412 0.5668 0.5842  0.6223 0.6794    0
+## glmnet  0.5101  0.5797 0.5934 0.6102  0.6382 0.7782    0
+## glmnet2 0.5098  0.5531 0.6268 0.6270  0.6687 0.7782    0</code></pre>
+<pre class="r"><code># Plot the differences between model fits
+dotplot(resampled, metric = &quot;Accuracy&quot;)</code></pre>
+<div class="float">
+<img src="unnamed-chunk-29-1.png" alt="Dot plot showing that the second GLMnet model (without region) has the highest median accuracy and tightest confidence interval." />
+<div class="figcaption">Dot plot showing that the second GLMnet model (without region) has the highest median accuracy and tightest confidence interval.</div>
+</div>
+</div>
+</div>
+<div id="predicting-outbreak-severity" class="section level2">
+<h2>Predicting Outbreak Severity</h2>
+<p>Although I generated four models above, the second glmnet model (all interactions but without region) provided the highest accuracy, so I'll use that model to predict severity in the test set.</p>
+<pre class="r"><code># Reorder the data by district ID number
+test_complete &lt;- test_complete %&gt;% arrange(id)
+
+# Make predicted severity values
+my_prediction &lt;- predict(glm_model_2, test_complete)</code></pre>
+<div id="preparing-the-prediction-for-submission" class="section level3">
+<h3>Preparing the Prediction for Submission</h3>
+<pre class="r"><code># Create a data frame with two columns: ID and predicted severity
+my_solution_epi_01 &lt;- data.frame(id = test_complete$id, Severity = my_prediction)
+
+# Write the solution to a csv file
+write.csv(my_solution_epi_01, file = &quot;my_solution_epi_01.csv&quot;, 
+    row.names = FALSE)</code></pre>
+</div>
+<div id="final-notes" class="section level3">
+<h3>Final Notes</h3>
+<p>The GLMnet model without region achieved a cross-validated accuracy of <strong>75.13%</strong>. The engineered <code>vax_incidence</code> interaction term — unvaccinated fraction × current incidence rate — was the single strongest predictor, reinforcing the epidemiological principle that outbreak severity is driven not by any one factor in isolation, but by the compounding interaction of disease pressure and population vulnerability.</p>
+<p><em>I'd love to hear any feedback you may have on this analysis. Thanks in advance!</em></p>
+</div>
+</div>
+
+    </section>
+
+    
+    <div class='disqus'>
+      <button class='disqus-show'><span class="show-message">Show Comments</span> <span class="inline-svg inline-svg-bubbles" >
+<!-- Generated by IcoMoon.io -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 36 32">
+<title>bubbles3</title>
+<path fill="currentColor" d="M34 28.161c0 1.422 0.813 2.653 2 3.256v0.498c-0.332 0.045-0.671 0.070-1.016 0.070-2.125 0-4.042-0.892-5.398-2.321-0.819 0.218-1.688 0.336-2.587 0.336-4.971 0-9-3.582-9-8s4.029-8 9-8c4.971 0 9 3.582 9 8 0 1.73-0.618 3.331-1.667 4.64-0.213 0.463-0.333 0.979-0.333 1.522zM7.209 6.912c-2.069 1.681-3.209 3.843-3.209 6.088 0 1.259 0.35 2.481 1.039 3.63 0.711 1.185 1.781 2.268 3.093 3.133 0.949 0.625 1.587 1.623 1.755 2.747 0.056 0.375 0.091 0.753 0.105 1.129 0.233-0.194 0.461-0.401 0.684-0.624 0.755-0.755 1.774-1.172 2.828-1.172 0.168 0 0.336 0.011 0.505 0.032 0.655 0.083 1.323 0.125 1.987 0.126v4c-0.848-0-1.68-0.054-2.492-0.158-3.437 3.437-7.539 4.053-11.505 4.144v-0.841c2.142-1.049 4-2.961 4-5.145 0-0.305-0.024-0.604-0.068-0.897-3.619-2.383-5.932-6.024-5.932-10.103 0-7.18 7.163-13 16-13 8.702 0 15.781 5.644 15.995 12.672-1.284-0.572-2.683-0.919-4.133-1.018-0.36-1.752-1.419-3.401-3.070-4.742-1.104-0.897-2.404-1.606-3.863-2.108-1.553-0.534-3.211-0.804-4.928-0.804s-3.375 0.271-4.928 0.804c-1.46 0.502-2.76 1.211-3.863 2.108z"></path>
+</svg>
+
+</span>
+</button>
+      <div class='disqus-comments' hidden>
+        
+      </div>
+    </div>
+    
+  </article>
+
+</main>
+<footer class='footer__single'>
+  
+  <div class='footer__content'>
+    <div class="footer-buttons">
+      
+  
+
+  
+    <a href="mailto:ahmed.azeez1987@gmail.com" class="social-button email" aria-label="Find me on email">
+      <span class="inline-svg inline-svg-email" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 0H48C21.49 0 0 21.49 0 48V336C0 362.51 21.49 384 48 384H464C490.51 384 512 362.51 512 336V48C512 21.49 490.51 0 464 0ZM464 48V88.805C441.578 107.064 405.832 135.456 329.413 195.295C312.572 208.542 279.212 240.367 256 239.996C232.792 240.371 199.421 208.537 182.587 195.295C106.18 135.465 70.425 107.067 48 88.805V48H464Z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+    <a href="https://github.com/mscazmy" class="social-button github" aria-label="Find me on github">
+      <span class="inline-svg inline-svg-github" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+
+  
+    <a href="https://www.linkedin.com/in/ahmed-a-hasan" class="social-button linkedin" aria-label="Find me on linkedin">
+      <span class="inline-svg inline-svg-linkedin" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.1 512"><path fill="currentColor" d="M100.3 448H7.4V148.9h92.9V448zM53.8 108.1C24.1 108.1 0 83.5 0 53.8S24.1 0 53.8 0s53.8 24.1 53.8 53.8-24.1 54.3-53.8 54.3zM448 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448h-.1z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+    </div>
+  </div>
+
+  <div class='footer-more'>
+    <a href="/about">About</a><a href='/contact'>Contact</a>
+  </div>
+
+  <div class='credits'>
+    <div class='credits-people'>
+      <p>Code by <a href='http://amber.rbind.io'>Amber Thomas</a></a></p>
+    </div>
+    <div class='credits-location'>
+      <p>Modified by <a href='ahmed.azeez1987@gmail.com'>Ahmed Azeez</a></a></p>
+    </div>
+
+
+  </div>
+
+
+
+
+  
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+  
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+  <script src="https://mscazmy.github.io/js/theme.js"></script>
+
+</footer>

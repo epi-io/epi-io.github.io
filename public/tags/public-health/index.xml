@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Public Health on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/public-health/</link>
+    <description>Recent content in Public Health on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/public-health/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R0 vs. Rt: Disease Potential vs. Disease Reality</title>
+      <link>https://mscazmy.github.io/2026/07/07/r0-vs-rt/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2026/07/07/r0-vs-rt/</guid>
+      <description>In epidemiology, R0 and Rt are often used interchangeably — but they capture different moments in an outbreak. Understanding the distinction is critical for tracking outbreaks and guiding public health action.&#xA;R0 (Basic Reproduction Number): The Potential R0 is the average number of secondary infections one infected person would cause in a fully susceptible population, with no immunity and no interventions in place. It&#39;s a theoretical baseline — a measure of a pathogen&#39;s inherent transmissibility under ideal conditions for spread.</description>
+    </item>
+    <item>
+      <title>Public Health Ethics: Types, Principles and Advantages</title>
+      <link>https://mscazmy.github.io/2024/02/10/public-health-ethics/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2024/02/10/public-health-ethics/</guid>
+      <description>What is Ethics? What is Public Health Ethics? Principles of Ethical Practice in Public Health Types of Ethics for a Public Health Professional Steps in a Process of Ethical Decision Making Importance of Ethics for Public Health Professionals References and For More Information What is Ethics? Ethics are the set of rules that govern our expectations of our own and others&#39; behavior. The term &#39;ethics&#39; is derived from the Greek word ethos that can mean custom, tradition, personality or disposition.</description>
+    </item>
+    <item>
+      <title>Predicting Infectious Disease Outbreak Severity</title>
+      <link>https://mscazmy.github.io/2024/01/15/epi-outbreak/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2024/01/15/epi-outbreak/</guid>
+      <description>Introduction Data Exploration Feature Engineering Cleaning Data Clustering data Predicting Outbreak Severity Introduction Early detection and classification of infectious disease outbreaks is one of the most consequential challenges in public health. Syndromic surveillance systems collect weekly data on case counts, fatality rates, vaccination coverage, and environmental conditions — yet translating this information into actionable severity classifications remains difficult.&#xA;In this project, I apply supervised machine learning to a multi-district epidemiological surveillance dataset to predict outbreak severity level: Mild, Moderate, or Severe.</description>
+    </item>
+  </channel>
+</rss>

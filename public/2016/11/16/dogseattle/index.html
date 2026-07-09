@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://mscazmy.github.io/2016/11/16/dogseattle/thumbnail.jpg" /><meta name="twitter:title" content="Dog Ownership in Seattle"/>
+<meta name="twitter:description" content="Cleaning, exploring, and mapping dog ownership data in Seattle"/>
+
+  <meta property="og:title" content="Dog Ownership in Seattle" />
+<meta property="og:description" content="Cleaning, exploring, and mapping dog ownership data in Seattle" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mscazmy.github.io/2016/11/16/dogseattle/" /><meta property="og:image" content="https://mscazmy.github.io/2016/11/16/dogseattle/thumbnail.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2016-11-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-11-16T00:00:00+00:00" />
+
+
+  
+  <title>Dog Ownership in Seattle | Ahmed Azeez</title>
+  
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/variables.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Merriweather:300,700|Noto+Sans:400,700" rel="stylesheet">
+
+ 
+
+  
+    
+    
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="/css/custom-light-syntax.css" id="syntaxLight">
+      <link rel="stylesheet alternate" type="text/css" href="/css/custom-dark-syntax.css" id="syntaxDark">
+    
+
+  
+
+</head>
+
+
+<main>
+
+  
+  <div class='post-background'>
+    <div class='post-gradient'></div>
+
+    
+<nav class="nav__simple">
+  <div class="nav__content">
+    <div class="goHome">
+      <a href="/" aria-label="Go back to all posts"><span class="inline-svg inline-svg-arrow-left" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+
+</span>
+ <span class='scroll-text'>Back to All</span></a>
+    </div>
+
+    <p class="nav__title">Ahmed Azeez </p>
+
+    <div class='toggle-container'>
+      <button class="theme-toggle">
+        <span class="scroll-text theme-text">Enable Dark Mode</span>
+        <div class="single-toggle">
+          <span class="inline-svg inline-svg-moon" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"/></svg> -->
+
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path fill="currentColor" d='M33.3 33.2c-5.1 5.1-13.3 5.1-18.4 0s-5.1-13.3 0-18.4c1.3-1.3 3-2.4 4.9-3 .6-.2 1.3-.1 1.7.4.4.4.6 1.1.4 1.7-1.3 3.6-.4 7.5 2.3 10.2s6.6 3.5 10.2 2.3c.6-.2 1.2-.1 1.7.4.4.4.6 1.1.4 1.7-.8 1.8-1.9 3.4-3.2 4.7zm-16.1-2.3c4.1 4.1 11 3.7 14.6-.8-3.7.2-7.3-1.1-9.9-3.8-2.7-2.7-4-6.3-3.8-9.9-4.4 3.3-5.1 10.1-.9 14.5z' fill='#FFF'/></svg>
+
+</span>
+
+          <span class="inline-svg inline-svg-sun" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"/></svg> -->
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path fill="currentColor" d='M24 15.2c-4.9 0-8.9 4-8.9 8.9s4 8.9 8.9 8.9 8.9-4 8.9-8.9-4-8.9-8.9-8.9zm0 14.1c-2.9 0-5.2-2.3-5.2-5.2 0-2.9 2.3-5.2 5.2-5.2s5.2 2.3 5.2 5.2c0 2.9-2.3 5.2-5.2 5.2zM24 13.5c1 0 1.8-.8 1.8-1.8V7.9c0-1-.8-1.8-1.8-1.8s-1.8.8-1.8 1.8v3.7c0 1.1.8 1.9 1.8 1.9zM24 34.7c-1 0-1.8.8-1.8 1.8v3.7c0 1 .8 1.8 1.8 1.8s1.8-.8 1.8-1.8v-3.7c0-1-.8-1.8-1.8-1.8zM34.4 16.4l2.6-2.7c.7-.7.7-1.9 0-2.6-.7-.7-1.9-.7-2.6 0l-2.6 2.6c-.7.7-.7 1.9 0 2.6.7.8 1.8.8 2.6.1zM13.6 31.8L11 34.5c-.7.7-.7 1.9 0 2.6s1.9.7 2.6 0l2.6-2.6c.7-.7.7-1.9 0-2.6-.7-.8-1.8-.8-2.6-.1zM13.4 24.1c0-1-.8-1.8-1.8-1.8H7.8c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8h3.7c1.1 0 1.9-.8 1.9-1.8zM40.2 22.3h-3.7c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8h3.7c1 0 1.8-.8 1.8-1.8s-.8-1.8-1.8-1.8zM13.6 16.4c.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6l-2.6-2.7c-.7-.7-1.8-.7-2.6 0-.7.8-.7 1.9 0 2.6l2.6 2.7zM34.4 31.8c-.7-.7-1.9-.7-2.6 0-.7.7-.7 1.9 0 2.6l2.6 2.6c.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6l-2.6-2.6z' fill='#FFF'/></svg>
+
+</span>
+
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>
+
+    
+
+
+    <div class='container-toTop'>
+      <div class='toTop-spacing'>
+        <div class='toTop-hidden'></div>
+        <a href="#" class="toTop is-hidden" aria-label="Scroll to top">
+          <span class="inline-svg inline-svg-chevron-up" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/></svg>
+
+</span>
+
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="article">
+
+    <section class="post__info">
+      
+        <p class='item__meta-category single'>project</p>
+      
+
+      <h1 class="post__title">Dog Ownership in Seattle</h1>
+
+      
+
+      
+      <div class='post__tags'>
+        <p class='post__tags-meta'>Tags:</p>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by R'>R</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by maps'>maps</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by data viz'>data viz</button>
+        
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by data cleaning'>data cleaning</button>
+        
+      </div>
+      
+
+      
+      <div class="post__date">
+        <p>November 16 2016 • 21 min read</p>
+      </div>
+      
+
+      
+      <div class='post__authors'>
+          
+          <a href="" ref="author">
+          
+            <div class='post__author'>
+              <img src="/images/logo.jpg" alt="" class='post__author-img'>
+              <div class='post__author-social'>
+                  <span class='post__author-name'>Ahmed Azeez</span>
+                
+                  <span class='post__author-website'>Website</span>
+                
+              </div>
+            </div>
+            </a>
+          
+        
+      </div>
+      
+
+      
+        <img class="post__image" src="dogs.jpg" alt="selective focus photography of three brown puppies" class="img-responsive">
+        
+          <p class="post__image-credit">Image by <a href="https://unsplash.com/photos/2_3c4dIFYFU">Anoir Chafik</a>
+            
+          </p>
+        
+      
+
+
+    </section>
+
+    <section class="post__content">
+      
+
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#cleaning-data">Cleaning Data</a></li>
+<li><a href="#data-visualizations">Data Visualizations</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+</ul>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This report investigates licensed dog ownership in Seattle, WA (USA).</p>
+<p>I’m curious about a few things here:</p>
+<ul>
+<li><p>People estimate that there are 160,000 dogs in Seattle. Where are they?</p></li>
+<li><p>Seattle is a relatively densely-populated area. Are small, apartment-friendly dogs preferred?</p></li>
+<li><p>Using this information, what recommendations could be made to aspiring dog sitters and walkers in Seattle?</p></li>
+</ul>
+<p>I will annotate each step of data analysis as I go.</p>
+<p>Time to get started!</p>
+<div id="loading-necessary-packages" class="section level3">
+<h3>Loading Necessary Packages</h3>
+<pre class="r"><code># For mapping
+library(choroplethr)
+library(choroplethrZip)
+library(ggmap)
+library(mapproj)
+library(zipcode)
+
+# For data manipulation and tidying
+library(dplyr)
+library(tidyr)
+
+# For data visualizations
+library(ggplot2)
+library(tm)
+library(SnowballC)
+library(wordcloud)
+
+# For modeling and machine learning
+library(caret)</code></pre>
+</div>
+<div id="importing-licensed-dog-ownership-data" class="section level3">
+<h3>Importing Licensed Dog Ownership Data</h3>
+<p>The spreadsheet containing all licensed dog ownership information was obtained from the Seattle Times article <a href="http://www.seattletimes.com/life/pets/mapping-the-dogs-of-seattle/">“Mapping the Dogs of Seattle”</a> and is available for <a href="https://docs.google.com/spreadsheets/d/1XWLw_hxWM2RHiwALzcM_QxNpzQn_cDmS3Z9HFoZMvTo/edit#gid=460106206">download</a>. According to the article, the original data were obtained from the Seattle Animal Shelter and represent the 43,000 licensed dogs in Seattle as of February 2015. <em>Note: This number is thought to only represent approximately <a href="http://www.seattle.gov/Documents/Departments/ParksAndRecreation/PoliciesPlanning/Plans/Response_to_SLI_69-1-B-1_(Dog_Off-Leash_Areas).pdf">27% of the dog population in Seattle</a></em></p>
+<pre class="r"><code>dogs &lt;- read.csv(file = &quot;Seattle_Dogs_2015.csv&quot;, header = TRUE, 
+    stringsAsFactors = TRUE)</code></pre>
+<p>Great! Let’s take a quick look at the data file.</p>
+<pre class="r"><code>str(dogs)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    42996 obs. of  7 variables:
+##  $ License.Type.Sold: Factor w/ 15 levels &quot;Dog 6 Month Prov/Rabies&quot;,..: 1 1 1 1 1 1 1 1 2 2 ...
+##  $ Animal.Type      : Factor w/ 1 level &quot;Dog&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Gender           : Factor w/ 3 levels &quot;Female&quot;,&quot;Male&quot;,..: 2 1 1 2 2 1 2 2 1 2 ...
+##  $ Primary.Breed    : Factor w/ 227 levels &quot;Affenpinscher&quot;,..: 53 53 174 123 137 102 53 106 26 15 ...
+##  $ Primary.Color    : Factor w/ 90 levels &quot;&quot;,&quot;Amber&quot;,&quot;Apricot&quot;,..: 85 6 85 10 10 9 9 36 83 56 ...
+##  $ Name             : Factor w/ 10712 levels &quot;&quot;,&quot; &quot;,&quot; Carlota&quot;,..: 603 9763 317 1324 3671 5764 6065 4254 490 7006 ...
+##  $ Zip.C            : Factor w/ 155 levels &quot;&quot;,&quot;*/116&quot;,&quot;14534&quot;,..: 107 107 100 75 84 1 86 77 107 87 ...</code></pre>
+<p>It looks like the variables we are working with right now:</p>
+<ul>
+<li><strong>License Type</strong> : Indicates what type of license the dog has</li>
+<li><strong>Animal Type</strong> : Since this dataset is all about dogs, there is only one animal type listed: “Dog”</li>
+<li><strong>Gender</strong> : Dog’s sex (“Male”, “Female”, or “Unspec”)</li>
+<li><strong>Primary Breed</strong> : Indicates the general breed of the dog</li>
+<li><strong>Primary Color</strong> : Indicates the dog’s overall color</li>
+<li><strong>Name</strong> : Lists the dog’s name</li>
+<li><strong>Zip.C</strong> : Indicates the zipcode where the dog is registered</li>
+</ul>
+<p>We can eliminate the “Animal Type” column since it doesn’t give us any additional information.</p>
+<pre class="r"><code>dogs &lt;- dogs %&gt;% select(-2)</code></pre>
+<p>Ok, now is there anyway to condense or standardize the breeds listed?</p>
+<p>Let’s take a look at what kind of breeds are present in Seattle.</p>
+<pre class="r"><code>levels(dogs$Primary.Breed)</code></pre>
+<pre><code>##   [1] &quot;Affenpinscher&quot;                  &quot;Afghan Hound&quot;                  
+##   [3] &quot;Airedale Terrier&quot;               &quot;Akita&quot;                         
+##   [5] &quot;Alaskan Malumute&quot;               &quot;Amer. Pitbull Terrier&quot;         
+##   [7] &quot;Amer. Water Spaniel&quot;            &quot;Amer.Staffordshire Terrier&quot;    
+##   [9] &quot;American Eskimo&quot;                &quot;American Foxhound&quot;             
+##  [11] &quot;Appenzel Mountain Dog&quot;          &quot;Australian Cattle Dog&quot;         
+##  [13] &quot;Australian Kelpie&quot;              &quot;Australian Shepard&quot;            
+##  [15] &quot;Australian Terrier&quot;             &quot;Basenji&quot;                       
+##  [17] &quot;Basset Hound&quot;                   &quot;Beagle&quot;                        
+##  [19] &quot;Bearded Collie&quot;                 &quot;Beauceron&quot;                     
+##  [21] &quot;Belgian Malinios&quot;               &quot;Belgian Malinois&quot;              
+##  [23] &quot;Belgian Sheepdog&quot;               &quot;Belgian Shepherd&quot;              
+##  [25] &quot;Belgian Tervuren&quot;               &quot;Bernese Mountain Dog&quot;          
+##  [27] &quot;Bichon Frise&quot;                   &quot;Bloodhound&quot;                    
+##  [29] &quot;Blue Heeler&quot;                    &quot;Bordeaux Mastiff&quot;              
+##  [31] &quot;Border Collie&quot;                  &quot;Border Terrier&quot;                
+##  [33] &quot;Borzoi&quot;                         &quot;Boston Terrier&quot;                
+##  [35] &quot;Bouvier De Flanders&quot;            &quot;Boxer&quot;                         
+##  [37] &quot;Briard&quot;                         &quot;Brittany Spaniel&quot;              
+##  [39] &quot;Brussels Griffon&quot;               &quot;Bull Terrier&quot;                  
+##  [41] &quot;Bull Terrier, Minature&quot;         &quot;Bulldog&quot;                       
+##  [43] &quot;Bulldog American&quot;               &quot;Bulldog English&quot;               
+##  [45] &quot;Bullmastiff&quot;                    &quot;Cairn Terrier&quot;                 
+##  [47] &quot;Canaan Dog&quot;                     &quot;Cane Corso&quot;                    
+##  [49] &quot;Carolina&quot;                       &quot;Catahoula Leopard Dog&quot;         
+##  [51] &quot;Cavalier King Charles Spaniel&quot;  &quot;Chesapeake Bay Retriever&quot;      
+##  [53] &quot;Chihuahua&quot;                      &quot;Chihuahua, Long-haired&quot;        
+##  [55] &quot;Chinese Crested&quot;                &quot;Chinook&quot;                       
+##  [57] &quot;Chow Chow&quot;                      &quot;Cirneco Dell Etna&quot;             
+##  [59] &quot;Clumber Spaniel&quot;                &quot;Cocker Spaniel&quot;                
+##  [61] &quot;Cocker Spaniel, American&quot;       &quot;Cocker Spaniel, English&quot;       
+##  [63] &quot;Collie&quot;                         &quot;Collie, Rough-Coated&quot;          
+##  [65] &quot;Collie, Smooth-Coated&quot;          &quot;Coonhound&quot;                     
+##  [67] &quot;Coonhound, Redbone&quot;             &quot;Coonhound, Walker&quot;             
+##  [69] &quot;Corgi&quot;                          &quot;Corgi, Cardigan Welsh&quot;         
+##  [71] &quot;Corgi, Pembroke Welsh&quot;          &quot;Coton de Tulear&quot;               
+##  [73] &quot;Coton Retulear&quot;                 &quot;Curly-Coated Retriever&quot;        
+##  [75] &quot;Curs&quot;                           &quot;Dachshund&quot;                     
+##  [77] &quot;Dachshund, Long-Haired&quot;         &quot;Dachshund, Minature&quot;           
+##  [79] &quot;Dachshund, Standard&quot;            &quot;Dachshund, Wirehaired&quot;         
+##  [81] &quot;Dalmatian&quot;                      &quot;Dandie Dinmont Terrier&quot;        
+##  [83] &quot;Dingo&quot;                          &quot;Doberman Pinscher&quot;             
+##  [85] &quot;Dogo de Argentino&quot;              &quot;Dogue De Bordeaux&quot;             
+##  [87] &quot;Elkhound&quot;                       &quot;English Foxhound&quot;              
+##  [89] &quot;English Setter&quot;                 &quot;English Springer Spaniel&quot;      
+##  [91] &quot;English Toy Spaniel&quot;            &quot;Entelbucher&quot;                   
+##  [93] &quot;Field Spaniel&quot;                  &quot;Finnish Spitz&quot;                 
+##  [95] &quot;Flat-Coated Retriever&quot;          &quot;Formosan Mountain Dog&quot;         
+##  [97] &quot;Fox Terrier&quot;                    &quot;Fox Terrier, Smooth&quot;           
+##  [99] &quot;Fox Terrier, Toy&quot;               &quot;Fox Terrier, Wirehaired&quot;       
+## [101] &quot;French Bulldog&quot;                 &quot;German Shepherd&quot;               
+## [103] &quot;German Shorthair Pointer&quot;       &quot;German Wirehair Pointer&quot;       
+## [105] &quot;Giffon Vendeen&quot;                 &quot;Golden Retriever&quot;              
+## [107] &quot;Goldendoodle&quot;                   &quot;Gordon Setter&quot;                 
+## [109] &quot;Great Dane&quot;                     &quot;Great Pyrenees&quot;                
+## [111] &quot;Greater Swiss Mountain Dog&quot;     &quot;Greyhound&quot;                     
+## [113] &quot;Harrier&quot;                        &quot;Havanese&quot;                      
+## [115] &quot;Hound&quot;                          &quot;Husky&quot;                         
+## [117] &quot;Ibizan Hound&quot;                   &quot;Irish Setter&quot;                  
+## [119] &quot;Irish Terrier&quot;                  &quot;Irish Wolfhound&quot;               
+## [121] &quot;Italian Greyhound&quot;              &quot;Italian Spinone&quot;               
+## [123] &quot;Jack Russell Terrier&quot;           &quot;Japanese Chin&quot;                 
+## [125] &quot;Japanese Fox&quot;                   &quot;Kairn Terrier&quot;                 
+## [127] &quot;Karelian Bear Dog&quot;              &quot;Keeshond&quot;                      
+## [129] &quot;Kerry Blue Terrier&quot;             &quot;King Charles Spaniel&quot;          
+## [131] &quot;Kookier Hound&quot;                  &quot;Korean Chin-do&quot;                
+## [133] &quot;Kuvasz&quot;                         &quot;Kyileo&quot;                        
+## [135] &quot;Lab Retriever&quot;                  &quot;Labradoodle&quot;                   
+## [137] &quot;Labrador Retriever&quot;             &quot;Lakeland Terrier&quot;              
+## [139] &quot;Landseer&quot;                       &quot;Leonberger&quot;                    
+## [141] &quot;Lhaso Apso&quot;                     &quot;Looks Like&quot;                    
+## [143] &quot;Lowchen&quot;                        &quot;Maltese&quot;                       
+## [145] &quot;Manchester Terrier&quot;             &quot;Manchester Terrier, Toy&quot;       
+## [147] &quot;Mastiff&quot;                        &quot;McNab&quot;                         
+## [149] &quot;Mexican Hairless&quot;               &quot;Miniture Pinscher&quot;             
+## [151] &quot;Mix&quot;                            &quot;Neapolitan Mastiff&quot;            
+## [153] &quot;Newfoundland&quot;                   &quot;Norfolk Terrier&quot;               
+## [155] &quot;Norwegian Elkhound&quot;             &quot;Norwegian Lundehund&quot;           
+## [157] &quot;Norwich Terrier&quot;                &quot;Novia Scotia Duck Tolling Retr&quot;
+## [159] &quot;NULL&quot;                           &quot;Old English Sheepdog&quot;          
+## [161] &quot;Otterhound&quot;                     &quot;Papillon&quot;                      
+## [163] &quot;Pekingese&quot;                      &quot;Pharaoh Hound&quot;                 
+## [165] &quot;Pitbull&quot;                        &quot;Plott Hound&quot;                   
+## [167] &quot;Pointer&quot;                        &quot;Pointing Griffon, Wirehaired&quot;  
+## [169] &quot;Pomeranian&quot;                     &quot;Poodle&quot;                        
+## [171] &quot;Poodle, Minature&quot;               &quot;Poodle, Standard&quot;              
+## [173] &quot;Poodle, Teacup&quot;                 &quot;Poodle, Toy&quot;                   
+## [175] &quot;Portuguese Water Dog&quot;           &quot;Pug&quot;                           
+## [177] &quot;Puli&quot;                           &quot;Purebred&quot;                      
+## [179] &quot;Queensland Blue Heeler&quot;         &quot;Red Heeler&quot;                    
+## [181] &quot;Rhodesian Ridgeback&quot;            &quot;Rottweiler&quot;                    
+## [183] &quot;Saint Bernard&quot;                  &quot;Saluki&quot;                        
+## [185] &quot;Samoyed&quot;                        &quot;Schipperke&quot;                    
+## [187] &quot;Schnauzer&quot;                      &quot;Schnauzer, Giant&quot;              
+## [189] &quot;Schnauzer, Minature&quot;            &quot;Schnauzer, Standard&quot;           
+## [191] &quot;Scottish Deerhound&quot;             &quot;Scottish Terrier&quot;              
+## [193] &quot;Sealyham Terrier&quot;               &quot;See Notes&quot;                     
+## [195] &quot;Setter&quot;                         &quot;Shar-Pei&quot;                      
+## [197] &quot;Shepherd&quot;                       &quot;Shetland Sheepdog&quot;             
+## [199] &quot;Shiba Inu&quot;                      &quot;Shih Tzu&quot;                      
+## [201] &quot;Siberian Husky&quot;                 &quot;Silken Windhound&quot;              
+## [203] &quot;Silky Terrier&quot;                  &quot;Spaniel&quot;                       
+## [205] &quot;Springer Spaniel&quot;               &quot;Staffordshire Bull Terrier&quot;    
+## [207] &quot;Sussex Spaniel&quot;                 &quot;Terrier&quot;                       
+## [209] &quot;Terrier, Black Russian&quot;         &quot;Terrier, Rat&quot;                  
+## [211] &quot;Terrier, Soft-Coated Wheaten&quot;   &quot;Tibetan Mastiff&quot;               
+## [213] &quot;Tibetan Spaniel&quot;                &quot;Tibetan Terrier&quot;               
+## [215] &quot;Unspecified&quot;                    &quot;Vizsla&quot;                        
+## [217] &quot;Water Spaniel&quot;                  &quot;Weimaraner&quot;                    
+## [219] &quot;Welsh Springer Spaniel&quot;         &quot;Welsh Terrier&quot;                 
+## [221] &quot;West Highland Terrier&quot;          &quot;West Highland White Terrier&quot;   
+## [223] &quot;West Hihgland White Terrier&quot;    &quot;Whippet&quot;                       
+## [225] &quot;Wirehair Terrier&quot;               &quot;Wolf Hybrid&quot;                   
+## [227] &quot;Yorkshire Terrier&quot;</code></pre>
+<p>Wow! That’s quite a few! We’ll come back to cleaning up the species names in a bit.</p>
+<p>Generally, the dog’s estimated size may be more beneficial than their breed, so let’s try to pair these data up with information from other sources. The data used are available <a href="http://modernpuppies.com/breedweightchart.aspx">here</a>. Time to import the database of dog breeds with their sizes.</p>
+<pre class="r"><code>weight &lt;- read.csv(file = &quot;Breed_Wt.csv&quot;, header = TRUE, stringsAsFactors = FALSE)</code></pre>
+<p>Now let’s see what that looks like.</p>
+<pre class="r"><code>str(weight)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    372 obs. of  3 variables:
+##  $ Breed                 : chr  &quot;Airedoodle&quot; &quot;Alapaha Blue Blood Bulldog&quot; &quot;Alaskan Klee Kai&quot; &quot;Alsatian&quot; ...
+##  $ Average.Adult.Weight  : chr  &quot;Male: 45-65 lbs&quot; &quot;Male: 50-80 lbs&quot; &quot;Male: 11-15 lbs&quot; &quot;Male: 65-85 lbs&quot; ...
+##  $ Average.Adult.Weight.1: chr  &quot;Female: 45-65 lbs&quot; &quot;Female: 50-80 lbs&quot; &quot;Female: 11-15 lbs&quot; &quot;Female: 50-70 lbs&quot; ...</code></pre>
+<pre class="r"><code>head(weight)</code></pre>
+<pre><code>##                        Breed Average.Adult.Weight Average.Adult.Weight.1
+## 1                 Airedoodle      Male: 45-65 lbs      Female: 45-65 lbs
+## 2 Alapaha Blue Blood Bulldog      Male: 50-80 lbs      Female: 50-80 lbs
+## 3           Alaskan Klee Kai      Male: 11-15 lbs      Female: 11-15 lbs
+## 4                   Alsatian      Male: 65-85 lbs      Female: 50-70 lbs
+## 5           American Bulldog      Male: 45-75 lbs      Female: 45-75 lbs
+## 6               Aussiedoodle     Male: 35-65 lbs       Female: 25-55 lbs</code></pre>
+</div>
+</div>
+<div id="cleaning-data" class="section level2">
+<h2>Cleaning Data</h2>
+<p>Looks like lots of character strings. Time to split out some of these columns. We’ll use the R packages <code>tidyr</code> and <code>dplyr</code> for this.</p>
+<pre class="r"><code># Delete empty rows
+weight &lt;- weight[!apply(weight == &quot;&quot;, 1, all), ]
+
+# Splitting Average Adult Weight (Species with Weight Ranges)
+weight_split &lt;- weight %&gt;% separate(Average.Adult.Weight, into = c(&quot;Male&quot;, 
+    &quot;Wt_Range&quot;), sep = &quot;: &quot;) %&gt;% filter(grepl(&quot;-&quot;, Wt_Range)) %&gt;% 
+    separate(Wt_Range, into = c(&quot;Min&quot;, &quot;Max&quot;, &quot;lbs&quot;)) %&gt;% select(-lbs) %&gt;% 
+    separate(Average.Adult.Weight.1, into = c(&quot;Female&quot;, &quot;Wt_Range_F&quot;), 
+        sep = &quot;: &quot;) %&gt;% filter(grepl(&quot;-&quot;, Wt_Range_F)) %&gt;% separate(Wt_Range_F, 
+    into = c(&quot;Min_F&quot;, &quot;Max_F&quot;, &quot;lbs_F&quot;)) %&gt;% mutate_each(funs(as.numeric), 
+    (Min:Max)) %&gt;% mutate_each(funs(as.numeric), (Min_F:Max_F)) %&gt;% 
+    mutate(Male_Avg = (Min + Max)/2) %&gt;% mutate(Female_Avg = (Min_F + 
+    Max_F)/2) %&gt;% select(1, 9:10)
+
+# Splitting Average Adult Weight (no ranges)
+weight_split_2 &lt;- weight %&gt;% separate(Average.Adult.Weight, into = c(&quot;Male&quot;, 
+    &quot;Wt_Range&quot;), sep = &quot;: &quot;) %&gt;% filter(!grepl(&quot;-&quot;, Wt_Range)) %&gt;% 
+    separate(Wt_Range, into = c(&quot;Male_Avg&quot;, &quot;lbs&quot;)) %&gt;% separate(Average.Adult.Weight.1, 
+    into = c(&quot;Female&quot;, &quot;Wt_Range_F&quot;), sep = &quot;: &quot;) %&gt;% separate(Wt_Range_F, 
+    into = c(&quot;Female_Avg&quot;, &quot;lbs_2&quot;)) %&gt;% select(1, 3, 6)
+
+# Bind Both Data Frames
+weight_split_all &lt;- rbind(weight_split_2, weight_split)
+
+# Check out our new dataframe
+head(weight_split_all)</code></pre>
+<pre><code>##              Breed Male_Avg Female_Avg
+## 1     Afghan Hound       60         50
+## 2 Airedale Terrier       55         55
+## 3 Alaskan Malamute       85         75
+## 4          Basenji       24         22
+## 5  English Bulldog       50         40
+## 6    Cairn Terrier       14         13</code></pre>
+<p>Great! Now we have a dataframe that just lists breed, and then average weight for males and females. Now we can use this to fill in the estimated weight for each of the animals in our <code>dogs</code> dataset.</p>
+<pre class="r"><code># Make a copy of our dataset
+dogs_2 &lt;- dogs
+
+# Match dog breed from dogs dataset to breed from
+# weight_split_all dataset
+dogs_2$Male_Avg &lt;- weight_split_all[match(dogs_2$Primary.Breed, 
+    weight_split_all$Breed), &quot;Male_Avg&quot;]
+
+dogs_2$Male_Avg &lt;- as.numeric(dogs_2$Male_Avg)
+
+dogs_2$Female_Avg &lt;- weight_split_all[match(dogs_2$Primary.Breed, 
+    weight_split_all$Breed), &quot;Female_Avg&quot;]
+
+dogs_2$Female_Avg &lt;- as.numeric(dogs_2$Female_Avg)</code></pre>
+<p>Great! Let’s check how we did.</p>
+<pre class="r"><code>summary(dogs_2$Male_Avg)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##    5.00   16.00   52.50   47.53   72.50  182.50   11611</code></pre>
+<p>Well, looks like our system automatically placed 73% of our entries, the remaining 27% (or 11,611 dogs) were not found. Let’s see if those were all the same or similar species.</p>
+<pre class="r"><code>missing_size &lt;- dogs_2 %&gt;% filter(is.na(Male_Avg)) %&gt;% group_by(Primary.Breed) %&gt;% 
+    summarise(count = n())
+
+head(missing_size)</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##                Primary.Breed count
+##                       &lt;fctr&gt; &lt;int&gt;
+## 1           Alaskan Malumute   123
+## 2      Amer. Pitbull Terrier   137
+## 3        Amer. Water Spaniel     5
+## 4 Amer.Staffordshire Terrier   186
+## 5      Appenzel Mountain Dog     3
+## 6         Australian Shepard  1216</code></pre>
+<p>Ah, looks like we have a few misspelled names in our original database. Let’s try to clean those up a bit.</p>
+<p>Due to the random nature of the misspellings and re-wording of breeds in this dataset, I’ll use the <code>gsub</code> function to manually recode the ones that need it. This also allows for verification that the correct new term is being used.</p>
+<pre class="r"><code># Fixing Misspellings
+dogs_2$Primary.Breed &lt;- gsub(&quot;Alaskan Malumute&quot;, &quot;Alaskan Malamute&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Shepard&quot;, &quot;Shepherd&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Belgian Malinios&quot;, &quot;Belgian Malinois&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Bouvier De Flanders&quot;, &quot;Bouvier des Flandres&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Coton Retulear&quot;, &quot;Coton de Tulear&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Dogo de Argentino&quot;, &quot;Dogo Argentino&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Entelbucher&quot;, &quot;Entlebucher&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;German Shorthair Pointer&quot;, &quot;German Shorthaired Pointer&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;German Wirehair Pointer&quot;, &quot;German Wirehaired Pointer&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Giffon Vendeen&quot;, &quot;Griffon Vendeen&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Italian Spinone&quot;, &quot;Spinone Italiano&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Kairn Terrier&quot;, &quot;Cairn Terrier&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Kookier Hound&quot;, &quot;Kooikerhondje&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Korean Chin-do&quot;, &quot;Jindo&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Kyileo&quot;, &quot;Kyi-Leo&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Lhaso Apso&quot;, &quot;Lhasa Apso&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Miniture Pinscher&quot;, &quot;Miniature Pinscher&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Novia Scotia Duck Tolling Retr&quot;, 
+    &quot;Nova Scotia Duck Tolling Retriever&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Setter$&quot;, &quot;English Setter&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;West Hihgland White Terrier|West Highland White Terrier&quot;, 
+    &quot;West Highland Terrier&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Amer.Staffordshire Terrier&quot;, &quot;American Staffordshire Terrier&quot;, 
+    dogs_2$Primary.Breed)
+
+# Change any &#39;Amer.&#39; to &#39;American&#39;
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Amer\\.$&quot;, &quot;American&quot;, dogs_2$Primary.Breed, 
+    fixed = TRUE)
+
+# Another name for Bordeaux Mastiff is &#39;French Mastiff&#39;
+dogs_2$Primary.Breed &lt;- gsub(&quot;Bordeaux Mastiff|Dogue De Bordeaux&quot;, 
+    &quot;French Mastiff&quot;, dogs_2$Primary.Breed)
+
+# Change &#39;Elkhound&#39; to &#39;Norwegian Elkhound&#39;
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Elkhound$&quot;, &quot;Norwegian Elkhound&quot;, 
+    dogs_2$Primary.Breed)
+
+# Change &#39;Husky&#39; to &#39;Siberian Husky&#39;
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Husky$&quot;, &quot;Siberian Husky&quot;, dogs_2$Primary.Breed)
+
+# Change King Charles Spaniel to Cavalier King Charles
+# Spaniel
+dogs_2$Primary.Breed &lt;- gsub(&quot;King Charles Spaniel|Cavalier King Charles Spaniel&quot;, 
+    &quot;Cavalier King Charles Spaniel&quot;, dogs_2$Primary.Breed)
+
+# Change Lab Retriever to Labrador Retriever
+dogs_2$Primary.Breed &lt;- gsub(&quot;Lab Retriever&quot;, &quot;Labrador Retriever&quot;, 
+    dogs_2$Primary.Breed)
+
+# Mexican Hairless are also called &#39;Xolo&#39;
+dogs_2$Primary.Breed &lt;- gsub(&quot;Mexican Hairless&quot;, &quot;Xolo&quot;, dogs_2$Primary.Breed)
+
+# Queensland Blue Heelers and Red Heelers are more commonly
+# known as Australian Cattle Dogs
+dogs_2$Primary.Breed &lt;- gsub(&quot;Queensland Blue Heeler|Red Heeler&quot;, 
+    &quot;Australian Cattle Dog&quot;, dogs_2$Primary.Breed)
+
+# Water Spaniels are the same as American Water Spaniels
+dogs_2$Primary.Breed &lt;- gsub(&quot;Amer\\. Water Spaniel|^Water Spaniel$&quot;, 
+    &quot;American Water Spaniel&quot;, dogs_2$Primary.Breed)
+
+# Japanese Foxes are also called &#39;Shiba Inu&#39;
+dogs_2$Primary.Breed &lt;- gsub(&quot;Japanese Fox&quot;, &quot;Shiba Inu&quot;, dogs_2$Primary.Breed)
+
+# Changing the order of some words
+dogs_2$Primary.Breed &lt;- gsub(&quot;Bull Terrier, Minature&quot;, &quot;Miniature Bull Terrier&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Bulldog American&quot;, &quot;American Bulldog&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Bulldog English&quot;, &quot;English Bulldog&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Cocker Spaniel, American&quot;, &quot;American Cocker Spaniel&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Cocker Spaniel, English&quot;, &quot;English Cocker Spaniel&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Corgi, Cardigan Welsh&quot;, &quot;Cardigan Welsh Corgi&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Corgi, Pembroke Welsh&quot;, &quot;Pembroke Welsh Corgi&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Dachshund, Minature&quot;, &quot;Miniature Dachshund&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Fox Terrier, Toy&quot;, &quot;Toy Fox Terrier&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Manchester Terrier, Toy&quot;, &quot;Toy Manchester Terrier&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Pointing Griffon, Wirehaired&quot;, 
+    &quot;Wirehaired Pointing Griffon&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Poodle, Minature&quot;, &quot;Miniature Poodle&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Schnauzer, Giant&quot;, &quot;Giant Schnauzer&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Schnauzer, Minature&quot;, &quot;Miniature Schnauzer&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Terrier, Black Russian&quot;, &quot;Black Russian Terrier&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Terrier, Rat&quot;, &quot;Rat Terrier&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Terrier, Soft-Coated Wheaten&quot;, 
+    &quot;Soft Coated Wheaten Terrier&quot;, dogs_2$Primary.Breed)
+
+# Combine similar types
+dogs_2$Primary.Breed &lt;- gsub(&quot;Collie, Rough-Coated|Collie, Smooth-Coated&quot;, 
+    &quot;Collie&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Chihuahua, Long-haired&quot;, &quot;Chihuahua&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Coonhound, Redbone|Coonhound, Walker&quot;, 
+    &quot;Coonhound&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Dachshund, Long-Haired|Dachshund, Standard|Dachshund, Wirehaired|^Dachshund$&quot;, 
+    &quot;Standard Dachshund&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Fox Terrier$|Fox Terrier, Smooth|Fox Terrier, Wirehaired|Wirehair Terrier&quot;, 
+    &quot;Standard Fox Terrier&quot;, dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Poodle$|Poodle, Standard&quot;, &quot;Standard Poodle&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;Poodle, Teacup|Poodle, Toy&quot;, &quot;Toy Poodle&quot;, 
+    dogs_2$Primary.Breed)
+dogs_2$Primary.Breed &lt;- gsub(&quot;^Schnauzer$|Schnauzer, Standard&quot;, 
+    &quot;Standard Schnauzer&quot;, dogs_2$Primary.Breed)</code></pre>
+<p>That was a lot of very different errors in that dataset! Let’s see if that helped.</p>
+<pre class="r"><code># Match dog breed from dogs dataset to breed from
+# weight_split_all dataset
+dogs_2$Male_Avg &lt;- weight_split_all[match(dogs_2$Primary.Breed, 
+    weight_split_all$Breed), &quot;Male_Avg&quot;]
+
+dogs_2$Male_Avg &lt;- as.numeric(dogs_2$Male_Avg)
+
+dogs_2$Female_Avg &lt;- weight_split_all[match(dogs_2$Primary.Breed, 
+    weight_split_all$Breed), &quot;Female_Avg&quot;]
+
+dogs_2$Female_Avg &lt;- as.numeric(dogs_2$Female_Avg)</code></pre>
+<p>Let’s see how we did.</p>
+<pre class="r"><code>summary(dogs_2$Male_Avg)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##    5.00   15.50   50.00   45.19   72.50  182.50    3503</code></pre>
+<p>Well, that did fix some of the missing values! Still another 3,503 (or 8%) to go!</p>
+<pre class="r"><code>missing_size_2 &lt;- dogs_2 %&gt;% filter(is.na(Male_Avg)) %&gt;% group_by(Primary.Breed) %&gt;% 
+    summarise(count = n())
+
+missing_size_2$Primary.Breed</code></pre>
+<pre><code>##  [1] &quot;Amer. Pitbull Terrier&quot;  &quot;Appenzel Mountain Dog&quot; 
+##  [3] &quot;Belgian Shepherd&quot;       &quot;Bulldog&quot;               
+##  [5] &quot;Carolina&quot;               &quot;Cirneco Dell Etna&quot;     
+##  [7] &quot;Curs&quot;                   &quot;Dingo&quot;                 
+##  [9] &quot;Entlebucher&quot;            &quot;Formosan Mountain Dog&quot; 
+## [11] &quot;Hound&quot;                  &quot;Kyi-Leo&quot;               
+## [13] &quot;Landseer&quot;               &quot;Looks Like&quot;            
+## [15] &quot;McNab&quot;                  &quot;Mix&quot;                   
+## [17] &quot;Norwegian Lundehund&quot;    &quot;NULL&quot;                  
+## [19] &quot;Purebred&quot;               &quot;Saluki&quot;                
+## [21] &quot;See Notes&quot;              &quot;Shepherd&quot;              
+## [23] &quot;Silken Windhound&quot;       &quot;Spaniel&quot;               
+## [25] &quot;Terrier&quot;                &quot;Toy Manchester Terrier&quot;
+## [27] &quot;Unspecified&quot;            &quot;Welsh Springer Spaniel&quot;
+## [29] &quot;Wolf Hybrid&quot;            &quot;Xolo&quot;</code></pre>
+<p>It looks like a few of these can’t be sorted. For example, we have no way of estimating size for “Looks Like”, “Mix”, “Purebred”, “See Notes” or “Unspecified”, so I’ll make the sizes of all of those “NA”.</p>
+<pre class="r"><code>dogs_2$Primary.Breed &lt;- gsub(&quot;Looks Like|^Mix$|NULL|Purebred|See Notes|Unspecified|^Curs$&quot;, 
+    NA, dogs_2$Primary.Breed)
+
+# Calculate how many are missing now
+missing_size_3 &lt;- dogs_2 %&gt;% filter(is.na(Male_Avg)) %&gt;% group_by(Primary.Breed) %&gt;% 
+    summarise(count = n())</code></pre>
+<p>So of our remaining 3,503 dogs, how many of them have sizes that we can’t estimate?</p>
+<pre class="r"><code>missing_size_3[which(is.na(missing_size_3)), ]</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   Primary.Breed count
+##           &lt;chr&gt; &lt;int&gt;
+## 1          &lt;NA&gt;  1313</code></pre>
+<p>We can’t estimate 1,313 dogs’ sizes, which means that we can still estimate the size of the remaining 2,190 dogs. We only have a few species left, and it looks like they weren’t ones that were in our original weights dataset.</p>
+<pre class="r"><code>missing_size_3$Primary.Breed</code></pre>
+<pre><code>##  [1] &quot;Amer. Pitbull Terrier&quot;  &quot;Appenzel Mountain Dog&quot; 
+##  [3] &quot;Belgian Shepherd&quot;       &quot;Bulldog&quot;               
+##  [5] &quot;Carolina&quot;               &quot;Cirneco Dell Etna&quot;     
+##  [7] &quot;Dingo&quot;                  &quot;Entlebucher&quot;           
+##  [9] &quot;Formosan Mountain Dog&quot;  &quot;Hound&quot;                 
+## [11] &quot;Kyi-Leo&quot;                &quot;Landseer&quot;              
+## [13] &quot;McNab&quot;                  &quot;Norwegian Lundehund&quot;   
+## [15] &quot;Saluki&quot;                 &quot;Shepherd&quot;              
+## [17] &quot;Silken Windhound&quot;       &quot;Spaniel&quot;               
+## [19] &quot;Terrier&quot;                &quot;Toy Manchester Terrier&quot;
+## [21] &quot;Welsh Springer Spaniel&quot; &quot;Wolf Hybrid&quot;           
+## [23] &quot;Xolo&quot;                   NA</code></pre>
+<p>Since there are only a few breeds left, I will manually create a database of the average weights (all found on the Wikipedia pages for the species).</p>
+<p>I’ll upload in the supplemental file and match the breed name and mass.</p>
+<pre class="r"><code># Import File
+supp_weight &lt;- read.csv(file = &quot;Supp_Breed_Wt.csv&quot;, header = TRUE, 
+    stringsAsFactors = FALSE)
+
+# Make a copy of our filtered dataset
+dogs_3 &lt;- dogs_2 %&gt;% filter(is.na(Male_Avg))
+
+dogs_4 &lt;- dogs_2 %&gt;% filter(!is.na(Male_Avg))
+
+# Match dog breed from dogs dataset to breed from
+# weight_split_all dataset
+dogs_3$Male_Avg &lt;- supp_weight[match(dogs_3$Primary.Breed, supp_weight$Breed), 
+    &quot;Male_Avg&quot;]
+
+dogs_3$Male_Avg &lt;- as.numeric(dogs_3$Male_Avg)
+
+dogs_3$Female_Avg &lt;- supp_weight[match(dogs_3$Primary.Breed, 
+    supp_weight$Breed), &quot;Female_Avg&quot;]
+
+dogs_3$Female_Avg &lt;- as.numeric(dogs_3$Female_Avg)
+
+# Bind datasets back together
+dogs_5 &lt;- rbind(dogs_3, dogs_4)</code></pre>
+<pre class="r"><code>summary(dogs_5$Male_Avg)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##    5.00   16.00   50.00   45.77   72.50  182.50    1313</code></pre>
+<p>Awesome! So the only dogs that we still don’t have approximate weights on are the ones with miscoded breeds. Now let’s get a better approximation of weight based on gender.</p>
+<pre class="r"><code>dogs_5$Gender &lt;- as.factor(dogs_5$Gender)
+
+dogs_5 &lt;- dogs_5 %&gt;% mutate(weight = ifelse(Gender == &quot;Female&quot;, 
+    Female_Avg, Male_Avg))</code></pre>
+<p>Perfect. Now we can make an estimate of how they would be categorized on “<a href="www.rover.com">Rover.com</a>”, a Seattle-based website aimed at helping dog-owners find reliable dog-sitters and walkers. Their website lists the following size cutoffs (in lbs):</p>
+<ul>
+<li>Small = 0 - 15</li>
+<li>Medium = 16 - 40</li>
+<li>Large = 41 - 100</li>
+<li>Giant = 100 +</li>
+</ul>
+<p>Let’s add those classifications to our dataset.</p>
+<pre class="r"><code>dogs_5 &lt;- dogs_5 %&gt;% mutate(size_class = ifelse(weight &lt;= 15, 
+    &quot;Small&quot;, ifelse(weight &gt; 15 &amp; weight &lt;= 40, &quot;Medium&quot;, ifelse(weight &gt; 
+        40 &amp; weight &lt;= 100, &quot;Large&quot;, ifelse(weight &gt; 100, &quot;Giant&quot;, 
+        NA)))))
+
+dogs_5$size_class &lt;- as.factor(dogs_5$size_class)</code></pre>
+<p>Now we’ve got information on dogs, with their breeds, zipcodes and approximate sizes and size classes. This will help us later.</p>
+</div>
+<div id="data-visualizations" class="section level2">
+<h2>Data Visualizations</h2>
+<div id="dog-popularity-by-breed" class="section level3">
+<h3>Dog Popularity – By Breed</h3>
+<p>Now let’s look at some visualizations. We’ll start with the popularity of each dog breed within Seattle. This figure shows the top 24 most popular breeds in the city.</p>
+<div class="float">
+<img src="unnamed-chunk-23-1.png" alt="Bar graph showing the most popular dog breeds in Seattle, labradors, chihuahuas, and golden retrievers are the most popular" />
+<div class="figcaption">Bar graph showing the most popular dog breeds in Seattle, labradors, chihuahuas, and golden retrievers are the most popular</div>
+</div>
+<p>Wow! Looks like labrador retrievers are by far the most popular breed of dog in Seattle.</p>
+</div>
+<div id="dog-popularity-by-size" class="section level3">
+<h3>Dog Popularity – By Size</h3>
+<p>How do the numbers of dogs break down by dog size?</p>
+<div class="float">
+<img src="unnamed-chunk-24-1.png" alt="Bar graph showing the most popular dog sizes in Seattle. The highest number of dogs is considered “large”, followed by “medium”, “small”, “giant”" />
+<div class="figcaption">Bar graph showing the most popular dog sizes in Seattle. The highest number of dogs is considered “large”, followed by “medium”, “small”, “giant”</div>
+</div>
+<p>For a city filled with apartment buildings, Seattle-ites really love large dogs (almost as much as medium and small dogs combined!).</p>
+<p>I wonder if this trend varies depending on which part of the city the pets are living in.</p>
+</div>
+<div id="dog-populations-by-zip-code" class="section level3">
+<h3>Dog Populations by Zip Code</h3>
+<p>First let’s see the density of dogs living in each zip code. Looks like we have some messy zip code data with quite a few zip codes not falling in the Seattle area. We’ll use a list of <a href="http://www.unitedstateszipcodes.org/wa/#zips-list">Washington State zip codes</a> to narrow this list down.</p>
+<pre class="r"><code># Import Zipcode dataset
+zipcodes &lt;- read.csv(&quot;Zipcodes.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
+
+# Match zipcodes in database to those listed on dog licenses
+dogs_5$zip &lt;- zipcodes[match(dogs_5$Zip.C, zipcodes$ZIP), &quot;ZIP&quot;]
+
+# Make zipcodes factors
+dogs_5$zip &lt;- as.factor(dogs_5$zip)
+
+# How many are missing?
+sum(is.na(dogs_5$zip))</code></pre>
+<pre><code>## [1] 365</code></pre>
+<p>Ok, so there were 365 dog licenses that didn’t list appropriate zip codes. That’s alright, that’s less than 1% of our dataset. Let’s move forward.</p>
+<p><em>It looks like several of the zipcodes listed are “industrial” zip codes. We’ll replace the zip code with the residential zip code that each industrial one falls within.</em></p>
+<div class="float">
+<img src="unnamed-chunk-26-1.png" alt="Choropleth map showing the dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”" />
+<div class="figcaption">Choropleth map showing the dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”</div>
+</div>
+<p>Looks like the highest populations of licensed dogs are found in zipcodes 98115, 98103, and 98117. That corresponds roughly to Northeast Seattle, the area between Fremont and Greenwood, and the Ballard to Crown Hill area. It is certainly possible that the high dog populations in those areas could be correlated with the human population in the same areas. Let’s see how many licensed dogs there are per person in these areas.</p>
+<p><em>Human Population Data Obtained <a href="http://zipatlas.com/us/wa/seattle/zip-code-comparison/population-density.htm">Here</a></em></p>
+<pre class="r"><code>human_pop &lt;- read.csv(&quot;Human_Pop.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
+
+# Make a copy of our dataset (dog populations by zipcode)
+pop_zip_2 &lt;- pop_zip
+
+# Match human populations from new dataset to zipcodes from
+# dog population dataset
+pop_zip_2$h_pop &lt;- human_pop[match(pop_zip_2$region, human_pop$Zip), 
+    &quot;Population&quot;]
+pop_zip_2$h_pop &lt;- gsub(&quot;,&quot;, &quot;&quot;, pop_zip_2$h_pop)
+pop_zip_2$h_pop &lt;- as.numeric(pop_zip_2$h_pop)
+
+
+# Create new factor: dog_human (i.e. ratio of dogs to humans)
+pop_zip_2 &lt;- pop_zip_2 %&gt;% filter(!is.na(h_pop)) %&gt;% filter(h_pop &gt; 
+    10) %&gt;% mutate(dog_human = value/h_pop) %&gt;% select(1, 4)
+
+# Change variable names for choroplethrZip
+pop_zip_2 &lt;- rename(pop_zip_2, value = dog_human)
+
+# Plot
+zip_choropleth(pop_zip_2, zip_zoom = (pop_zip_2$region), legend = &quot;Dog:Human Ratio&quot;, 
+    reference_map = TRUE, num_colors = 1)</code></pre>
+<div class="float">
+<img src="unnamed-chunk-27-1.png" alt="Choropleth map showing the dog population per human in various zip codes throughout Seattle. The highest proportions are in central Seattle”" />
+<div class="figcaption">Choropleth map showing the dog population per human in various zip codes throughout Seattle. The highest proportions are in central Seattle”</div>
+</div>
+<p>Generally speaking, central Seattle has a higher “Licensed Dogs : People” Ratio than the neighborhoods along the north and south edges. The highest proportion is found in zipcode 98117 or the Ballard to Crown Hill area with roughly 1 licensed dog for every 10 people. That is a residential area with lots of homes and fewer apartment buildings than the downtown-area.</p>
+<p>I wonder if there are more large dogs in those house-filled areas and small dogs in apartment-laden areas. Let’s map dog populations by their size.</p>
+<p>These figures will be proportions of small, medium, large and giant dogs in proportion to the number of dogs in each zipcode.</p>
+</div>
+<div id="dog-populations-by-size" class="section level3">
+<h3>Dog Populations by Size</h3>
+<div id="small" class="section level4">
+<h4>Small</h4>
+<div class="float">
+<img src="unnamed-chunk-28-1.png" alt="Choropleth map showing the small dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in downtown Seattle”" />
+<div class="figcaption">Choropleth map showing the small dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in downtown Seattle”</div>
+</div>
+</div>
+<div id="medium" class="section level4">
+<h4>Medium</h4>
+<div class="float">
+<img src="unnamed-chunk-29-1.png" alt="Choropleth map showing the medium dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”" />
+<div class="figcaption">Choropleth map showing the medium dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”</div>
+</div>
+</div>
+<div id="large" class="section level4">
+<h4>Large</h4>
+<div class="float">
+<img src="unnamed-chunk-30-1.png" alt="Choropleth map showing the large dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”" />
+<div class="figcaption">Choropleth map showing the large dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”</div>
+</div>
+</div>
+<div id="giant" class="section level4">
+<h4>Giant</h4>
+<div class="float">
+<img src="unnamed-chunk-31-1.png" alt="Choropleth map showing the giant dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern and southern Seattle”" />
+<div class="figcaption">Choropleth map showing the giant dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern and southern Seattle”</div>
+</div>
+</div>
+</div>
+<div id="caveats-of-dog-size-by-zipcode" class="section level3">
+<h3>Caveats of Dog Size by Zipcode</h3>
+<p>Wow! Looks like the largest proportion of small dogs is quite concentrated to zipcodes 98134 (Industrial District) and 98101 (Downtown Seattle, near Pike Place Market). These zip codes do have relatively small total dog populations though, totalling at only 38 and 487 dogs, respectively.</p>
+<p>Medium, large and giant sized dogs have a generally more consistent proportional distribution throughout the city. Both medium and large dogs have a higher than average proportion in zip code 98155, but again, this area boasts a small overall dog population (17 dogs total).</p>
+</div>
+<div id="dog-names" class="section level3">
+<h3>Dog Names</h3>
+<p>Just for fun, let’s take a look at the most popular dog names in Seattle. Word cloud, anyone?</p>
+<pre class="r"><code># Create a corpus
+names &lt;- Corpus(VectorSource(dogs_5$Name))
+
+# Convert to plain text document
+names &lt;- tm_map(names, PlainTextDocument)
+
+# Remove numbers and punctuation, just in case
+names &lt;- tm_map(names, removeNumbers)
+names &lt;- tm_map(names, removePunctuation)
+
+# Make all names lowercase
+names &lt;- tm_map(names, content_transformer(tolower))
+
+
+# Generate the wordcloud
+wordcloud(names, scale = c(5, 0.2), max.words = 150, random.order = FALSE, 
+    rot.per = 0.35, use.r.layout = TRUE, colors = brewer.pal(6, 
+        &quot;Greens&quot;)[c(4, 5, 6, 7, 8, 9)])</code></pre>
+<div class="float">
+<img src="unnamed-chunk-32-1.png" alt="Word cloud of dog names. Some of the largest include Lucy, Charlie, Null, Daisy, dog, buddy, and bella”" />
+<div class="figcaption">Word cloud of dog names. Some of the largest include Lucy, Charlie, Null, Daisy, dog, buddy, and bella”</div>
+</div>
+<p>Oops! Looks like a few of those are probably not real names. We’ll go ahead and remove “dog”, “null”, “altered”, “female”, “male”, “labrador”, “retriever”, “year”, and “seattle” from the wordcloud.</p>
+<pre class="r"><code># Remove non-names
+names_2 &lt;- tm_map(names, removeWords, c(&quot;dog&quot;, &quot;null&quot;, &quot;seattle&quot;, 
+    &quot;altered&quot;, &quot;female&quot;, &quot;male&quot;, &quot;labrador&quot;, &quot;retriever&quot;, &quot;year&quot;))
+
+# Generate the wordcloud
+wordcloud(names_2, scale = c(5, 0.2), max.words = 150, random.order = FALSE, 
+    rot.per = 0.25, use.r.layout = TRUE, colors = brewer.pal(6, 
+        &quot;Greens&quot;)[c(4, 5, 6, 7, 8, 9)])</code></pre>
+<div class="float">
+<img src="unnamed-chunk-33-1.png" alt="Word cloud of dog names after removing non-names. Some of the largest include Lucy, Charlie, Bella, Daisy”" />
+<div class="figcaption">Word cloud of dog names after removing non-names. Some of the largest include Lucy, Charlie, Bella, Daisy”</div>
+</div>
+<p>Wow! Lucy looks like the clear winner here!</p>
+<p>Looks like some other well-known dog names (like Buddy) are pretty common in Seattle. How about “Rover”?</p>
+<pre class="r"><code>dogs_5 %&gt;% filter(Name == &quot;Rover&quot;)</code></pre>
+<pre><code>##            License.Type.Sold Gender          Primary.Breed Primary.Color
+## 1         Dog Altered 1 year   Male        German Shepherd          Rust
+## 2         Dog Altered 1 year   Male     Labrador Retriever       Chocola
+## 3         Dog Altered 2 year   Male                Maltese           Red
+## 4         Dog Altered 2 year   Male     Labrador Retriever         Black
+## 5         Dog Altered 2 year   Male  Australian Cattle Dog         Black
+## 6 Dog Unaltered SR/HC 2 year   Male American Water Spaniel         Liver
+##    Name Zip.C Male_Avg Female_Avg weight size_class   zip
+## 1 Rover 98112     85.0       85.0   85.0      Large 98112
+## 2 Rover 98103     72.5       62.5   72.5      Large 98103
+## 3 Rover 98103      5.5        5.5    5.5      Small 98103
+## 4 Rover 98122     72.5       62.5   72.5      Large 98122
+## 5 Rover 98125     40.0       40.0   40.0     Medium 98125
+## 6 Rover 98117     37.5       32.5   37.5     Medium 98117</code></pre>
+<p>There are 6 licensed dogs in Seattle named Rover!</p>
+</div>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<ul>
+<li><p>Dogs are basically everywhere in Seattle, but are most highly concentrated closer to the center of the city rather than on bordering neighborhoods.</p></li>
+<li><p>Regardless of apartment-living, Seattle-ites are big fans of big dogs throughout the city.</p></li>
+<li><p>The highest dog to human ratio is found in the Ballard to Crown Hill area, with nearly 1 dog per 10 people.</p></li>
+<li><p>Generally, Seattle would be a great place to be a dog sitter or walker. To increase the likelihood of finding customers, I’d suggest being open to walking or pet-sitting large dogs where possible.</p></li>
+<li><p>For a company like Rover.com which aims to connect dog-parents to dog sitters and walkers, I’d recommend providing this type of city-wide breakdown to potential sitters. I’d also suggest reaching out to large-dog owners to investigate their interest in becoming a sitter of other large dogs.</p></li>
+</ul>
+<p><em>Without both sitter and user data from Rover.com, I am unable to make recommendations regarding the best neighborhood to become a dog sitter.</em></p>
+</div>
+
+    </section>
+
+    
+  </article>
+
+</main>
+<footer class='footer__single'>
+  
+  <div class='footer__content'>
+    <div class="footer-buttons">
+      
+  
+
+  
+    <a href="mailto:ahmed.azeez1987@gmail.com" class="social-button email" aria-label="Find me on email">
+      <span class="inline-svg inline-svg-email" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 0H48C21.49 0 0 21.49 0 48V336C0 362.51 21.49 384 48 384H464C490.51 384 512 362.51 512 336V48C512 21.49 490.51 0 464 0ZM464 48V88.805C441.578 107.064 405.832 135.456 329.413 195.295C312.572 208.542 279.212 240.367 256 239.996C232.792 240.371 199.421 208.537 182.587 195.295C106.18 135.465 70.425 107.067 48 88.805V48H464Z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+    <a href="https://github.com/mscazmy" class="social-button github" aria-label="Find me on github">
+      <span class="inline-svg inline-svg-github" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+
+  
+    <a href="https://www.linkedin.com/in/ahmed-a-hasan" class="social-button linkedin" aria-label="Find me on linkedin">
+      <span class="inline-svg inline-svg-linkedin" >
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.1 512"><path fill="currentColor" d="M100.3 448H7.4V148.9h92.9V448zM53.8 108.1C24.1 108.1 0 83.5 0 53.8S24.1 0 53.8 0s53.8 24.1 53.8 53.8-24.1 54.3-53.8 54.3zM448 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448h-.1z"/></svg>
+
+</span>
+
+    </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+    </div>
+  </div>
+
+  <div class='footer-more'>
+    <a href="/about">About</a><a href='/contact'>Contact</a>
+  </div>
+
+  <div class='credits'>
+    <div class='credits-people'>
+      <p>Code by <a href='http://amber.rbind.io'>Amber Thomas</a></a></p>
+    </div>
+    <div class='credits-location'>
+      <p>Modified by <a href='ahmed.azeez1987@gmail.com'>Ahmed Azeez</a></a></p>
+    </div>
+
+
+  </div>
+
+
+
+
+  
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/yaml.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>
+  
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+  <script src="https://mscazmy.github.io/js/theme.js"></script>
+
+</footer>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Purrr on Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/tags/purrr/</link>
+    <description>Recent content in Purrr on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/tags/purrr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Making Multi-Argument Functions &amp; Data Frames Purrr</title>
+      <link>https://mscazmy.github.io/2018/03/26/purrr/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/03/26/purrr/</guid>
+      <description>Why purrr? Ah, the purrr package for R. Months after it had been released, I was still simply amused by all of the cat-related puns that this new package invoked, but I had no idea what it did. What did it mean to make your functions “purr”?&#xA;I started seeing post after post about why Hadley Wickham’s newest R package was a game-changer. But it was actually this Stack Overflow response that finally convinced me.</description>
+    </item>
+  </channel>
+</rss>

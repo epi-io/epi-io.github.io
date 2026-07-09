@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ahmed Azeez</title>
+    <link>https://mscazmy.github.io/authors/russell-goldenberg/</link>
+    <description>Recent content on Ahmed Azeez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mscazmy.github.io/authors/russell-goldenberg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Infinite Monkey Theorem Experiment</title>
+      <link>https://mscazmy.github.io/2020/04/13/monkey/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2020/04/13/monkey/</guid>
+      <description>The Premise Probability can be a hard concept to understand, especially when discussing the probability of highly unlikely events. The original “infinite monkey theorem” posits that given an infinite amount of time, a monkey with a typewriter could eventually type out Shakespeare by randomly mashing keys. We wanted to create a visual explainer of this concept using a slightly different medium, keyboards aimed at playing well-known melodies. And using computers instead of monkeys.</description>
+    </item>
+    <item>
+      <title>Hipster Summer Reading List</title>
+      <link>https://mscazmy.github.io/2019/06/24/libraries/</link>
+      <pubDate>Mon, 24 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/06/24/libraries/</guid>
+      <description>The Premise It’s officially summer and you’re looking for your next read. But you don’t want to read what everyone else is reading. No, you want something more obscure. You’ll take the books that no one is reading. Better yet, how about the books no one has touched in years?&#xA;We (programmatically) sifted through over 100 million checkout records from the Seattle Public Library to find fiction books that haven’t been checked out in over a decade*.</description>
+    </item>
+    <item>
+      <title>How many High School Stars Make it in the NBA?</title>
+      <link>https://mscazmy.github.io/2019/03/04/hs_hype/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2019/03/04/hs_hype/</guid>
+      <description>The Premise In the US, the 100 best high school basketball players are ranked, with the thought that those ranked higher, will have a more successful basketball career. But how often is this true?&#xA;My Contributions Data cleaning &amp;amp; analysis Some story writing Front-end development (HTML, CSS, and D3) Collaborators This story took place when The Pudding was experimenting with pairing up someone who knows a lot about a topic (Russell Goldenberg) with someone who knows nothing about that topic (me).</description>
+    </item>
+    <item>
+      <title>Internet Boy Band Database</title>
+      <link>https://mscazmy.github.io/2018/11/27/boybands/</link>
+      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2018/11/27/boybands/</guid>
+      <description>The Premise Seriously, this was just a “we want to experiment with making in-browser animations and make something fun on the internet” kinda thing&#xA;My Contributions Managing dozens of data collection volunteers Data Cleaning Some Front End Programming (HTML, CSS, JS) Some Story Design Collaborators This story was suggested by Russell Goldenberg who wanted to see the physical characteristics of boybands switch while they continued dancing (that is, switch from the members of a single band to the members of another).</description>
+    </item>
+    <item>
+      <title>10 Things Everyone Hates About You</title>
+      <link>https://mscazmy.github.io/2017/12/04/hater/</link>
+      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/12/04/hater/</guid>
+      <description>The Premise Using data from the new-age dating app, Hater, we can learn about the types of things that people in the US love, hate, and can never agree on.&#xA;My Contributions Data Analysis Story Writing Some front-end work (primarily the swarm chart) Static chart design Social image creation Collaborators This project was done in collaboration with Russell Goldenberg at The Pudding. Russell took the design-lead for this piece, and also was responsible for the front-end development of the small multiple graphics and the maps.</description>
+    </item>
+    <item>
+      <title>How Far is Too Far? </title>
+      <link>https://mscazmy.github.io/2017/09/08/clinics/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/09/08/clinics/</guid>
+      <description>The Premise For some people in the US, round-trip travel time to the nearest abortion-providing clinic can be about nine hours. We set out to quantify access to abortion clinics by measuring what really affects people: how long it takes to drive there.&#xA;My Contributions Data Collection Some Data Analysis Some Graphical Mockups Animation Story Writing Collaborators This project was done in collaboration with many of the fine folks at The Pudding.</description>
+    </item>
+    <item>
+      <title>She Giggles, He Gallops</title>
+      <link>https://mscazmy.github.io/2017/08/22/screendirection/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>https://mscazmy.github.io/2017/08/22/screendirection/</guid>
+      <description>The Premise There have been several projects conducted that show a disparity in film dialogue between male and female characters. But, talking isn’t the only thing important to a movie. The way characters are instructed to act plays a role as well. In this project, we investigate over 2,000 film scripts to find what verbs are more likely to follow the pronouns “he” and “she”.&#xA;My Contributions Some front-end development (HTML, CSS, and D3) Collaborators The data collection, analysis, graphic wireframes, and story-writing for this project came from Julia Silge.</description>
+    </item>
+  </channel>
+</rss>
