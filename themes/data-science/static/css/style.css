@@ -8,7 +8,7 @@ blockquote{ font-family: var(--annotationFont); font-style: italic; color: var(-
 .dark .intro-container img{ mix-blend-mode: normal !important; }
 /* Changes the style of everything at the top of the homepage */ .intro{ min-height: 300px; background: var(--introGradient); display: flex; align-items: center; }
 .intro-container{ display: flex; justify-content: center; align-items: center; display: flex; flex-direction: row; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-@media(max-width: 730px){ .introImage{ max-width: 420px; margin-bottom: 25px; }
+@media(max-width: 730px){ .introImage{ max-width: 310px; margin-bottom: 25px; }
 .intro-container{ margin-bottom: 25px; }
 }
 @media(min-width: 730px){ .introImage{ max-width: 420px; margin-right: 50px; }
@@ -28,8 +28,9 @@ blockquote{ font-family: var(--annotationFont); font-style: italic; color: var(-
 .social-button, .social-button:hover, .social-button:visited{ color: var(--accent); margin: 0; padding: 2px 5px; transition: var(--fastFade); font-size: 16px; text-decoration: none; cursor: pointer }
 .social-button:hover{ color: var(--content); }
 /* Changes the style of the filtering options above the portfolio on the homepage */ .portfolio{ display: block; position: relative; background-color: var(--page); }
-.portfolio__filters{ position: -webkit-sticky; /* Safari */ position: sticky; top: 0; z-index: 10; display: flex; justify-content: center; align-items: center; height: 50px; background-color: var(--elevation); box-shadow: var(--mainShadow); }
-.filters__content{ max-width: 1100px; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; padding: 0 0.5rem }
+.portfolio__filters{ position: -webkit-sticky; /* Safari */ position: sticky; top: 0; z-index: 10; display: flex; justify-content: center; align-items: center; min-height: 50px; background-color: var(--elevation); box-shadow: var(--mainShadow); }
+.filters__content{ max-width: 1100px; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: center; padding: 8px 0.5rem; gap: 8px 0; }
+@media(max-width: 600px){ .filters__content{ justify-content: center; } }
 .filters-category select{ cursor: pointer; width: 160px; height: 2rem; font-size: 14px; line-height: 1.7; background-color: var(--elevationHover); font-family: var(--bodyFont); font-weight: 700; padding: 0 5px; margin-right: 50px; color: var(--accent); box-shadow: var(--mainShadow); outline: 0; border: 0; transition: var(--fastFade); }
 .filters-category select:hover{ background-color: var(--accent); box-shadow: var(--shadowHover); color: var(--elevation); transition: var(--fastFade); }
 .filters-tags{ display: flex; flex-direction: row; align-items: baseline; }
