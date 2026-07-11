@@ -112,13 +112,23 @@
            LAYOUT
            ============================================================ */
         #app {
-            display: block;
+            display: flex;
             min-height: 100vh;
         }
 
-        /* ---- Sidebar Hidden for Embed ---- */
+        /* ---- Sidebar ---- */
         .sidebar {
-            display: none;
+            width: var(--sidebar-w);
+            flex-shrink: 0;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 22px 16px;
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
         }
         .brand {
             display: flex;
@@ -222,7 +232,9 @@
 
         /* ---- Main ---- */
         .main {
-            padding: 20px;
+            flex: 1;
+            min-width: 0;
+            padding: 26px 32px 60px;
         }
         .topbar {
             display: flex;
