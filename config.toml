@@ -1,15 +1,11 @@
 baseURL = "https://mscazmy.github.io/"
 languageCode = "en-us"
-title = "Ahmed Azeez"
+title = "Ahmed Azeez | Portfolio"
 theme = "data-science"
-# disqusShortname = "amberthomas"
 enableEmoji = true
-# allow search engines to search/crawl everything
 enableRobotsTXT = true
 
 preserveTaxonomyNames = true
-
-# sectionPagesMenu = "main"
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
@@ -21,31 +17,28 @@ preserveTaxonomyNames = true
 
 [params]
   author = "Ahmed Azeez"
-  description = "A collection of my data science projects and blog posts about R, d3, and everything in between."
-  twitterAuthor = "@ProQuesAsker"
-  twitterSite = "@ProQuesAsker"
+  description = "PhD in Public Health & Data Scientist. Specializing in infectious disease epidemiology and transforming complex data into actionable health insights."
+  # Updated social metadata
+  twitterAuthor = ""
+  twitterSite = ""
   images = ['logo.jpg']
 
-  # options for highlight.js (version, additional languages, and theme)
+  # Syntax highlighting options
   highlight = true
   highlightjsVersion = "9.15.6"
   highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
-  highlightjsLang = ["r", "yaml", "javascript"]
+  highlightjsLang = ["r", "yaml", "javascript", "python"]
   custom = true
   highlightjsThemeLight = ""
   highlightjsThemeDark = ""
 
-
-
-
-
 [params.social]
   email = "mailto:ahmed.azeez1987@gmail.com"
-  twitter = ""
   github = "https://github.com/mscazmy"
   linkedin = "https://www.linkedin.com/in/ahmed-a-hasan-%F0%9F%87%AE%F0%9F%87%B6-070b9aab/"
-  stackoverflow = ""
   facebook = "https://www.facebook.com/ahmed.medic.583"
+  twitter = ""
+  stackoverflow = ""
   instagram = ""
   dribbble = ""
   kaggle = ""
