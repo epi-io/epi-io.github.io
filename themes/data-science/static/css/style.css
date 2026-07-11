@@ -228,12 +228,22 @@ code{ background-color: var(--codeBG); padding: 2px 5px; color: var(--codeFont);
 
 /* Apps Page */
 .filters-apps{ margin-left: 20px; } .filters-apps a{ text-decoration: none; } .filters-apps .filters-click{ padding: 5px 0; }
-.apps-section { margin-top: 2rem; }
+.article--apps { max-width: 1000px; }
+.apps-section { margin-top: 1rem; }
+.apps-intro { margin-bottom: 2rem; color: var(--tertiary); font-family: var(--bodyFont); }
 .apps-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-.app-card { background: var(--elevationHover); border-radius: var(--radius); overflow: hidden; box-shadow: var(--mainShadow); transition: var(--slowFade); border: 1px solid transparent; }
+.app-card { background: var(--elevationHover); border-radius: var(--radius); overflow: hidden; box-shadow: var(--mainShadow); transition: var(--slowFade); border: 1px solid transparent; cursor: pointer; padding: 30px 20px; text-align: center; }
 .app-card:hover { transform: translateY(-5px); box-shadow: var(--mainShadowHover); border-color: var(--accent); }
-.app-card__link { text-decoration: none; color: inherit; display: block; padding: 20px; text-align: center; }
-.app-card__icon { width: 50px; height: 50px; margin: 0 auto 15px; color: var(--accent); }
+.app-card__icon { width: 48px; height: 48px; margin: 0 auto 15px; color: var(--accent); opacity: 0.8; }
 .app-card__icon svg { width: 100%; height: 100%; }
-.app-card__title { margin: 0 0 5px 0; font-family: var(--titleFont); font-size: 16px; color: var(--content); }
-.app-card__desc { margin: 0; font-size: 12px; color: var(--tertiary); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.app-card__title { margin: 0 0 8px 0; font-family: var(--titleFont); font-size: 17px; color: var(--content); }
+.app-card__desc { margin: 0; font-size: 11px; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; }
+
+.app-breadcrumb { display: flex; align-items: center; gap: 10px; font-family: var(--bodyFont); margin-bottom: 10px; }
+.breadcrumb-separator { color: var(--tertiary); }
+.breadcrumb-current { font-weight: bold; color: var(--content); }
+.app-viewer-section { margin-top: 1rem; }
+.app-container { background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); }
+#app-iframe { display: block; background: white; }
+#back-to-apps { padding: 5px 10px; font-size: 13px; }
+#back-to-apps svg { width: 14px; height: 14px; margin-right: 5px; }

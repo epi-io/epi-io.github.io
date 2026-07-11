@@ -6,42 +6,112 @@
     {{ partial "simple-nav.html" . }}
   </div>
 
-  <article class="article">
+  <article class="article article--apps">
 
-    <section class="post__info">
+    <section class="post__info" id="apps-header">
       <h1 class="post__title">{{ .Title }}</h1>
+      <div id="app-breadcrumb" class="app-breadcrumb" style="display: none;">
+        <button id="back-to-apps" class="btn btn-sm btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Back to All Apps
+        </button>
+        <span class="breadcrumb-separator">/</span>
+        <span id="current-app-name" class="breadcrumb-current"></span>
+      </div>
     </section>
 
-    <section class="post__content">
-      <p>A collection of my interactive HTML applications. Click on any app to launch it.</p>
-    </section>
-
-    <section class="apps-section">
+    <section id="apps-list-section" class="apps-section">
+      <div class="apps-intro">
+        <p>Interactive HTML applications for public health research and data analysis.</p>
+      </div>
       <div id="apps-gallery" class="apps-gallery">
         {{ $appsDir := "static/apps" }}
         {{ range (readDir $appsDir) }}
           {{ if and (not .IsDir) (hasSuffix .Name ".html") }}
             {{ $appName := replace .Name ".html" "" }}
             {{ $appTitle := replace $appName "-" " " | title }}
-            <div class="app-card">
-              <a class="app-card__link" href="/apps/{{ .Name }}" target="_blank">
-                <div class="app-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                </div>
-                <div class="app-card__body">
-                  <h4 class="app-card__title">{{ $appTitle }}</h4>
-                  <p class="app-card__desc">Launch Application</p>
-                </div>
-              </a>
+            {{ $icon := "grid" }}
+            {{ if (findRE "calc" .Name) }} {{ $icon = "calculator" }} {{ end }}
+            {{ if (findRE "stats" .Name) }} {{ $icon = "bar-chart" }} {{ end }}
+            {{ if (findRE "data" .Name) }} {{ $icon = "database" }} {{ end }}
+            
+            <div class="app-card" data-app-url="/apps/{{ .Name }}" data-app-title="{{ $appTitle }}">
+              <div class="app-card__icon">
+                {{ if eq $icon "calculator" }}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="14"></line><line x1="16" y1="18" x2="16" y2="18"></line><line x1="12" y1="14" x2="12" y2="14"></line><line x1="12" y1="18" x2="12" y2="18"></line><line x1="8" y1="14" x2="8" y2="14"></line><line x1="8" y1="18" x2="8" y2="18"></line></svg>
+                {{ else if eq $icon "bar-chart" }}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                {{ else if eq $icon "database" }}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                {{ else }}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                {{ end }}
+              </div>
+              <div class="app-card__body">
+                <h4 class="app-card__title">{{ $appTitle }}</h4>
+                <p class="app-card__desc">Open App</p>
+              </div>
             </div>
           {{ end }}
         {{ end }}
       </div>
     </section>
 
+    <section id="app-viewer-section" class="app-viewer-section" style="display: none;">
+      <div class="app-container">
+        <iframe id="app-iframe" src="" frameborder="0" style="width: 100%; height: 800px; border-radius: var(--radius);"></iframe>
+      </div>
+    </section>
+
   </article>
 
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const appsGallery = document.getElementById('apps-gallery');
+  const appsListSection = document.getElementById('apps-list-section');
+  const appViewerSection = document.getElementById('app-viewer-section');
+  const appIframe = document.getElementById('app-iframe');
+  const appHeaderTitle = document.querySelector('#apps-header .post__title');
+  const appBreadcrumb = document.getElementById('app-breadcrumb');
+  const currentAppName = document.getElementById('current-app-name');
+  const backBtn = document.getElementById('back-to-apps');
+
+  // Handle app card clicks
+  document.querySelectorAll('.app-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const url = this.getAttribute('data-app-url');
+      const title = this.getAttribute('data-app-title');
+      
+      appIframe.src = url;
+      currentAppName.textContent = title;
+      
+      appsListSection.style.display = 'none';
+      appHeaderTitle.style.display = 'none';
+      
+      appViewerSection.style.display = 'block';
+      appBreadcrumb.style.display = 'flex';
+      
+      window.scrollTo(0, 0);
+    });
+  });
+
+  // Handle back button click
+  backBtn.addEventListener('click', function() {
+    appIframe.src = '';
+    
+    appViewerSection.style.display = 'none';
+    appBreadcrumb.style.display = 'none';
+    
+    appsListSection.style.display = 'block';
+    appHeaderTitle.style.display = 'block';
+    
+    window.scrollTo(0, 0);
+  });
+});
+</script>
+
 <footer class='footer__single'>
   {{ partial "footer.html" . }}
 </footer>
