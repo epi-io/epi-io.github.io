@@ -38,7 +38,8 @@ blockquote{ font-family: var(--annotationFont); font-style: italic; color: var(-
 .filters-click:hover{ color: var(--content); }
 .tags-meta{ font-size: 17px; margin: 0 10px 0 0; font-family: var(--bodyFont); }
 .filters-tags i{ color: var(--accent) }
-.theme-toggle{ margin-left: auto; color: var(--accent); background-color: transparent; border: none; height: 32px; border-radius: var(--radius); cursor: pointer; transition: var(--fastFade); }
+.filters-nav { margin-left: auto; display: flex; flex-direction: row; align-items: center; }
+.theme-toggle{ color: var(--accent); background-color: transparent; border: none; height: 32px; border-radius: var(--radius); cursor: pointer; transition: var(--fastFade); }
 .theme-toggle:hover span{ color: var(--content); transition: var(--fastFade); }
 .theme-toggle .inline-svg{ width: 2em; }
 .filters-drawer{ background-color: var(--drawer); position: -webkit-sticky; /* Safari */ position: sticky; top: 50px; z-index: 5; height: 0; overflow: hidden; transition: var(--fastFade); }
@@ -186,10 +187,10 @@ code{ background-color: var(--codeBG); padding: 2px 5px; color: var(--codeFont);
 .inline-svg { display: inline-block; width: 1em; }
 .inline-svg[hidden]{ display: none; }
 /* About Me link in the filter bar */
-.filters-about{ margin-left: 20px; }
+.filters-about{ margin-left: 10px; }
 .filters-about a{ text-decoration: none; }
 .filters-about .filters-click{ padding: 5px 0; }
-.filters-certs{ margin-left: 20px; }
+.filters-certs{ margin-left: 10px; }
 .filters-certs a{ text-decoration: none; }
 .filters-certs .filters-click{ padding: 5px 0; }
 .filters-about .filters-click, .filters-certs .filters-click, .filters-apps .filters-click,
@@ -225,7 +226,7 @@ code{ background-color: var(--codeBG); padding: 2px 5px; color: var(--codeFont);
 .certs-empty { text-align: center; font-family: var(--bodyFont); color: var(--tertiary); margin-top: 3rem; }
 
 /* Apps Page */
-.filters-apps{ margin-left: 20px; } .filters-apps a{ text-decoration: none; } .filters-apps .filters-click{ padding: 5px 0; }
+.filters-apps{ margin-left: 10px; } .filters-apps a{ text-decoration: none; } .filters-apps .filters-click{ padding: 5px 0; }
 .article--apps { max-width: 1000px; }
 .apps-section { margin-top: 1rem; }
 .apps-intro { margin-bottom: 2rem; color: var(--tertiary); font-family: var(--bodyFont); }
